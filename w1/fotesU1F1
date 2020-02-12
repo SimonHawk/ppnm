@@ -1,0 +1,49 @@
+PragProg U1F1
+
+Intro: 	Dimitri recommends making groups of 2-3
+
+Examn:	Is a project. Deadline is in the end of june, idependent of the actual examn date.
+
+What language should we use?
+	Dimitri thinks C is a bit boring now. C++ is too complicated. Java has bad restrictions. 
+	Python we know already. C-sharp is a good comprimize between C and C++.
+	
+	C sharp is compiled to bytecode and runs on a virtual machine. This is actually not
+	that much slower than purely compiled code. Also, it can potentilly be more smart about
+	methods to use for calculations, but this is not implemented yet. It is a bit slower than
+	C but not much. 
+
+	C sharp has an automatic garbage collector, C does not. Uses much more memory though, at
+	least twize as much.	
+	
+	We are going to use C-sharp in the course
+	
+How to install systems?
+	Many ways to do it. We talk about these things.
+
+Note: 	At some point we should be able to answer all the questions on the weekly notice for a
+	test.
+
+Using C-sharp
+	We install "mono-mcs". This is different from .net i think? Didn't get this.
+	Dimitri shows us how to compile some stuff on grendel.
+	C-sharp files have the extension .cs
+	mono is the vertual machine
+	After compiation we have an .exe file that needs to be run with mono.
+	
+Later:	
+	We will program hello world
+	We will learn to use git for version control, (but not now)	
+
+Programming hello world:
+	Everything in cs must be in a class.
+	There must be a main function that the system can call, and then this main can call other
+	function
+	In cs main must be static.
+	We compile with mcs and run the resulting exe with mono.
+	We will only make console applications, because these are the types of programs you run
+	on supercomputers. 
+		
+
+
+

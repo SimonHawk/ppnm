@@ -1,0 +1,65 @@
+Questions 3 from week 3 exercises:
+
+1: What is the mcs option to turn off all warnings?
+	"-warn:0" sets the warning level to 0. This supresses all warnings
+
+2: What is the mcs option to turn off informational warnings?
+	"-warn:3" sets the warning level to 3. This displays all warnings 
+	except informational warnings.
+
+3: Rewrite this piece of code, x=(a>b?a:b), using the if statement
+	What does it do? Compare a and b with >
+	The x?a:b is the tenary operator, which returns a if x is true and
+	b if x is false.
+	Thereby, the if statement equivalent will be:
+	if (a>b) {x = a;} else {x = b;}
+
+4: If you need mathematical functions from, say, cmath.dll library, how
+   do you link your program with the library?
+	Two actions are needed. I need to include the relevant class in the
+	source file where cmath.dll is needed, like "using static cmath.dll"
+	if I just need the static methods.
+	I need to link the cmath.dll to the when compiling the source file,
+	mcs -reference:cmath.dll main.cs
+	
+5: What will the following piece of code print?
+   int i=0;
+   Write("{0}\n",i);
+   Write("{0}\n",i++);
+   Write("{0}\n",++i);
+	First:	0
+	Then:	1	Because i++=1 when i=0, after this i=1
+	Then:	2 	Because ++i is the same as i++, so it increments i=1 to 
+				i = 2
+
+6: Rewrite the loop while(condition)body using a for loop
+	The for statement has three parts: for(int;con;itr) body
+	Each of these parts are optional.  That should mean that i can leave
+	out int and itr, to make the equivalent of a while
+	for(;condition;)body
+
+7: Rewrite the loop for(init;cond;inc)body using the while loop
+	I need to put init outside the loop, and inc in the body:
+	init;
+	while(cond) {
+		body;
+		inc;
+	}
+
+8: Rewrite the loop do body while(condition); using the for loop:
+	Hmmm, important thing here is that the check is after the running of the 	body.
+	The increment part of the for loop will run after the body, so put the
+	condition statement in there...
+		
+	for(bool b = true; b; if(!condition){b = false;} ) body
+	
+	This might work? The loop will stop after the condition gives false,
+	which is checked after the body has been run, because it is in the 
+	increment.
+
+	This would look nicer with a tenary operator, so the increment would
+	be:
+ 	b = condition?true:false
+
+
+

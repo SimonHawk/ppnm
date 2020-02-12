@@ -1,0 +1,3 @@
+Hello from Console
+hello from Write
+Hello from world

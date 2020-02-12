@@ -1,0 +1,82 @@
+PragProg U2F2
+
+Basics of classes and structs:
+	Will learn by building a vector class
+	I will make it in w2/lecVector folder
+	First we will do it in a easy ineffective way.
+
+Compilers in mono
+	There are two: mcs and csc. Probably they will converge in time
+	We should probably use csc?
+	But dimitri only has mcs... probalby good enough for now.
+	No new features will be made for mcs.
+	
+
+Makefile variables
+	Normally strings are indicated with "". In makefile most things are
+	strings, so we need to specify variables. This is done with macros.
+	f.eks. $(COMPILEFLAGS)
+
+Vectors:
+	We will make it a class to have the whole heap of memory availible
+	Data will be an array
+		This is private we want to control access
+	We are overloading the index operator????
+		public double this[int i]
+		Probably to make is so that you can say "vector[3]" and get
+		the 3rd index out?? Yes, i think this represents the name of
+		an instance of the vector class
+
+get and set
+	standard methods that make us able to set and get values in an instance
+	of the class. Pretty smart, but i don't get it completely
+
+optional/default parameters:
+	string s="" means that the default s is "", and we don't need to give
+	the method a string fo rit to work
+
+Name overloading:
+	Two functions with same name and different parameters and return type
+	are read as different functions in c-sharp.
+
+Placement of Main:
+	All classes can have a main method, which is useful for testing.
+	You can define the entrypoint of the compilation:
+		mcs -main:main
+	Means that the main method sould be found in the "main" class.
+
+Make automatic variables:
+	$(word 2, $^) takes the second "word" of the $^ prerequisites.
+	That pretty nice
+
+Using the vector class:
+	We make data non public, so we must use the getter and setter method
+	
+Defining new operators:
+	We can overload operators
+
+operator+
+	Operator is static? It somehow has to be.
+	operator needs a return type
+
+operator* (for scalar vector mult)
+	Only works for specific order of arguments, so we need to define two
+	methods.
+		
+Lecture complex:
+	Using struct complex?	
+	
+We are using interface:
+	icomplex.cs is an interface, defines the properties of complex
+	numbers, but no implementation
+	Interfaces cannot contain operators???
+	Then we won't use it
+
+Dimitris absolute value definition:
+	better than sqrt(a^2 + b^2), due to no a^2 and b^2 to calculate
+	these can be
+	
+	sqrt(x^2 + y^2) = x*sqrt(1 + (y/x)^2)
+	sqrt(x^2 + y^2) = y*sqrt(1 + (x/y)^2)
+	
+	The biggest one should be taken outside. 

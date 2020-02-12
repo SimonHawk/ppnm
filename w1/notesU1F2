@@ -1,0 +1,111 @@
+PragProg U1F2
+
+Intro information:
+	Grayed out stuff on the weekly notice page is not finalized yet. 
+	But from today it will probably not change much...
+	
+
+Operator overloading:
+	For example defining a class of complex numbers, we would like to
+	multiply them by a*b. That means overloading the * operator which
+	Java dons't allow. Thats why we dislike java
+
+We start making a C-shap program:
+	In CS everything must be inside a class, but the class can be
+	just a container, f.eks. for static class
+	We refer to things in classes as: classname.thing
+	In that sense there is no global scope.
+	Classes are put in namespaces. In two different namespaces you can
+	have to classes with the same name.
+	At least one class must have a method called "main"
+	If you have several, you have to specify which one to use for the
+	compiler 
+	See notes in the program Main.cs in "w1/hello2"
+	This program must be compiled, as CS source code must be compiled
+	to abstract machine code before it can be run.
+		This is smart because this bytecode is not dependent on the 
+		architecture of the target machine, just the runtime environment
+		needs to be ported.
+		Mono can compile the bytecode to real machine code, called
+		"ahead of time compilation", but we won't use this feature.
+		The CS bytecode is called CIL "Common intermidiate laguage"
+	Not everything should be compiled to a executable, something should
+	rather be a library. It's like an executable without an entry point,
+	the main function. All the methods are availible, and can be used by
+	other programs.
+		A library file is made with the option -target:library
+		ex: mcs -target:library main.cs
+	This is smart for big projects, because then you only need to
+	recompile the library when something has changed in the library,
+	and don't need to recompile the whole project.
+
+MAKE:
+	Mangagement for project where you work with files.
+	Only updates the nessecary files for a project.
+	This is specified for each project by a Makefile. capital M makes
+	sure thats its on top in ls
+
+	For out projects we might want to see the output imidatly
+	For this, we add a new phony target "all" 
+	all:out.txt makes sure that out.txt will be made
+	the recipy cat out.txt prints out.txt to the console.
+
+Linking:
+	Make a project of more files.
+
+	We want to put the world class in a seperate dll library
+	This can be put into the compilation by using the -reference: flag	
+	-reference:world.dll
+	The library has to be compiled with the option -target:library
+	
+	To make this work i need to: Fix the errors in the main.cs file
+	I tried editing one in the wrong folder.	
+
+
+Math: 
+	CS is statically typed, and each variable can only hold values of a
+	certain time. 
+	Complex numbers:
+		Dimitri has made a complex class we can use
+		Its a struct instead of class, which makes it faster.
+		This library can be gotten from his website
+		How to complie in makefile
+		
+		# how to make cmath.dll:
+		cmath.dll: ../../lib/complex.complex.cs ../../lib/complex.cmath.cs
+			# $^ flag takes every ingredient. Don't know what $@ means
+			mcs $^ -target library -out:$@
+			# compiler puts the files in the wrong library, so move them	
+			cp ../.../lib/complex/cmath.dll
+	 
+		After making the library we still need to include it by using
+		using static cmath; in the top of our main.cs file.
+
+Value type and reference type:
+	Dimitri makes a new main file to demonstrate:
+	He makes a static class sprint, and a regular class writer
+	var x = new sprint()  // Doesnøt work because static
+	var y = new writer()  // works fine. var is syntaxtic sugar so we don't
+							need to specify the right type, it will be 
+							inferred
+	Then we can use y.s to overwrite the value of the string in the 
+	specific writer object.
+	
+	var x = y  // classes are passed by reference, so if we chage y later,
+				  we are also changing x 
+	
+Structs
+	Where is the difference to classes?
+	structs are just classes with some restrictions:
+		No default values for field variables
+		(probably more)
+	Also, structs are passed by value, not by reference
+	So if we have a struct variable x
+	And say: var y = x
+	Then y is a new copy of the class x.
+	
+	Structs are in the stack, objects are in the heap
+	
+
+
+	

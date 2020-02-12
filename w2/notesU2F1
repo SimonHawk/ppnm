@@ -1,0 +1,109 @@
+PragProg U2F1 noter:
+
+Today:
+	We will look at the week 3 stuff
+	Stuff will be put in the folder "lecture/basic" 
+
+Basics:
+	We start by going through some basic stuff, see "w2/basic"
+
+Smart stuff in make:
+	"$<" is the automatic variable for the first prerequisit
+	"$@" is the target	
+	Use a variable CSFLAGS to define some flags for the compiler
+	-optimize- turns off the optimizer
+	-warn:4 tell the compiler to give us all warnings
+
+Starting to make the main.cs file:
+	We have to have a class
+	What about name spaces?
+		Just used to group things if you have a lot of names, ex. in a
+		class.
+		You don't put Main() in namespace, because the operating system
+		needs to find it. But it might work...
+		Namespaces are for large projects.
+	It doesn't matter if main class is private or public, when we just
+	need to call the Main method
+	Main method must be static, which means that it is a function in a
+	class that will work without making an instance of the class.
+	All things in a static class is static.
+	A non-static class can still have staic elements, but all static
+	elements of th class are shared between all instances of the class
+	
+Primitive types:
+	Like double and int
+	Variables must be declared with a type, and then they can only hold
+	values of that type.
+	
+Scoping:
+	C Sharp has almost lexical scoping, but with some shadowing(?)
+	Block shadowing is not allowed in c-sharp, but shadowing in functions
+	is... 
+
+make && cat out.txt
+	This means: Run make and if it succeseds run the next command
+	cat out.txt
+	A single & would mean detach the command from the terminal and run it
+	in a seperate process. (Then the cat out.txt par would not make sense)
+	|| is or.
+	CTRL-Z will detach vim from the foreground
+
+Compilation
+	If you give the compiler several .cs file it will take all the classes
+ 	from all files into the total compilation.
+
+Conditional and loops:
+	You have to use parenthesis: if(condition)body
+
+	We usually use intergers to iterate over for for loops because they
+	the arithmatic is precise
+	i++ means i = i + 1
+		++i means before using the variable increment one
+		So i = 1, Write(i++) prints 1, and Write(++i) prints 2	
+
+	For loop works like: for(initilization;condition;increment)body
+	First runs initialization, then runs body and after that increment
+	until the condition is no longer true.
+	
+	Careful! Variables in the for loop statement or block cannot shadow
+	variables out of it... This is not so nice.	
+
+	Wile loop:
+		while(condition)body	
+
+	Do-while loop:
+		What is the difference? Do body first then check condition theen
+		repeat.
+
+Formats:
+	Fixed format: {0:f2} means fixed format with two decimals.
+	Exponential format: {0:e2} means exponential format with 2 decimals
+	
+	Also more formats, look at the docs says Dimitri
+
+Extension methods:
+	OBS! Useful for exercise, look at the docs
+
+Arrays:
+	Array type: For example: double[]
+	new double[10] creates an empty array with 10 elements
+	
+	Then we use a loop to fill it with something
+	
+	How to resize?	
+		There is a static resize method in the System.Array class
+		Array.Resize(ref array, newSize)
+		What does ref mean? Don't quite know, but its something with
+		call by value of call by reference...
+		This changes the size, but keeps the elements it can in the
+		indexes that still exist.
+		
+		Arrays can be made over any type, but everything in it must
+		be of the same type.
+		
+		
+				
+		
+
+
+

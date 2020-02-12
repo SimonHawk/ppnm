@@ -1,0 +1,32 @@
+1: What is the Main method?:
+	The main is static method in a class that will be called as the first thing in a program.
+
+2: What is source code, bytecode and executable code?
+	Source code: The human readble code that we write
+	Bytecode: Code that the bytecode is compiled to that can be run by a virtual machine
+	Executable code: Code that can be run directly by the processer/hardware machine
+
+3: How can you compile a C-sharp program whics is wholly contained in one file, say hello.cs,
+   into an executable bytecode?
+	Use the mono-project compiler, mcs. The terminal command is:
+		mcs hello.cs
+	Then a "hello.exe" executable bytecode file is made
+
+4: How do you run the resulting executable code with the mono runtime system?
+	Use the "mono" program:
+		mono hello.exe
+
+5: How can you compile the C-sharp source code in the file cmath.cs into a bytecode
+   library cmath.dll
+	Using the option -target:library for the compiler:
+		mcs -target:library cmath.cs
+
+	(It is good practice to also specify the name of the output file by using:
+		mcs -target:library -o:cmath.dll cmath.cs )
+
+6: How can you link a bytecode library, say cmath.dll, when compiling your file with the
+   main Main method, say main.cs?
+	Using the "reference" tag when compiling:
+		mcs -reference:cmath.dll main.cs
+	Then the classes from cmath.dll will be availible to main.cs.
+
