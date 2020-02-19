@@ -1,0 +1,48 @@
+PragProg U4F1 Notes
+
+(In W3 Dimitry was sick and we didn't have any lectures)
+
+Introdution:
+	Today: Input output, writing and reading numbers.
+	We will format it on table form for now in text representation, because
+	 that is easy to work with.
+	However, if you have huge files raw byte data is smaller, but we will
+	not work with this.
+
+Standard streams in unix:
+	Nearly all programs in unix work on:
+	Std input, std output and std error.
+	Input steam is simply a sequence of bytes, which is taken from the
+	keyboard input by default.
+
+How to give input to programs:
+	Command line:
+		Just arguments given in the console when you run the program
+		Very easy to work with, but not useful for long inputs.
+		Used by defining a Main(string[] args)
+		
+ECHO
+	Unix command that thakes it command line arguments and puts them in 
+	the standard output.
+
+$(RM) macro:
+	Is just "rm --force" by default.
+	But if you want to do something else, you can just overwrite it, and
+	that might be usefull for bigger projects.
+		
+foreach loop:
+	If object is countable, it must provide a way to use for each on the
+	form: foreach(var s in args) where args is some coutable object.
+	
+Unix "files"
+	All devices in unix, like the network card looks like files to the 
+	system. Wow. You can communicate with devices by sending streams
+	of bytes into what looks like "files" to the system.
+
+"break"
+	Breaks the current loop and goes out of it. Maybe general to blocks?
+
+
+--- USING GIT ---
+
+
