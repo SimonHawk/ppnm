@@ -1,1 +1,39 @@
+PragProg U4F2 noter:
+
+Today: GNU plot
+	We use it because it is widely used, and produces publication quality
+	figures.
+	It also can be well integrated with Latex to make fonts and sizes nice.
+
+Using GNU Plot:
+	Can be used in interaction mode, but we won't use that.
+	echo 'plot sin(x)' | gnuplot --persist
+	Plots sin(x)
+	gnuplot -p -e 'plot sin(x)' does the same
+	But we will take these commands from a GNU script file.
+	Extension can be: .gpi (gnu plot instructions)
+
+Gamma function approximations:
+	The gamma function is not so nice to approximate.
+	Dimitri has made it nicer for us by defining a reflection to use in the
+	negative argument case, and 
+
+Files in exercises:
+	Results should be in capital start letter. 
+	Plots should be in svg for the exercies, but pdf when included in latex
+
+GNU script commands:
+	set term svg 		Set the terminal (output) to svg
+	set out "Gamma.svg"		Sets the filename of the output
+	plot [][-5:5] "out.gamma.txt" with lines
+		Plot everything in x and -5 to 5 in y
+		plot the data found in out.gamma.txt
+		use lines
+	We see a lot more very quickly, this can be seen in the gamma.gpi file
+
+Gamma residues:
+	We shift the argument of small gamma functions to make it more precise
+	The less shifts we do the faster it will be. 
+	  
+
 
