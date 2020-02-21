@@ -1,0 +1,3 @@
+set term svg
+set out "Gamma.svg"
+plot [][-5:5] "out.gamma.txt" with lines
