@@ -1,3 +1,13 @@
 set term svg
 set out "Gamma.svg"
-plot [][-5:5] "out.gamma.txt" with lines
+set xlabel "x"
+set ylabel "y"
+set key bottom right
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Gamma Function"
+plot [-4:6][-5:5] \
+	"out.gamma.txt" with lines title "gamma"
+	
+
