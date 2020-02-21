@@ -11,7 +11,7 @@ class main {
 		double tg = 1;
 		for(double x = 1; x <= 170; x+=1) {
 			var gx = math.gamma(x);
-			WriteLine("{0,10:f3} {1,15:f8}", x, Abs(gx-tg)/tg);
+			WriteLine("{0,10:f3} {1,15:f8} {2:}", x, Abs(gx-tg)/tg);
 			tg = tg*x;
 		}
 		return 0;		

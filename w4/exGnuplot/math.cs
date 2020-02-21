@@ -1,4 +1,5 @@
 using static System.Math;
+using static cmath;
 
 public class math {
 	public static double erf(double x){
@@ -23,5 +24,12 @@ public class math {
 		if(x<0) return Log(PI) - Log(Sin(PI*x)) - lngamma(1-x);
 		if(x<9) return lngamma(x+1) - Log(x);
 		return x*Log(x+1/(12*x-1/x/10))-x+Log(2*PI/x)/2;
+	}
+	
+	public static complex lngamma(complex z) {
+		// Trust the implicit conversion from double to 
+		if(z.Re < 0) return log(PI) - log(sin(PI*z)) - lngamma(1.0 - z);
+		if(z.Re < 9) return lngamma(z+1.0) - log(z);
+		return z*log(z+1.0/(12.0*z - 1.0/z/10.0)) - z + log(2*PI/z)/2;
 	}
 }

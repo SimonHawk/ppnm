@@ -1,4 +1,13 @@
-all: ExA2.svg ExA3.svg ExB.svg
+all: ExA2.svg ExA3.svg ExB.svg ExC.svg
+
+ExC.svg: exC.gpi out.exC.txt
+	gnuplot $<
+
+out.exC.txt: main-exC.exe
+	mono $< > $@
+
+main-exC.exe: main-exC.cs math.dll cmath.dll
+	mcs -reference:math.dll,cmath.dll -out:$@ $< 
 
 ExB.svg: exB.gpi out.exB.txt
 	gnuplot $<
@@ -30,8 +39,8 @@ out.exA2.txt: main-exA2.exe
 main-exA2.exe: main-exA2.cs math.dll
 	mcs -reference:math.dll -out:$@  $<
 
-math.dll: math.cs
-	mcs -target:library -out:$@ $<
+math.dll: math.cs cmath.dll
+	mcs -reference:cmath.dll -target:library -out:$@ $<
 
 cmath.dll: lib/cmath.cs lib/complex.cs
 	mcs -target:library -out:$@ $^
