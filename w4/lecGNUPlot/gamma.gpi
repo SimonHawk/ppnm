@@ -8,6 +8,7 @@ set xzeroaxis
 set yzeroaxis
 set title "Gamma Function"
 plot [-4:6][-5:5] \
-	"out.gamma.txt" with lines title "gamma"
+	"out.gamma.txt" with lines title "gamma"\
+	, "out.gamma.test.txt" with points pt 7 title "true gamma"
 	
 
