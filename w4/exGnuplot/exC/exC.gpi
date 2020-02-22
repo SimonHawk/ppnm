@@ -1,0 +1,10 @@
+set term svg background rgb "white"
+set out "ExC.svg"
+set xlabel "Re"
+set ylabel "Im"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Ln gamma function"
+set key bottom right
+splot "out.exC.txt" with lines

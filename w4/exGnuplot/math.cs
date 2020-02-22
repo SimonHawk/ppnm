@@ -32,4 +32,13 @@ public class math {
 		if(z.Re < 9) return lngamma(z+1.0) - log(z);
 		return z*log(z+1.0/(12.0*z - 1.0/z/10.0)) - z + log(2*PI/z)/2;
 	}
+
+	public static complex gamma(complex z) {
+		return exp(lngamma(z));
+	}
+	
+	public static double absgamma(complex z) {
+		return abs(gamma(z));
+	}
+
 }
