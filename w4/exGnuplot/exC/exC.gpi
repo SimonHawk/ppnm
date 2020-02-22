@@ -7,4 +7,6 @@ set xzeroaxis
 set yzeroaxis
 set title "Ln gamma function"
 set key bottom right
-splot "out.exC.txt" with lines
+set hidden3d
+set pm3d
+splot [-4:4][-4:4][0:6] "out.exC.txt" with lines
