@@ -8,5 +8,8 @@ set yzeroaxis
 set title "Ln gamma function"
 set key bottom right
 set hidden3d
-set pm3d
-splot [-4:4][-4:4][0:6] "out.exC.txt" with lines
+set pm3d at s 
+set view 60, 330, 1, 1
+set zrange [0:6]
+
+splot [-4.5:4.5][-4:4][0:] "out.exC.txt" u 1:2:3 with pm3d lt palette 
