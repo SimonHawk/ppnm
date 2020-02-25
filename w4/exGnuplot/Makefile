@@ -27,8 +27,8 @@ out.cgamma.txt: gammaTest.c
 out.exA3.txt: main-exA3.exe
 	mono $< > $@
 
-main-exA3.exe: main-exA3.cs math.dll
-	mcs -reference:math.dll -out:$@ $<
+main-exA3.exe: main-exA3.cs math.dll cmath.dll 
+	mcs -reference:math.dll,cmath.dll -out:$@ $<
 
 ExA2.svg: exA2.gpi out.exA2.txt
 	gnuplot $<		
