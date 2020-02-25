@@ -15,8 +15,8 @@ ExB.svg: exB.gpi out.exB.txt
 out.exB.txt: main-exB.exe
 	mono $< > $@
 
-main-exB.exe: main-exB.cs math.dll
-	mcs -reference:math.dll -out:$@ $<
+main-exB.exe: main-exB.cs math.dll cmath.dll
+	mcs -reference:math.dll,cmath.dll -out:$@ $<
 
 ExA3.svg: exA3.gpi out.exA3.txt out.cgamma.txt
 	gnuplot $<
