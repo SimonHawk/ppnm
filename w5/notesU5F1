@@ -1,0 +1,58 @@
+PragProg Uge 5 Forelæsning 1:
+
+Today:
+	Functional programming i CSharp
+	Needed for integration rutine.	
+
+Introduction:
+	I C sharp, function passing is made safe through "delegates", which
+	is kind of like a pointer of to a function
+
+Delagates:
+	Delagates needs to be declared:
+	delegate double myfun(double x) is ready to contain a pointer to a
+	function
+	Delegates can only be declared in some class?
+	Each delegate is a different type, even if they have the same signature
+	However, there is a generic delegate in the system class.
+	Func<double, double>	takes a double(1st) and returns a double (2nd)
+	
+First class functions:
+	If funcitons are treated like normal variables, they are called first
+	class functions.
+	C sharp also has first class functions.
+
+Closures:
+	How is variables in functions captured?
+	In c sharp environment for each function is automatically made and saved
+	Captures by value, not by reference.Each makefun call will have its
+	own a.
+	The closure is only made on return.
+	Variables are captured on return?
+
+PAssing functions as parameters
+	Just use Func<> as parameter type.
+
+Using integrator:
+	quad.o8av(f, a, b)
+	f is a Func<double, double> function
+	a and b are the limits.
+	
+	Numerical integrators can always be cheated, so you need to do checks
+	yourself.
+
+	we are using: 
+		o: open point, can handle singularities at the end points
+		8: function needs to be 8 times differentiable. 
+		a: adaptive
+		v: with variable substitution
+		
+		
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+set term svg background rgb "white"
+set out "ExC.svg"
+set xlabel "alpha"
+set ylabel "E(alpha)"
+set tics out
+set title "E(alpha) for simple harmonic oscillator and gaussian trial function"
+set yrange [:1.5]
+plot "out.exC.txt" with lines
