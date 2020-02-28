@@ -1,0 +1,47 @@
+PragProg U5F2:
+
+Today:
+
+Our wiki:
+	We have to add outselves to wikipedia.
+	Add image 128x128 half scale? Has to be jpg
+	Password for upload is "jpeg"
+	Later we add our own grades to this wikipedia
+
+Integration:
+	Rutines can somethimes handle singularities in the integration region
+	but it is unsafe. Better split it up and have singularities at
+	end points.
+	Kinks are also bad for integration, better to split interval on kinks
+
+ODE:
+	Rewrite this equation
+	u'' = -u
+	
+	Using:
+	y0 = u
+	y1 = u'
+	
+	Then 
+	y0' = y1
+	y1' = -y0
+	
+	This can be integrated using the 
+
+ODE Solvers:
+	We go through the arguments to the rk23 arguments
+
+	ODE solvers have drivers and steppers
+	Drivers control how the solution is made and sampled and so on
+	Stepper just makes step based on where it is.
+
+	
+
+
+
+
+
+	
+	
+
+	
