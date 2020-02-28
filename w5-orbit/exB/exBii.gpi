@@ -1,0 +1,5 @@
+set term svg background rgb "white"
+set out "ExBii.svg"
+set title "Exercise B.ii: Eliptical orbit"
+set tics out
+plot "outBii.txt" using (1/$2)*sin($1):(1/$2)*cos($1) with lines notitle
