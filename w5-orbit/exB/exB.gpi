@@ -1,0 +1,6 @@
+set term svg background rgb "white"
+set out "ExA.svg"
+set title "Exercise A: The logistic function"
+set tics out
+plot "outA.txt" using 1:2 with lines t "rk23 calculated" \
+	, "outA.txt" using 1:3 with points t "1/(1-exp(-x))"
