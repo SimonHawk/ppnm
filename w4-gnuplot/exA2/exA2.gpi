@@ -1,0 +1,12 @@
+set term svg background rgb "white"
+set out "ExA2.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+set xzeroaxis
+set yzeroaxis
+set title "Error function"
+set key bottom right
+plot [-3:3][] \
+	"out.exA2.txt" with lines title "Errorfunction"\
+	, "errorFunctionTableValues.txt" with points pt 7 title "Error function table values"
