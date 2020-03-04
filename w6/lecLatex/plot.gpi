@@ -1,0 +1,8 @@
+set term cairolatex input size 7cm,5cm
+set out "plot-exp.tex"
+set log y
+set xlabel "$x$"
+set ylabel "$y$"
+set tics out
+plot "out.exp.txt" with lines title "$\\exp(x)$" \
+	, "out-table.txt" with points titl "Table values"

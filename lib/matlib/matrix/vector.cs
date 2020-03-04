@@ -13,6 +13,8 @@ public double this[int i]{
 
 public vector(int n){data=new double[n];}
 public vector(double[] a){data=a;}
+public vector(double a)
+	{ data = new double[]{a}; }
 public vector(double a, double b)
 	{ data = new double[]{a,b}; }
 public vector(double a, double b, double c)
