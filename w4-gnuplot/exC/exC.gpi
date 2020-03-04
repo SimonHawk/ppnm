@@ -8,7 +8,13 @@ set yzeroaxis
 set title "Ln gamma function"
 set key bottom right
 set hidden3d
-set pm3d at s 
+set pm3d
+set grid
+set contour both
+set cntrlabel onecolor
+set linetype 1 linecolor rgb "black" 
 set view 60, 330, 1, 1
-
-splot [-4.5:4.5][-4:4][0:6] "out.exC.txt" u 1:2:3 with pm3d lt palette 
+zmax = 6
+set cntrparam levels incremental 0.0,0.25,zmax
+cut(z)=z>zmax?zmax:z
+splot [-4.5:4.5][-4:4][0:6] "out.exC.txt" u 1:2:(cut($3)) with pm3d lt palette 
