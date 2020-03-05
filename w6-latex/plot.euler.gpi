@@ -1,0 +1,10 @@
+set term cairolatex input size 7cm,6cm
+set out "plot-euler.tex"
+set xlabel "$C(x)$"
+set ylabel "$S(x)$"
+set size ratio -1
+set key bottom
+set tics out
+set xtics 0.5
+set ytics 0.5
+plot "out.funcs.txt" using 3:2 with lines title "Euler curve"

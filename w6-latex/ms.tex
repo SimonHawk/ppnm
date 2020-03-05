@@ -1,0 +1,57 @@
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\title{\vspace{-3.5cm}The Fresnel integrals and the Euler curve}
+\author{S.H.~Albrechtsen}
+
+\begin{document}
+\maketitle
+All information in this text is taken from Wikipedia\cite{WikiFresnelIntegral}.
+\section{The Fresnel integrals}
+The Frenel Integrals are two trandenceltal functions used in optics. They are defined by the following integrals:
+\begin{equation}
+S(x) = \int_{0}^{x} \sin(t^2) dt\label{eq:S}
+\end{equation}
+\begin{equation}
+C(x) = \int_{0}^{x} \cos(t^2) dt\label{eq:C}
+\end{equation}
+They appear in the discription of near-field Fresnel diffraction. A plot of the integrals can be seen in figure \ref{fig:SandC}.
+
+\begin{figure}
+\centering
+\input{plot-SandC.tex}
+\caption{The $S(x)$ and $C(x)$ functions.\label{fig:SandC}}
+\end{figure}
+
+As an alternative to equation \ref{eq:S} and \ref{eq:C}, the functions can be computed by the power series expansion, which converges for all x:
+\begin{equation}\label{eq:SPowerSeries}
+S(x) = \sum_{n=0}^{\infty}(-1)^n\frac{x^{4n+3}}{(2n+1)!(4n+3)}.
+\end{equation}
+\begin{equation}\label{eq:CPowerSeries}
+C(x) = \sum_{n=0}^{\infty}(-1)^n\frac{x^{4n+1}}{(2n)!(4n+1)}.
+\end{equation}
+
+\section{Mathematical properties}
+\begin{itemize}
+\item Both of the Fresnel integrals are odd functions of their parameter $x$.
+\item Using the power series, see equation \ref{eq:SPowerSeries} and \ref{wq:CPowerSeries}, the Fresnel integrals can be extended to the complex plane.
+\item In the limit of $x$ going to infinity: $C(\infty) = S(\infty) = \sqrt{\frac{\pi}{8}}\approx0.6267$
+\end{itemize}
+
+\section{The Euler Spiral}
+The following parametric function is called the Euler spiral, and is plottet in figure \ref{fig:eulerSpiral}
+\begin{equation}
+(x, y) = (C(t), S(t)).
+\end{equation}
+
+The euler spiral has the mathematical property that the curvature at any point is proportional to the length of the spiral, measured from the origin. Thereby, a vehicle following the spiral at a constant speed will experince a constant rate of angular acceleration.
+
+\begin{figure}
+\centering
+\input{plot-euler.tex}
+\caption{The euler curve for for a parameteri $t$ in the interval $[-10, 10]$.\label{fig:eulerSpiral}}
+\end{figure}
+
+\bibliography{references}{}
+\bibliographystyle{plain}
+
+\end{document}
