@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.3.4)  5 MAR 2020 18:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.3.4)  6 MAR 2020 12:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -151,10 +151,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \gptboxwidth=\skip44
 \gptboxtext=\box27
 Package epstopdf Info: Source file: <plot-SandC.eps>
-(epstopdf)                    date: 2020-03-05 18:35:57
+(epstopdf)                    date: 2020-03-06 12:34:24
 (epstopdf)                    size: 66922 bytes
 (epstopdf)             Output file: <plot-SandC-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-05 18:35:57
+(epstopdf)                    date: 2020-03-06 12:34:25
 (epstopdf)                    size: 20650 bytes
 (epstopdf)             Command: <repstopdf --outfile=plot-SandC-eps-converted-t
 o.pdf plot-SandC.eps>
@@ -184,10 +184,10 @@ LaTeX Warning: Reference `wq:CPowerSeries' on page 1 undefined on input line 36
 
 (./plot-euler.tex
 Package epstopdf Info: Source file: <plot-euler.eps>
-(epstopdf)                    date: 2020-03-05 18:35:57
+(epstopdf)                    date: 2020-03-06 12:34:24
 (epstopdf)                    size: 35382 bytes
 (epstopdf)             Output file: <plot-euler-eps-converted-to.pdf>
-(epstopdf)                    date: 2020-03-05 18:35:58
+(epstopdf)                    date: 2020-03-06 12:34:25
 (epstopdf)                    size: 11217 bytes
 (epstopdf)             Command: <repstopdf --outfile=plot-euler-eps-converted-t
 o.pdf plot-euler.eps>
@@ -242,7 +242,7 @@ public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy7.pfb>
-Output written on ms.pdf (2 pages, 141302 bytes).
+Output written on ms.pdf (2 pages, 141267 bytes).
 PDF statistics:
  61 PDF objects out of 1000 (max. 8388607)
  43 compressed objects within 1 object stream
