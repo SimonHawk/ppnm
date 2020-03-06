@@ -12,7 +12,7 @@ public static partial class funcs{
             double ys1 = 1/(t*t) * (-1)*(2*t*ys[1] + (t*t - n*(n-1))*ys[0]);
             return new vector(ys0, ys1);
         };
-        double a = 0;
+        double a = 0.00000001;
         double b = x;
         vector ya = new vector(1.0, 0.0);
  		

@@ -1,4 +1,4 @@
-all: out.bessel.txt
+all: plot-bessel.svg
  
 ms.pdf: ms.tex plot-SandC.tex plot-euler.tex references.bib
 	pdflatex $<
@@ -12,6 +12,9 @@ plot-euler.tex: plot.euler.gpi out.funcs.txt
 plot-SandC.tex: plot.SandC.gpi out.funcs.txt
 	gnuplot $<
 
+plot-bessel.svg: plot.bessel.gpi out.bessel.txt
+	gnuplot $<
+	
 out.bessel.txt: mainBessel.exe
 	mono $< 1> out.bessel.txt
 

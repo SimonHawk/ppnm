@@ -1,0 +1,7 @@
+set term svg background rgb "white"
+set out "plot-bessel.svg"
+set xlabel "x"
+set ylabel "y"
+set tics out
+plot "out.bessel.txt" using 1:2 with lines title "j0" \
+	, "out.bessel.txt" using 1:3 with points title "sinc(x)"
