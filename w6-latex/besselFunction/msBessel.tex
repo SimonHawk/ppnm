@@ -44,7 +44,7 @@ And thereby, for a given small displacement from 0 called $a$, better boundry co
 
 The accuracy of the boundry condition needs to be at least as good as the accuracy of the differential equation solver. It can be seen that the correction to $y$ is in second order in $a$. Thereby, to have an absolute accuracy $acc$, $a$ needs to satisfy the relation:
 \begin{equation}
-a \geq \sqrt{acc}
+a \leq \sqrt{acc}
 \end{equation}
 Of course, choosing a too small $a$ might very well introduce numerical errors, like it would in the differential equation given in the start of this text. If this is the case, the series expansion of $j_0$ must be taken to higher terms, so that the lower limit of $a$ can be a cubic- or higher-order-root of $acc$. Thereby $a$ can be set higher without loss of precision.
 
