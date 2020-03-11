@@ -1,0 +1,6 @@
+set term svg background rgb "white"
+set out "PlotComparison.svg"
+plot "out.points.txt" u 1:2 with points title "Given points" \
+	, "out.comparison.txt" u 1:2 with lines title "Linear interpolation"\
+	, "out.comparison.txt" u 1:3 with lines title "QSpline" \
+	, "out.comparison.txt" u 1:4 with lines title "CSpline"
