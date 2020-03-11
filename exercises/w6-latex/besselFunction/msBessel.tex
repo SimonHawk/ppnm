@@ -1,0 +1,54 @@
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\title{\vspace{-3.5cm}Choosing boundry condition for the 0'th order spherical bessel function of the first kind}
+\author{S.H.~Albrechtsen}
+
+\begin{document}
+\maketitle
+All formulas used in this text can be found on wikipedia, see \cite{wikiBesselFunction} and \cite{wikiGammaFunction}.\\
+
+The differential equation for the spherical bessel function can be written as:
+\begin{equation}
+y'' = -\frac{1}{x^2}(2x y' + (x^2 - n(n+1)))
+\end{equation}
+
+And the naive boundry condition one could use to integrate this numerically would be:
+\begin{equation}
+\textrm{For } x = 0, \quad y = 1,\quad y'=0
+\end{equation}
+However, it is not possible to numerically evaluate the differential equation at $x=0$. A different starting position is needed, and thereby different boundry condition values must be evaluated.\\
+
+Let's choose the starting point $a$, which is a small number. By choosing a small shift from zero, using a series expansion of the starting conditions becomes a good approximation. However, the solution of the differential equation can obviously not be used to calculate these values.\\
+
+Luckily, the differential equation itself gives a series expansion of the $j_0$ function, which is good for small displacements from 0. This is actually based on the series expansion of the generalized bessel function $J_{\frac{1}{2}}(x)$.\footnote{See the wikipedia page for bessel functions to find more series expansions and do this for other spherical bessen functions than $j_0$} Here the two first terms of the expansion is included:
+\begin{align}
+j_0(x) & = \sqrt{\frac{\pi}{2x}}J_{1/2}(x)\\
+& \approx \sqrt{\frac{\pi}{2x}} \left( \frac{1}{\Gamma(3/2)}(x/2)^{1/2} - \frac{1}{\Gamma(5/2)}(x/2)^{5/2}  \right)
+\end{align}
+Using $\Gamma(3/2) = \sqrt(\pi)/2$ and $\Gamma(5/2) = 3\sqrt{\pi}/4$:
+\begin{align}
+j_0(x) & \approx 1 - \sqrt{\frac{\pi}{2x}}\frac{1}{3\sqrt{\pi}/4}\frac{x^{5/2}}{2^{3/2}}\\
+& = 1-\frac{1}{3}x^2
+\end{align}
+
+Thereby the first derivative of $j_0$ is:
+\begin{equation}
+j'_0(x) \approx -\frac{2}{3}x
+\end{equation}
+
+And thereby, for a given small displacement from 0 called $a$, better boundry condition can be given:
+\begin{equation}
+\textrm{For } x = a, \quad y = 1 - \frac{a^2}{2},\quad y'= -\frac{2}{3}a
+\end{equation}
+
+The accuracy of the boundry condition needs to be at least as good as the accuracy of the differential equation solver. It can be seen that the correction to $y$ is in second order in $a$. Thereby, to have an absolute accuracy $acc$, $a$ needs to satisfy the relation:
+\begin{equation}
+a \leq \sqrt{acc}
+\end{equation}
+Of course, choosing a too small $a$ might very well introduce numerical errors, like it would in the differential equation given in the start of this text. If this is the case, the series expansion of $j_0$ must be taken to higher terms, so that the lower limit of $a$ can be a cubic- or higher-order-root of $acc$. Thereby $a$ can be set higher without loss of precision.
+
+\bibliography{references}{}
+\bibliographystyle{plain}
+
+\end{document}

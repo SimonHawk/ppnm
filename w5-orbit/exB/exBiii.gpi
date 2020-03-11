@@ -1,9 +1,0 @@
-set term svg font ",16" background rgb "white"
-set out "ExBiii.svg"
-set title "Exercise B.iii: Precessing orbit"
-set tics out
-set size ratio -1
-set arrow to sin(0),cos(0)
-set label "Starting point" left at 0.01,0
-plot "outBiii.txt" using (1/$2)*sin($1):(1/$2)*cos($1) with lines notitle
-
