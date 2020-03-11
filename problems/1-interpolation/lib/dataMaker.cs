@@ -3,9 +3,9 @@ using static System.Math;
 
 public class dataMaker {
 	static void Main() {
-		double delta_x = 0.5;
+		double delta_x = 0.8;
 		double xa = 0.0;
-		double xb = 20.0;
+		double xb = 10.0;
 		int N = (int) Floor((xb-xa)/delta_x);
 
 		for(int i = 0; i<N; i++) {
@@ -27,7 +27,7 @@ public class dataMaker {
 		vector xs = new vector(NLines);
 		vector ys = new vector(NLines);
 		
-		// Itterate over all lines in the fil :
+		// Itterate over all lines in the file:
 		string line;
 		int i = 0;
 		while((line = inputfile.ReadLine()) != null) {

@@ -1,0 +1,9 @@
+set term svg background rgb "white"
+set out "PlotA.svg"
+set multiplot layout 2,2
+plot "out.A.txt" u 1:2 with lines title "linterp" \
+	, "out.testDataA.txt" u 1:2 with points title "Sampled Sin"
+plot [][-1:2.5] "out.A.txt" u 1:3 with lines title "lintegral" \
+	, 1-cos(x) with lines title "1-cos(x)"
+#	, sin(x) with lines title "Sin(x)" \
+#	, (1-cos(x)) with lines title "1-Cos(x)"

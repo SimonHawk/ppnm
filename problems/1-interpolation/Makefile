@@ -1,21 +1,26 @@
-all: plotA.svg 
+all: PlotA.svg PlotB.svg PlotC.svg
 
-plotA.svg: plotA.gpi out.A.txt testDataA.txt
-	gnuplot $<
+PlotA.svg: probA/PlotA.svg
+	cp probA/PlotA.svg ./
 
-out.A.txt: mainA.exe
-	mono $< 1> $@
+probA/PlotA.svg: probA/Makefile
+	cd probA/ && make
 
-mainA.exe: mainA.cs math.dll
-	mcs -out:$@ -reference:math.dll $<
+PlotB.svg: probB/PlotB.svg
+	cp probB/PlotB.svg ./
 
-testDataA.txt: dataMaker.exe
-	mono $< 1> $@
+probB/PlotB.svg: probB/Makefile
+	cd probB/ && make
 
-dataMaker.exe: dataMaker.cs math.dll
-	mcs -out:$@ -reference:math.dll $<
+PlotC.svg: probC/PlotC.svg
+	cp probC/PlotC.svg ./
 
-MATLIB = ../../lib/matlib
-SRC := $(MATLIB)/matrix/vector.cs
-math.dll: $(SRC) search.cs linterp.cs dataMaker.cs
-	mcs -target:library -out:$@ $^
+probC/PlotC.svg: probC/Makefile
+	cd probC/ && make
+
+.PHONY:clean
+clean:
+	cd probA/ && make clean
+	cd probB/ && make clean
+	cd probC/ && make clean
+	rm -f PlotA.svg PlotB.svg PlotC.svg	

@@ -11,5 +11,6 @@ ExA.svg: exA/Makefile
 .PHONY:clean
 clean:
 	cd exA/ && make clean
+	cd exB/ && make clean
 	rm -f Ex*.svg
 

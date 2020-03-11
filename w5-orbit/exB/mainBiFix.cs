@@ -10,7 +10,7 @@ public class main {
 		double eps = 0;
 		double xa = 0;
 		vector ya = new vector(1, 0);
-		double xb = 4*PI;
+		double xb;
 		
 		// Update values with arguments based on input arguments
 		foreach(string arg in args) {
@@ -26,10 +26,16 @@ public class main {
 				default: break;
 			}
 		}
-
-		solveOrbit(eps, xa, ya, xb);
+		double delta_x = 0.1;
+		vector yb;
+		for(double xi = 0.0; xi < 4*PI; xi += delta_x) {
+			yb = solveOrbit(eps, xa, ya, xi);
+			Write("{0:f16} {1:f16}\n", xi, yb[0]);
+		}
 		return 0;
 	}
+	
+	
 
 	public static vector solveOrbit(double eps, double xa, vector ya, double xb) {
 		// Define the ODE function:
@@ -43,10 +49,14 @@ public class main {
 		List<vector> ys = new List<vector>();
 		
 		vector yb = ode.rk23(planetEQM, xa, ya, xb, xlist:xs, ylist:ys);
+		/*
 		for(int i = 0; i < xs.Count; i++) {
 			Write("{0:f16} {1:f16}\n", xs[i], ys[i][0]);
 		}
+		*/
 
 		return yb;
 	}
+	
+	
 }

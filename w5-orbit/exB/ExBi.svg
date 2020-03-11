@@ -157,26 +157,27 @@
 	<path stroke='black'  d='M145.6,72.1 L145.6,420.0 L493.5,420.0 L493.5,72.1 L145.6,72.1 Z  '/></g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 	<g transform="translate(319.5,41.3)" stroke="none" fill="black" font-family="Arial" font-size="16.00"  text-anchor="middle">
-		<text><tspan font-family="Arial" >Exercise B.i: Circular orbit?</tspan></text>
+		<text><tspan font-family="Arial" >Exercise B.i: Circular orbit</tspan></text>
 	</g>
 </g>
 	<g id="gnuplot_plot_1" ><title>gnuplot_plot_1</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<use xlink:href='#gpPt0' transform='translate(319.6,72.1) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(336.9,73.0) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(359.9,76.9) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(389.7,86.9) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(425.8,108.3) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(464.3,149.6) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(491.5,220.1) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(477.1,319.9) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(378.0,409.9) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(205.0,377.0) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(173.5,151.6) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(457.9,140.6) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(259.6,409.3) scale(6.00)' color='rgb(148,   0, 211)'/>
-	<use xlink:href='#gpPt0' transform='translate(319.6,72.1) scale(6.00)' color='rgb(148,   0, 211)'/>
-</g>
+	<path stroke='rgb(148,   0, 211)'  d='M319.6,72.1 L336.9,73.0 L354.1,75.6 L371.0,79.9 L387.3,85.8 L402.9,93.4 L417.8,102.5 L431.6,113.0
+		L444.3,124.9 L455.8,137.9 L465.9,152.1 L474.6,167.1 L481.7,183.0 L487.2,199.5 L491.0,216.5 L493.1,233.7
+		L493.4,251.1 L492.1,268.5 L489.0,285.6 L484.2,302.3 L477.7,318.4 L469.7,333.9 L460.2,348.4 L449.3,361.9
+		L437.0,374.3 L423.7,385.4 L409.2,395.1 L393.9,403.3 L377.8,409.9 L361.2,414.9 L344.1,418.3 L326.8,419.8
+		L309.4,419.7 L292.1,417.8 L275.1,414.2 L258.5,408.9 L242.6,402.0 L227.4,393.6 L213.1,383.6 L199.9,372.3
+		L187.9,359.8 L177.2,346.0 L167.9,331.3 L160.2,315.8 L154.0,299.5 L149.5,282.7 L146.7,265.6 L145.6,248.2
+		L146.3,230.8 L148.7,213.6 L152.7,196.7 L158.5,180.3 L165.9,164.6 L174.8,149.6 L185.1,135.6 L196.8,122.8
+		L209.7,111.1 L223.8,100.9 L238.7,92.0 L254.5,84.7 L270.9,79.0 L287.9,75.0 L305.1,72.7 L322.5,72.1
+		L339.8,73.3 L357.0,76.2 L373.7,80.8 L390.0,87.0 L405.5,94.8 L420.2,104.2 L433.8,114.9 L446.4,127.0
+		L457.6,140.2 L467.5,154.5 L475.9,169.8 L482.7,185.8 L487.9,202.3 L491.4,219.4 L493.2,236.7 L493.3,254.1
+		L491.6,271.4 L488.3,288.4 L483.2,305.0 L476.5,321.1 L468.2,336.4 L458.4,350.8 L447.3,364.1 L434.9,376.3
+		L421.3,387.1 L406.7,396.6 L391.2,404.5 L375.1,410.9 L358.3,415.6 L341.2,418.6 L323.9,419.9 L306.5,419.5
+		L289.2,417.3 L272.3,413.5 L255.8,407.9 L240.0,400.7 L224.9,392.0 L210.8,381.8 L197.8,370.3 L186.0,357.5
+		L175.5,343.6 L166.5,328.8 L159.0,313.1 L153.1,296.7 L148.9,279.9 L146.4,262.6 L145.6,245.3 L146.5,227.9
+		L149.2,210.7 L153.6,193.9 L159.6,177.6 L167.3,162.0 L176.4,147.2 L187.0,133.4 L198.9,120.7 L212.0,109.3
+		L226.2,99.3 L241.3,90.7 L257.2,83.6 L273.8,78.2 L290.7,74.5 L308.0,72.5  '/></g>
 	</g>
 <g fill="none" color="#FFFFFF" stroke="rgb(148,   0, 211)" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>

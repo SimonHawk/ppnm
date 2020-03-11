@@ -1,6 +1,5 @@
 all:ExBi.svg ExBii.svg ExBiii.svg
 
-
 ExBiii.svg: exBiii.gpi outBiii.txt
 	gnuplot $<
 
@@ -16,8 +15,11 @@ outBii.txt: mainB.exe Makefile
 ExBi.svg: exBi.gpi outBi.txt
 	gnuplot $<
 
-outBi.txt: mainB.exe Makefile
+outBi.txt: mainBiFix.exe Makefile
 	mono $< > $@
+
+mainBiFix.exe: mainBiFix.cs  matlib.dll
+	mcs -reference:matlib.dll -out:$@ $<
 
 mainB.exe: mainB.cs matlib.dll
 	mcs -reference:matlib.dll -out:$@ $<
