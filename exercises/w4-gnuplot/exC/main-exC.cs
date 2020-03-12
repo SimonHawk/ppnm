@@ -3,8 +3,8 @@ using static cmath;
 
 class main {
 	static void Main() {
-		double delta = 1.0/32;
-		double eps = 1.0/64;
+		double delta = 1.0/64;
+		double eps = 1.0/128;
 		double min = -4.5;
 		double max = 4.5;
 		complex z;

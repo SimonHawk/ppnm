@@ -1,0 +1,45 @@
+1: How do you search your man-pages for a given keyword?
+	
+
+2: Suppose you need to type the command "basename". Which charecters do you need to type in you system before command-line complete can complete your typing?
+	The first three letters of the command, "bas". But this will probably
+	overlap with something else
+
+3: In many systems command-line completion can also complete long options to many POSIX utilities. Does your shell completes long options? Suppose you need to type the command mkdir --parents. Which characters do you need to actually type when using command-line completion?
+	In fish, i need to type "mkd" press forward, and then "--p" and press
+	forward.
+
+4: How do you greate a subfolder?
+	I write "mkdir test/hello -p". 
+	test/hello is the two folders
+	-p makes the required parent folder automatically
+
+5: Which option instructs the rm command to ask the user for comfirmation before every removal? Hint: man mkdir | grep "prompt before"
+	According to the manual, the -i option prompts before.
+
+6: Whuch option instructs the rm command to remove a folder with all subfolders? hint: man mkdir | grep -B1 "remove directories"
+	The -r option
+	For example, rm test/ does not remove test and test/hello because test/
+	has contents, but rm test/ -r removes both test/hello.
+
+7: 	Which unix commands lists the files in a directory in one column sorted by the time with the newest last?
+	The command to use is ls with options
+	-1 gives one column
+	-t sort by time
+	-r reverse order
+	So all in all: "ls -1tr"
+
+8:	What do the symbols ., .. and ~ mean in the context of unix file utilities
+	.	The current working directory	
+	..	One layer up. cd .. goes up one folder
+	~	Home. cd ~ goes to home folder, cd ~/test goes to home/test
+	
+9: 	Where does the command cd without any arguments lead you?
+	To the home directory. 
+
+10:	What is your home directory. Name also alternative notations
+	The home directory is here: root/home/simon
+	There is a home for each user on the system
+	Alternatives are ~, $HOME. 
+
+

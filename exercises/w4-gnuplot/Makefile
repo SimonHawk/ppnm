@@ -14,7 +14,7 @@ ExB.svg: exB/Makefile
 
 ExC.svg: exC/Makefile
 	cd exC/ && make
-	cp exC/ExC.svg ./
+	cp exC/ExC.png ./
 
 .PHONY:clean
 clean:
