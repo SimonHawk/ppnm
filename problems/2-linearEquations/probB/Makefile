@@ -1,10 +1,10 @@
-all: out.A.txt
-	cat out.A.txt
+all: out.B.txt
+	cat out.B.txt
 
-out.A.txt: mainA.exe
+out.B.txt: mainB.exe
 	mono $< 1> $@
 
-mainA.exe: mainA.cs math.dll
+mainB.exe: mainB.cs math.dll
 	mcs -out:$@ -reference:math.dll $<
 
 MATLIB = ../../../lib/matlib
