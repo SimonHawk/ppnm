@@ -13,7 +13,8 @@ SRC += $(MATLIB)/matrix/vector.cs
 SRC += $(MATLIB)/complex/complex.cs
 SRC += $(MATLIB)/complex/cmath.cs
 LOCAL_LIB = ../lib
-SRC += $(LOCAL_LIB)/qr_gs.cs
+SRC += $(LOCAL_LIB)/qr_abstract.cs
+SRC += $(LOCAL_LIB)/qr_gs2.cs
 SRC += $(LOCAL_LIB)/matrixHelp.cs
 math.dll: $(SRC)
 	mcs -target:library -out:$@ $^

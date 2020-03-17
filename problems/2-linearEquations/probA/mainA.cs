@@ -46,11 +46,11 @@ class mainA {
 		decomposer.Q.print("Decomposition Q: ");		
 		decomposer.R.print("Decomposition R: ");		
 		(decomposer.Q.transpose()*b).print("Q^(T)*b = ");
-		vector x = decomposer.qr_gs_solve(b);
+		vector x = decomposer.solve(b);
 		
-		x.print("Solution: x =");
+		x.print("Solution: x = ");
 		
-		(A*x-b).print("A*x-b");
+		(A*x-b).print("A*x-b = ");
 	}
 	
 }

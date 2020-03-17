@@ -1,18 +1,9 @@
-all: out.B.txt
-	cat out.B.txt
-
-out.B.txt: mainB.exe
-	mono $< 1> $@
-
-mainB.exe: mainB.cs math.dll
-	mcs -out:$@ -reference:math.dll $<
-
 MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/matrix.cs
 SRC += $(MATLIB)/matrix/vector.cs
 SRC += $(MATLIB)/complex/complex.cs
 SRC += $(MATLIB)/complex/cmath.cs
-LOCAL_LIB = ../lib
+LOCAL_LIB =  ../lib
 SRC += $(LOCAL_LIB)/qr_abstract.cs
 SRC += $(LOCAL_LIB)/qr_gs2.cs
 SRC += $(LOCAL_LIB)/matrixHelp.cs

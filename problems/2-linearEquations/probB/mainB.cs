@@ -15,7 +15,7 @@ class mainA {
 
 		qr_gs decomposer = new qr_gs(A);
 		
-		matrix inverse = decomposer.qr_gs_inverse();
+		matrix inverse = decomposer.inverse();
 
 		A.print("Random Matrix A: ");
 		inverse.print("Inverse of A: ");
