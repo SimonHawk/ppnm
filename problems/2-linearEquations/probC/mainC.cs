@@ -10,7 +10,7 @@ class mainC {
 	static void probC() {
 		Write("Problem C:\n");
 		var rand = new System.Random();
-		int n = 3 + rand.Next(6);
+		int n = 3 + rand.Next(5);
 		
 		matrix A = makeRandomMatrix(n, n);
 		
@@ -34,6 +34,12 @@ class mainC {
 		
 		x.print("\nSolution to A*x=b using Givens: ");
 		(A*x-b).print("\nCheck solution satisfies A*x = b: A*x-b = ");
+		
+		Write("\nFind the inverse of A, and check that A^(-1)*A is the identity matrix:\n");
+		decomp_givens.inverse().print("A^(-1)");
+		(decomp_givens.inverse()*A).print("A^(-1)*A = ");
+
+
 	}
 	
 }
