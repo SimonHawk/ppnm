@@ -5,15 +5,22 @@ using static System.Console;
 public abstract class qr_abstract {
 	// Matricies for q and r:
 	// Use "protected" keyword to make them availible to subclasses:
+	/* MOVED TO qr_gs2.cs!!!
 	protected matrix r;
 	protected matrix q;
 	// Properties to acess Q and R
 	public matrix Q{get{return q;}}
 	public matrix R{get{return r;}}
+	*/
 	
+	protected int ASize1;
+	protected int ASize2;
+
 	// Constructor for the class: Calculates q and r with the gram schmitt
 	// decomposition.
 	public qr_abstract(matrix A) {
+		ASize1 = A.size1;
+		ASize2 = A.size2;
 		decomp(A);
 	}
 
@@ -22,13 +29,15 @@ public abstract class qr_abstract {
 	public abstract void decomp(matrix A); 
 	
 	// Solves the system: QRx = b and returns the results as a vector:
-	public vector solve(vector b) {
+	public abstract vector solve(vector b); /*{
 		// Lets do this in the in place style, just to learn it:
 		Write($"Size of Q.transpose(): {Q.size1}x{Q.size2}, size of b: {b.size}\n");
 		vector x = Q.transpose()*b;
 		backSubstitution(R, x);
 		return x;
-	}
+	}*/
+	
+	
 	
 	// Performs in place backsubsitution, solving the vector x with respect
 	// to the upper tridiagonal matrix T:
@@ -53,11 +62,11 @@ public abstract class qr_abstract {
 	}
 	
 	public matrix inverse() {
-		matrix inv = new matrix(q.size1, q.size2);
+		matrix inv = new matrix(ASize1, ASize2);
 		vector b_j;
-		for(int j = 0; j < q.size2; j++) {
+		for(int j = 0; j < ASize2; j++) {
 			b_j = solve(unitVector(j));
-			for(int i = 0; i < q.size1; i++) {
+			for(int i = 0; i < ASize1; i++) {
 				inv[i, j] = b_j[i];
 			}
 		}
@@ -67,7 +76,7 @@ public abstract class qr_abstract {
 	// Makes a unit vector which has a 1 on index i, and 0 on all other
 	// entries.
 	vector unitVector(int i) {
-		int size = q.size1;
+		int size = ASize1;
 		vector e_i = new vector(size);
 		for(int j = 0; j < size; j++) {
 			// Smart little conditional statement:

@@ -9,21 +9,31 @@ class mainC {
 	
 	static void probC() {
 		Write("Problem C:\n");
-		int n = 5; 
-
-		matrix A = makeRandomMatrix(n, n);
-
-		A.print("Random matrix A:");
+		var rand = new System.Random();
+		int n = 3 + rand.Next(6);
 		
-		qr_givens decomposer = new qr_givens(A);
+		matrix A = makeRandomMatrix(n, n);
+		
+		A.print("Make a random square matrix of random size: A = ");
+		
+		qr_givens decomp_givens = new qr_givens(A);
+		qr_gs decomp_gs = new qr_gs(A);
+		
+		Write("\nDo the Givens decomposition and store the restult in the matrix G, which cotains the elements of the component R in the upper triangular part, and the angles for the Givens rotations in the relevant sub-diagonal entries. Compare with the R matrix found from the Gramm-Schmitt method:");
+		decomp_givens.G.print("Givens G: ");
+		decomp_gs.R.print("GS R: ");
 		
 		vector b = makeRandomVector(n);
+		b.print("Make a random vector b with the same size as A: b = ");
+	
+		Write("\nCompare using the Givens rotations to apply Q^(T) to b, and doing the explicit matrix multiplication with the Q matrix found by the Gramm-Schmitt method:\n");
+		decomp_givens.applyQT(b).print("Givens: Q^(T)*b = ");
+		(decomp_gs.Q.transpose()*b).print("GS: Q^(T)*b = ");
 		
-		vector x = decomposer.solve(b);
+		vector x = decomp_givens.solve(b);
 		
-		b.print("Random vector b: ");
-		x.print("Solution to A*x=b: ");
-		(A*x-b).print("A*x-b = ");
+		x.print("\nSolution to A*x=b using Givens: ");
+		(A*x-b).print("\nCheck solution satisfies A*x = b: A*x-b = ");
 	}
 	
 }

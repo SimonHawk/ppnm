@@ -6,6 +6,14 @@ using static System.Console;
 // This only needs to implement the public void decomp(matrix A) method
 // not implemented in the abstract parent class qr_abstract.
 public class qr_gs : qr_abstract {
+	// For the Gram-Schmitt method it makes sense to store the Q and R
+	// matricies explicitly.
+	matrix r;
+	matrix q;
+
+	public matrix Q{get{return q;}}
+	public matrix R{get{return r;}}	
+
 	// Constructor simply calling the constructor of the parent class,
 	// qr_abstract:
 	public qr_gs(matrix A) : base(A) { }
@@ -43,4 +51,12 @@ public class qr_gs : qr_abstract {
 		// After orthogonalization, A is equal to Q:
 		q = A;
 	}
+	
+	override public vector solve(vector b) {
+		vector x = q.transpose()*b;
+		backSubstitution(r, x);
+		return x;
+	}	
+
+
 }
