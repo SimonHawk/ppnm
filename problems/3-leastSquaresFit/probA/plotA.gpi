@@ -2,5 +2,5 @@ set term svg background rgb "white" font ",16"
 set out "PlotA.svg"
 set xlabel "Time in Days"
 set ylabel "Activity"
-plot "data.A.txt" u 1:2:($2/20) with yerrorbars title "Data" \
-	, "out.bestFit.txt" u 1:2 with lines title "Best fit"
+plot "../data.A.txt" u 1:2:($2/20) with yerrorbars title "Data" \
+	, "out.bestFit.txt" u 1:2 with lines title "Best fit, t_1/2 = 4.04 days"

@@ -9,6 +9,13 @@ public static class leastSquares {
 		vector c = solver.solve(b);
 		return c;
 	}
+
+	public static matrix calculateSigma(data dat, Func<double, double>[] fs){
+		matrix A = calculateA(dat, fs);
+		qr_gs solver = new qr_gs(A.transpose()*A);
+		matrix sigma = solver.inverse();
+		return sigma;
+	}
 	
 	static matrix calculateA(data dat, Func<double, double>[] fs) {
 		int m = fs.Length;
