@@ -1,13 +1,13 @@
-all: out.A.txt PlotA.svg
-	cat out.A.txt
+all: out.B.txt PlotC.svg
+	cat out.B.txt
 
-PlotA.svg: plotA.gpi out.bestFit.txt
+PlotC.svg: plotC.gpi out.bestFitB.txt
 	gnuplot $<
 
-out.A.txt out.bestFit.txt: mainA.exe
-	mono $< 1> out.A.txt
+out.B.txt out.bestFitB.txt: mainB.exe
+	mono $< 1> out.B.txt
 
-mainA.exe: mainA.cs math.dll
+mainB.exe: mainB.cs math.dll
 	mcs -out:$@ -reference:math.dll $<
 
 MATLIB = ../../../lib/matlib
@@ -26,4 +26,4 @@ math.dll: $(SRC)
 
 .PHONY:clean
 clean: 
-	rm -f out.*.txt *.dll *.exe
+	rm -f out.*.txt *.dll *.exe Plot*.svg

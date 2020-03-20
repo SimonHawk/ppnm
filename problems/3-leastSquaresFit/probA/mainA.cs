@@ -6,11 +6,12 @@ class mainA {
 	static void Main() {
 		Func<double, double> errorFunc = (x) => x / 20;
 		data rawDat = new data("../data.A.txt", errorFunc);
+		/*
 		Write("Test reading files:\n");
 		rawDat.xs.print("xs = ");
 		rawDat.ys.print("ys = ");
 		rawDat.dys.print("dys = ");
-			
+		*/	
 		// Recalculate the data on the logarithmic form.
 		vector logYs = new vector(rawDat.xs.size);
 		vector dlogYs = new vector(rawDat.xs.size);	
@@ -29,9 +30,9 @@ class mainA {
 		// cs[0] = ln(a)
 		// cs[1] = -lambda
 		vector cs = leastSquares.calculateC(logDat, fs);
-		
+		Write($"From Least Square fit I get:\n");
 		Write($"ln(a) = {cs[0]}, lambda = {-cs[1]}\n");
-		Write($"a = {Exp(cs[0])}, t_1/2 = {Log(2)/(-cs[1])}");
+		Write($"a = {Exp(cs[0])}, t_1/2 = log(2)/lambda = {Log(2)/(-cs[1])}\n");
 		var writer = new System.IO.StreamWriter("out.bestFit.txt");
 		
 		Func<double, double> fitFun = x => {
