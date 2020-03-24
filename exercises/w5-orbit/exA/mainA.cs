@@ -3,7 +3,6 @@ using static System.Console;
 using static System.Math;
 using System.Collections;
 using System.Collections.Generic;
-
 class main {
 	static int Main() {
 		// Define the vector ODE function:
