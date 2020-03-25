@@ -1,0 +1,52 @@
+Problem A:
+First, testing the Jacobi sweeping on a random matrix A:Random matrix A: 
+    0.144     0.683     0.482     0.229     0.249 
+    0.683     0.161     0.938     0.476     0.939 
+    0.482     0.938     0.034     0.218     0.204 
+    0.229     0.476     0.218     0.984     0.303 
+    0.249     0.939     0.204     0.303     0.774 
+Sweeps = 6
+Reduced matrix A: 
+   -1.037     0.000     0.000     0.000     0.000 
+    0.683    -0.342     0.000     0.000     0.000 
+    0.482     0.938     0.374     0.000     0.000 
+    0.229     0.476     0.218     0.705     0.000 
+    0.249     0.939     0.204     0.303     2.398 
+Eigenvalues: -1.037 -0.342 0.374 0.705 2.398 
+Eigenvectors V: 
+    0.150     0.793     0.454    -0.146     0.348 
+   -0.770    -0.202     0.113    -0.195     0.562 
+    0.536    -0.567     0.470    -0.172     0.375 
+    0.060     0.007    -0.056     0.908     0.412 
+    0.308     0.095    -0.746    -0.295     0.503 
+A in the eigenbasis: 
+   -1.037     0.000     0.000     0.000     0.000 
+    0.000    -0.342     0.000     0.000     0.000 
+    0.000     0.000     0.374     0.000     0.000 
+    0.000     0.000     0.000     0.705     0.000 
+    0.000     0.000     0.000     0.000     2.398 
+
+Now for solving the paticle in a box problem.
+Construct a 64x64 HamiltonComparing some of the eigenvalues with the analytical ones:
+k: 0, analytical: 9.870, calculated: 9.868, difference: -0.002
+k: 1, analytical: 39.478, calculated: 39.448, difference: -0.031
+k: 2, analytical: 88.826, calculated: 88.671, difference: -0.156
+k: 3, analytical: 157.914, calculated: 157.422, difference: -0.491
+k: 4, analytical: 246.740, calculated: 245.542, difference: -1.198
+k: 5, analytical: 355.306, calculated: 352.823, difference: -2.483
+k: 6, analytical: 483.611, calculated: 479.015, difference: -4.595
+k: 7, analytical: 631.655, calculated: 623.824, difference: -7.830
+k: 8, analytical: 799.438, calculated: 786.912, difference: -12.526
+k: 12, analytical: 1667.963, calculated: 1613.806, difference: -54.157
+k: 16, analytical: 2852.316, calculated: 2695.416, difference: -156.900
+k: 20, analytical: 4352.496, calculated: 3991.440, difference: -361.056
+k: 24, analytical: 6168.503, calculated: 5453.589, difference: -714.914
+k: 28, analytical: 8300.337, calculated: 7027.383, difference: -1272.954
+k: 32, analytical: 10747.999, calculated: 8654.184, difference: -2093.816
+k: 36, analytical: 13511.488, calculated: 10273.376, difference: -3238.112
+k: 40, analytical: 16590.805, calculated: 11824.631, difference: -4766.174
+k: 44, analytical: 19985.949, calculated: 13250.147, difference: -6735.802
+k: 48, analytical: 23696.920, calculated: 14496.811, difference: -9200.109
+k: 52, analytical: 27723.719, calculated: 15518.173, difference: -12205.546
+k: 56, analytical: 32066.345, calculated: 16276.176, difference: -15790.169
+k: 60, analytical: 36724.798, calculated: 16742.578, difference: -19982.220

@@ -1,0 +1,11 @@
+Problem B:
+Problem B.i:
+Testing timing:
+Check the dependence by doing a fit to recorded times for 4x4 to 80x80 random matricies:
+Linear fit to (log(n), log(time)) suggests that the dependence is O(n^2.6304)
+
+Now comparing calculating the first eigenvalue for a 300x300 random matrix
+row: 0
+Found eigenvalues: row: -9.6686, full: -9.6686
+Rotations: row: 76544, full: 448500
+Time: row: 405.7093, full: 2088.2985
