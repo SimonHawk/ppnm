@@ -1,10 +1,13 @@
-all: out.B.txt PlotB.svg
+all: out.B.txt PlotBi.svg PlotBii.svg
 	cat out.B.txt
 
-PlotB.svg: plotB.gpi out.dataBi.txt
+PlotBii.svg: plotBii.gpi out.dataBii.txt
 	gnuplot $<
 
-out.B.txt out.dataBi.txt: mainB.exe
+PlotBi.svg: plotBi.gpi out.dataBi.txt
+	gnuplot $<
+
+out.B.txt out.dataBi.txt out.dataBii.txt: mainB.exe
 	mono $< 1> $@
 
 mainB.exe: mainB.cs math.dll

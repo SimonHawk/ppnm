@@ -47,29 +47,41 @@ class mainA {
 
 		// Compare times to calculate just a single value of  
 		// Lets say a 20x20 matrix.
-		int n = 300;
-		Write($"\nNow comparing calculating the first eigenvalue for a {n}x{n} random matrix\n");
-		matrix Arow = matrixHelp.makeRandSymMatrix(n);
-		matrix Afull = Arow.copy();
-		matrix Vrow = new matrix(n, n);
-		matrix Vfull = new matrix(n, n);
-		vector erow = new vector(n);
-		vector efull = new vector(n);
-		
-		timer.Reset();
-		timer.Start();
-		int rowRotations = jacobi.jacobi_nRows(1, Arow, erow, Vrow);
-		timer.Stop();
-		double time_row = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
-		timer.Reset();
-		timer.Start();
-		int fullRotations = jacobi.jacobi_cyclic(Afull, efull, Vfull);
-		timer.Stop();
-		double time_full = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
-		
-		Write($"Found eigenvalues: row: {erow[0]:f4}, full: {efull[0]:f4}\n");
-		Write($"Rotations: row: {rowRotations}, full: {fullRotations}\n");
-		Write($"Time: row: {time_row:f4}, full: {time_full:f4}\n");
+	    // Write($"\nNow comparing calculating the first eigenvalue for a {n}x{n} random matrix\n");
+	 	var outfile = new System.IO.StreamWriter("out.dataBii.txt");
+		for(int n = 10; n < 101; n+=10) {
+			matrix Arow = matrixHelp.makeRandSymMatrix(n);
+			matrix Afull = Arow.copy();
+			matrix Asfull = Arow.copy();
+			matrix Vrow = new matrix(n, n);
+			matrix Vfull = new matrix(n, n);
+			matrix Vsfull = new matrix(n,n);
+			vector erow = new vector(n);
+			vector efull = new vector(n);
+			vector esfull = new vector(n);
+			
+			
+			timer.Reset();
+			timer.Start();
+			int rowRotations = jacobi.jacobi_nRows(1, Arow, erow, Vrow);
+			timer.Stop();
+			double time_row = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
+
+			timer.Reset();
+			timer.Start();
+			int fullRotations = jacobi.jacobi_cyclic(Afull, efull, Vfull);
+			timer.Stop();
+			double time_full = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
+
+			timer.Reset();
+			timer.Start();
+			int sfullRotations = jacobi.jacobi_nRows(n, Asfull, esfull, Vsfull);
+			timer.Stop();
+			double time_sfull = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
+			outfile.Write("{0} {1} {2} {3} {4} {5} {6}\n", n, rowRotations, fullRotations, sfullRotations, time_row, time_full, time_sfull);
+
+		}
+		outfile.Close();
 		
 	}	
 }

@@ -141,17 +141,16 @@ public class jacobi {
 				V[i, j] = 0.0;
 				V[j, i] = 0.0;
 			}
-		}	
+		}
 		int rotations = 0;	
 		// Do the row eliminations:	
 		for(int p = 0; p < rows; p++){
-			Write($"row: {p}\n");
-			bool changed = false;	
+			//Write($"row: {p}\n");
 			do{
 				// Write($"Sweep: {sweeps}\n");
-				changed = false;
+				bool changed = false;
 				for(int q = p+1; q < A.size2; q++) {
-					bool rowqChanged = jacobiRotation(p, q, A, V);
+					bool rowqChanged = jacobiRotation_reduced(p, q, A, V);
 					rotations++;
 					if(rowqChanged) changed = true;
 				}

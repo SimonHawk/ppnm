@@ -1,5 +1,5 @@
 set term svg background rgb "white" font ",16"
-set out "PlotB.svg"
+set out "PlotBi.svg"
 set xlabel "log(n)"
 set ylabel "log(time)"
 plot "out.dataBi.txt" u 1:2 with points title "Data"
