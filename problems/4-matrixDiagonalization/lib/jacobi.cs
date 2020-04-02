@@ -16,6 +16,7 @@ public class jacobi {
 		A[q,q] = s*s*App + 2*s*c*Apq + c*c*Aqq;	
 		A[p,q] = 0;
 		bool changed = (App != A[p,p] || Aqq != A[q,q]);
+		if(!changed) {return changed;}
 		// The elements don't mix if you split it up in 3 parts:
 		for(int i1 = 0; i1 < p; i1++) {
 			double Aip = A[i1, p];
@@ -50,9 +51,14 @@ public class jacobi {
 	// elements in all rows above p are 0:
 	// In this case the first for loop can be eliminated because the 
 	// elements A[i1, p] and A[i2, q] are 0. 
-	public static bool jacobiRotation_reduced(int p, int q, matrix A, matrix V) {
+	public static bool jacobiRotation_reduced(int p, int q, matrix A, matrix V, bool lowest) {
 		// calculate theta and cos and sin:
-		double theta = 0.5*Atan2(2*A[p,q], A[q,q] - A[p,p]);
+		double theta;
+		if(lowest) {
+			theta = 0.5*Atan2(2*A[p,q], A[q,q] - A[p,p]);
+		} else {
+			theta = 0.5*Atan2(-2*A[p,q], -A[q,q] + A[p,p]);
+		}
 		double c = Cos(theta);
 		double s = Sin(theta);
 
@@ -64,6 +70,7 @@ public class jacobi {
 		A[q,q] = s*s*App + 2*s*c*Apq + c*c*Aqq;	
 		A[p,q] = 0;
 		bool changed = (App != A[p,p] || Aqq != A[q,q]);
+		if(!changed) {return changed;}
 		// The elements don't mix if you split it up in 3 parts:
 		/* for(int i1 = 0; i1 < p; i1++) {
 			double Aip = A[i1, p];
@@ -133,7 +140,7 @@ public class jacobi {
 	
 	// Diagonalizes the first "rows" rows of the matrix a by consecutive 
 	// single row jacobi rotation sweeps.
-	public static int jacobi_nRows(int rows, matrix A, vector e, matrix V) {
+	public static int jacobi_nRows(int rows, matrix A, vector e, matrix V, bool lowest) {
 		// Initialize V as the identity matrix:
 		for(int i = 0; i < V.size1; i++) {
 			V[i, i] = 1.0;
@@ -146,11 +153,12 @@ public class jacobi {
 		// Do the row eliminations:	
 		for(int p = 0; p < rows; p++){
 			//Write($"row: {p}\n");
+			bool changed;
 			do{
 				// Write($"Sweep: {sweeps}\n");
-				bool changed = false;
+				changed = false;
 				for(int q = p+1; q < A.size2; q++) {
-					bool rowqChanged = jacobiRotation_reduced(p, q, A, V);
+					bool rowqChanged = jacobiRotation_reduced(p, q, A, V, lowest);
 					rotations++;
 					if(rowqChanged) changed = true;
 				}

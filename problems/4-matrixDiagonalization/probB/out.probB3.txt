@@ -1,0 +1,5 @@
+Problem B:
+Problem B.i:
+Testing timing:
+Check the dependence by doing a fit to recorded times for 4x4 to 80x80 random matricies:
+Linear fit to (log(n), log(time)) suggests that the dependence is O(n^2.5443)

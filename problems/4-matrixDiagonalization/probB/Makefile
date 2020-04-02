@@ -1,13 +1,19 @@
-all: out.B.txt PlotBi.svg PlotBii.svg
+all: out.B.txt PlotBi.svg B3.comparison.svg B4.comparison.svg B5.highestValue.svg
 	cat out.B.txt
 
-PlotBii.svg: plotBii.gpi out.dataBii.txt
+B5.highestValue.svg: plotB5.gpi out.probB5.txt
+	gnuplot $<
+
+B4.comparison.svg: plotB4.gpi out.probB4.txt 
+	gnuplot $<
+
+B3.comparison.svg: plotB3.gpi out.probB3.txt
 	gnuplot $<
 
 PlotBi.svg: plotBi.gpi out.dataBi.txt
 	gnuplot $<
 
-out.B.txt out.dataBi.txt out.dataBii.txt: mainB.exe
+out.B.txt out.dataBi.txt out.probB3.txt out.probB4.gpi: mainB.exe
 	mono $< 1> $@
 
 mainB.exe: mainB.cs math.dll

@@ -36,6 +36,11 @@ public static vector operator+(vector v, vector u){
 	for(int i=0;i<r.size;i++)r[i]=v[i]+u[i];
 	return r; }
 
+public static vector operator+(double a, vector v){
+	vector r=new vector(v.size);
+	for(int i=0;i<r.size;i++)r[i]=a+v[i];
+	return r; }
+
 public static vector operator-(vector v, vector u){
 	vector r=new vector(v.size);
 	for(int i=0;i<r.size;i++)r[i]=v[i]-u[i];
@@ -62,16 +67,33 @@ public double dot(vector o){
 
 public double norm(){
 	double meanabs=0;
-	for(int i=0;i<size;i++)meanabs+=this[i];
+	for(int i=0;i<size;i++)meanabs+=Abs(this[i]);
 	meanabs/=size;
 	double sum=0;
 	for(int i=0;i<size;i++)sum+=(this[i]/meanabs)*(this[i]/meanabs);
-	return meanabs*sum;
+	return meanabs*Sqrt(sum);
 	}
 
 public vector copy(){
 	vector b=new vector(this.size);
 	for(int i=0;i<this.size;i++)b[i]=this[i];
+	return b;
+}
+
+// Quick and dirty minimum method for the vector class.
+public double min() {
+	double min = data[0];
+	for(int i = 1; i < size; i++) {
+		if(data[i] < min) min = data[i];
+	}
+	return min;
+}
+
+public vector abs() {
+	vector b = new vector(size);
+	for(int i = 0; i < size; i++) {
+		b[i] = Abs(data[i]);
+	}
 	return b;
 }
 

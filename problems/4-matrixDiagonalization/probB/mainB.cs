@@ -45,44 +45,116 @@ class mainA {
 		vector c = leastSquares.calculateC(timingDat, fitFuns);		
 		Write($"Linear fit to (log(n), log(time)) suggests that the dependence is O(n^{c[1]:f4})\n");	
 
-		// Compare times to calculate just a single value of  
-		// Lets say a 20x20 matrix.
-	    // Write($"\nNow comparing calculating the first eigenvalue for a {n}x{n} random matrix\n");
-	 	var outfile = new System.IO.StreamWriter("out.dataBii.txt");
-		for(int n = 10; n < 101; n+=10) {
-			matrix Arow = matrixHelp.makeRandSymMatrix(n);
-			matrix Afull = Arow.copy();
-			matrix Asfull = Arow.copy();
-			matrix Vrow = new matrix(n, n);
-			matrix Vfull = new matrix(n, n);
-			matrix Vsfull = new matrix(n,n);
-			vector erow = new vector(n);
-			vector efull = new vector(n);
-			vector esfull = new vector(n);
+		//probB3();
+		//probB4();
+		probB5();
+	}	
+	
+	// Comparison of time and rotations needed to calculate the lowest
+	// eigenvalue for the cyclic and single value method.
+	static void probB3() {
+		var timer = new Stopwatch();
+		timer.Start();
+		var outfile = new System.IO.StreamWriter("out.probB3.txt");
+		int NMax = 200;
+		int step = 10;
+		for(int n = NMax/2; n <= NMax; n+=step) {
+			// 1: Cyclic sweep
+			// 2: Single row
+			matrix A1 = matrixHelp.makeRandSymMatrix(n);
+			matrix A2 = A1.copy();
 			
+			matrix V1 = new matrix(n,n);
+			matrix V2 = new matrix(n,n);
+		
+			vector e1 = new vector(n);
+			vector e2 = new vector(n);
+
+			timer.Restart();
+			int rot1 = jacobi.jacobi_cyclic(A1, e1, V1);
+			timer.Stop();
+			double time1 = timer.ElapsedMilliseconds;
+
+			timer.Restart();
+			int rot2 = jacobi.jacobi_nRows(1, A2, e2, V2, true);
+			timer.Stop();
+			double time2 = timer.ElapsedMilliseconds;
+
+			outfile.Write("{0} {1} {2} {3} {4} {5} {6}\n", n, time1, time2, rot1, rot2, e1[0], e2[0]);
+		}		
+		outfile.Close();
+
+	}	
+
+	// Comparison of time and rotations needed to calculate all
+	// eigenvalues for the cyclic and single value method.
+	static void probB4() {
+		var timer = new Stopwatch();
+		timer.Start();
+		var outfile = new System.IO.StreamWriter("out.probB4.txt");
+		int NMax = 100;
+		int step = 5;
+		for(int n = NMax/2; n <= NMax; n+=step) {
+			// 1: Cyclic sweep
+			// 2: Single row
+			matrix A1 = matrixHelp.makeRandSymMatrix(n);
+			matrix A2 = A1.copy();
 			
-			timer.Reset();
-			timer.Start();
-			int rowRotations = jacobi.jacobi_nRows(1, Arow, erow, Vrow);
-			timer.Stop();
-			double time_row = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
+			matrix V1 = new matrix(n,n);
+			matrix V2 = new matrix(n,n);
+		
+			vector e1 = new vector(n);
+			vector e2 = new vector(n);
 
-			timer.Reset();
-			timer.Start();
-			int fullRotations = jacobi.jacobi_cyclic(Afull, efull, Vfull);
+			timer.Restart();
+			int rot1 = jacobi.jacobi_cyclic(A1, e1, V1);
 			timer.Stop();
-			double time_full = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
+			double time1 = timer.ElapsedMilliseconds;
 
-			timer.Reset();
-			timer.Start();
-			int sfullRotations = jacobi.jacobi_nRows(n, Asfull, esfull, Vsfull);
+			timer.Restart();
+			int rot2 = jacobi.jacobi_nRows(n, A2, e2, V2, true);
 			timer.Stop();
-			double time_sfull = ((double) timer.ElapsedTicks)/(Stopwatch.Frequency/1000);
-			outfile.Write("{0} {1} {2} {3} {4} {5} {6}\n", n, rowRotations, fullRotations, sfullRotations, time_row, time_full, time_sfull);
+			double time2 = timer.ElapsedMilliseconds;
 
+			outfile.Write("{0} {1} {2} {3} {4} {5} {6}\n", n, time1, time2, rot1, rot2, e1[0], e2[0]);
+		}		
+		outfile.Close();
+
+	}	
+
+	// Comparison of time and rotations needed to calculate the lowest
+	// eigenvalue for the cyclic and single value method.
+	static void probB5() {
+		var timer = new Stopwatch();
+		timer.Start();
+		var outfile = new System.IO.StreamWriter("out.probB5.txt");
+		int NMax = 200;
+		int step = 10;
+		for(int n = NMax/2; n <= NMax; n+=step) {
+			// 1: Cyclic sweep
+			// 2: Single row
+			matrix A1 = matrixHelp.makeRandSymMatrix(n);
+			matrix A2 = A1.copy();
+			
+			matrix V1 = new matrix(n,n);
+			matrix V2 = new matrix(n,n);
+		
+			vector e1 = new vector(n);
+			vector e2 = new vector(n);
+
+			timer.Restart();
+			int rot1 = jacobi.jacobi_cyclic(A1, e1, V1);
+			timer.Stop();
+			double time1 = timer.ElapsedMilliseconds;
+
+			timer.Restart();
+			int rot2 = jacobi.jacobi_nRows(1, A2, e2, V2, false);
+			timer.Stop();
+			double time2 = timer.ElapsedMilliseconds;
+
+			outfile.Write("{0} {1} {2}\n", n, e1[n-1], e2[0]);
 		}
 		outfile.Close();
-		
 	}	
 }
 

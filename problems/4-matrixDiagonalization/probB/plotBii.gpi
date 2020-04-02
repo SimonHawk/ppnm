@@ -3,7 +3,8 @@ set out "PlotBii.svg"
 set xlabel "n"
 set ylabel "T [ms]"
 set tics out
-set title "Single eigenvalue vs full sweep"
+set title "Single eigenvalue vs full sweep - Rotations"
+set xrange [100:500]
 set log xy 
 #set y2label "Spent time [ms]"
 #set ytics nomirror
