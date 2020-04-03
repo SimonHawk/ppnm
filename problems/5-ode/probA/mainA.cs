@@ -26,7 +26,7 @@ class mainA {
 		List<vector> ys2 = new List<vector>();
 
 		int steps12 = rkode.rk12(f, a, ref y1, b, h, acc, eps, ts1, ys1);
-		int steps45 = rkode.rk45(f, a, ref y2, b, h, acc, eps, ts2, ys2);
+		int steps45 = rkode.rk45(f, a, ref y2, b, h, 0.0001, 0.0001, ts2, ys2);
 		
 		Write($"RK12 done in {steps12} steps, RK45 done in {steps45} steps\n");
 		

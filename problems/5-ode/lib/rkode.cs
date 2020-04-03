@@ -42,23 +42,36 @@ public class rkode {
 		vector yt,
 		double h
 	) {
-		vector k_1 = h*f(t, yt);
-		vector k_2 = h*f(t+1.0/4*h, 
-			yt + 1.0/4*k_1);
-		vector k_3 = h*f(t+3.0/8*h, 
-			yt + 3.0/32*k_1 + 9.0/32*k_2);
-		vector k_4 = h*f(t+12.0/13*h, 
-			yt + 1932.0/2197*k_1 - 7200.0/2197*k_2 + 7296.0/2197*k_3);
-		vector k_5 = h*f(t + 1*h,
-			yt + 439.0/216*k_1 - 8*k_2 + 3680.0/513*k_3 - 845.0/4104*k_4);
-		vector k_6 = h*f(t + 1.0/2*h, 
-			yt + -8.0/27*k_1 + 2*k_2 - 3544.0/2565*k_3 + 1859.0/4104*k_4 - 11.0/40*k_5);
+		vector k_1 = f(t, yt);
+		vector k_2 = f(t+1.0/4*h, 
+			yt + 1.0/4*k_1*h);
+		vector k_3 = f(t+3.0/8*h, 
+			yt + 3.0/32*k_1*h + 9.0/32*k_2*h);
+		vector k_4 = f(t+12.0/13*h, 
+			yt + 1932.0/2197*k_1*h - 7200.0/2197*k_2*h + 7296.0/2197*k_3*h);
+		vector k_5 = f(t + 1*h,
+			yt + 439.0/216*k_1*h - 8*k_2*h + 3680.0/513*k_3*h - 845.0/4104*k_4*h);
+		vector k_6 = f(t + 1.0/2*h, 
+			yt + -8.0/27*k_1*h + 2*k_2*h - 3544.0/2565*k_3*h + 1859.0/4104*k_4*h - 11.0/40*k_5*h);
 		
+		vector[] ks = new vector[] {k_1, k_2, k_3, k_4, k_5, k_6};
+		vector b5s = new vector(new double[] {16.0/135, 0, 6656.0/12825, 28561.0/56430, -9.0/50, 2.0/55});
+		vector b4s = new vector(new double[] {25.0/216, 0, 1408.0/2565, 2197.0/4104, -1.0/5, 0});
+	
+		vector yh = yt;
+		vector err = new vector(yt.size);
+		for(int i = 0; i < b5s.size; i++) {
+			yh += h*b4s[i]*ks[i];
+			err += h*(b5s[i] - b4s[i])*ks[i];
+		}	
+		/*	
 		vector b5 = 16.0/135*k_1 + 0*k_2 + 6656.0/12825*k_3 + 28561.0/56430*k_4 - 9.0/50*k_5 + 2.0/55*k_6;
 		vector b4 = 25.0/216*k_1 + 0*k_2 + 1408.0/2565*k_3 + 2197.0/4104*k_4 - 1.0/5*k_5 + 0*k_6;
 		
-		vector err = b5-b4;
-		vector yh = yt + b5;
+		// This is wrong! Need to take difference in bs first?
+		vector err = h*(b5-b4);
+		vector yh = yt + h*b4;
+		*/
 		return new vector[] {yh, err};
 	}
 
@@ -114,8 +127,8 @@ public class rkode {
 			// Calculate the current step tolerance:
 			//double tau_i = (acc + eps*yt.norm())*Sqrt(h/(b-a));
 			vector tau_is = (acc + eps*yt.abs())*Sqrt(h/(b-a));
-			tau_is.print("tau_is: ");
-			err.print("err: ");
+			Write($"tau_is: [{tau_is[0]}, {tau_is[1]}]\n");
+			Write($"err: [{err[0]}, {err[1]}]\n");
 			bool errAccepted = true;
 			vector tolRatios = new vector(err.size); 
 			for(int i  = 0; i < tau_is.size; i++) {
