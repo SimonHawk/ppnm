@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using System;
 
 public class rkode {
+// My class for runge-kutta ODE solvers
+// Consists of:
+//	- A genral driver with adaptive step sizes
+//	- 2 Stepper method, for the Runge Kutta midtpoint (rk12)
+//    and Runge-Kutta-Feldhelm (rk45) embedded methods.
+// 	- Interface functions that uses these two stepper directly
+// 	  to solve some system ordinary differential equations.
 
 	public static vector[] rk12_step(
 		Func<double, vector, vector> f,
@@ -16,7 +23,7 @@ public class rkode {
 		vector k_12 = f(t + 0.5*h, yt+0.5*h*k_0);
 		vector yh = yt + h*k_12;
 		// Estimate error as difference between 1st order and 2nd order:
-		vector err = h*(k_12 - k_0);
+		vector err = (h*k_12 - h*k_0);
 		return new vector[] {yh, err};
 	}
 
@@ -61,17 +68,9 @@ public class rkode {
 		vector yh = yt;
 		vector err = new vector(yt.size);
 		for(int i = 0; i < b5s.size; i++) {
-			yh += h*b4s[i]*ks[i];
+			yh += h*b5s[i]*ks[i];
 			err += h*(b5s[i] - b4s[i])*ks[i];
 		}	
-		/*	
-		vector b5 = 16.0/135*k_1 + 0*k_2 + 6656.0/12825*k_3 + 28561.0/56430*k_4 - 9.0/50*k_5 + 2.0/55*k_6;
-		vector b4 = 25.0/216*k_1 + 0*k_2 + 1408.0/2565*k_3 + 2197.0/4104*k_4 - 1.0/5*k_5 + 0*k_6;
-		
-		// This is wrong! Need to take difference in bs first?
-		vector err = h*(b5-b4);
-		vector yh = yt + h*b4;
-		*/
 		return new vector[] {yh, err};
 	}
 
@@ -86,8 +85,6 @@ public class rkode {
 		List<double> ts=null,
 		List<vector> ys=null
 	) {
-		// Func<Func<double, vector, vector>, double, vector, double, vector, vector, int> stepper = rk45_step;
-		// Func<Func<double, vector, vector>, double, vector, double, ref vector, ref vector, double> stepper; // = rk45_step;
 		return general_driver(rk45_step, f, a, ref y, b, h, acc, eps, ts, ys);
 	}
 
@@ -120,15 +117,12 @@ public class rkode {
 			res = stepper(f, t, y, h);
 			yt = res[0];
 			err = res[1];
-			// stepper(f, t, y, h, ref yt, ref err);
-			//yt.print($"yt = ");
-			//Write($"err = [{err[0]}, {err[1]}]\n");
-			//Write($"|yt| = {yt.norm()}\n");
 			// Calculate the current step tolerance:
-			//double tau_i = (acc + eps*yt.norm())*Sqrt(h/(b-a));
 			vector tau_is = (acc + eps*yt.abs())*Sqrt(h/(b-a));
-			Write($"tau_is: [{tau_is[0]}, {tau_is[1]}]\n");
-			Write($"err: [{err[0]}, {err[1]}]\n");
+
+			// Asses if the error of the step is within the tolerance
+			// and calculate the ratio of the tolerance and the error
+			// for each entry.
 			bool errAccepted = true;
 			vector tolRatios = new vector(err.size); 
 			for(int i  = 0; i < tau_is.size; i++) {
@@ -144,19 +138,12 @@ public class rkode {
 				y = yt;
 				if(ts!=null) ts.Add(t);
 				if(ys!=null) ys.Add(yt);
-				Write($"New t: {t}, new h: {h}\n");
-				//y.print("y at end of step: ");
-				//Write("t and y changes!\n");
 			} else {
 				// Don't change t and yt.
-				Write("t and y doesn't change...\n");
 			}
-			// Update h:
-			Write($"tolRatios.min(): {tolRatios.min()}\n");
+			// Update h: (vector.min() is a new method I implemented myself)
 			double h_factor = Pow(tolRatios.min(), 0.25)*0.95;
-			// Write($"tau_i/err.norm(): {tau_i/err.norm()}\n");
 			h = (h_factor < 2)?h_factor*h:2*h;
-			//Write($"New h: {h}\n");
 		}
 		// Do the final step to reach b: (For now, there is a chance that
 		// the error gets too large in this step... But test this code 
@@ -168,7 +155,6 @@ public class rkode {
 		y = yt;
 		if(ts!=null) ts.Add(t + h_final);
 		if(ys!=null) ys.Add(yt);
-		// Write($"Done in {steps} steps\n");
 		return steps;
 	}
 }

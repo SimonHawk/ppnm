@@ -45,6 +45,11 @@ public static vector operator-(vector v, vector u){
 	vector r=new vector(v.size);
 	for(int i=0;i<r.size;i++)r[i]=v[i]-u[i];
 	return r; }
+// Unary minus operator for vector:
+public static vector operator-(vector v){
+	vector r=new vector(v.size);
+	for(int i=0;i<r.size;i++) r[i]=-v[i];
+	return r; }
 
 public static vector operator*(vector v, double a){
 	vector r=new vector(v.size);

@@ -1,0 +1,11 @@
+set term svg background rgb "white" font ",14"
+set out "C-Figure8.svg"
+set xlabel "x"
+set ylabel "y"
+set size ratio -1
+set title "3 Body figure 8 motion for m = 1, G = 1, and tb = 100\nThe orbits overlap exactly, and all 3 can't be seen"
+set yrange [-0.8:0.8]
+set grid
+plot "out.probC.txt" u 2:3 with lines dt 3 notitle \
+	,"out.probC.txt" u 4:5 with lines dt 2 notitle \
+	,"out.probC.txt" u 6:7 with lines dt 1 notitle

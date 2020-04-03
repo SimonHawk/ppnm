@@ -1,13 +1,13 @@
-all: out.logA.txt A-IntegratorComparison.svg
-	cat out.logA.txt
+all: out.logB.txt SIRModel.svg
+	cat out.logB.txt
 
-A-IntegratorComparison.svg: plotA.gpi out.probA.txt
+SIRModel.svg: plotB.gpi
 	gnuplot $<
 
-out.logA.txt out.probA.txt: mainA.exe
-	mono $< 1> out.logA.txt
+out.logB.txt out.probB.txt: mainB.exe
+	mono $< 1> out.logB.txt
 
-mainA.exe: mainA.cs math.dll
+mainB.exe: mainB.cs math.dll
 	mcs -reference:math.dll -out:$@ $<
 
 MATLIB = ../../../lib/matlib
