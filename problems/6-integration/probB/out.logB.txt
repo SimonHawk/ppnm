@@ -1,0 +1,13 @@
+
+Problem B:
+
+Integrating 1/Sqrt(x), with delta = 1E-05, eps = 0
+Without transformation: 1.99999996301717, deviation from 2: -3.69828296875596E-08, required evaluations of the integrand: 51336
+With Clenshaw Curtis Transformation: 1.99999999749884, deviation from 2: -2.50116105604548E-09, required evaluations of the integrand: 120
+
+Integrating Log(x)/Sqrt(x), with delta = 1.000e-004, eps = 0.000e+000
+Without transformation: -4.000e+000, deviation from -4: 7.483e-007, required evaluations of the integrand: 209100
+With Clenshaw Curtis Transformation: -4.000e+000, deviation from -4: 6.258e-007, required evaluations of the integrand: 336
+The intergral did not work for lower delta and eps, due to the Clenshaw-Curtis transformed integrand evaluating to -infinity in some nodes of the open-rule quadrature.
+
+Conclusion: The Clenshaw-Curtis Transformation reduces the required amount of function evaluations immensly
