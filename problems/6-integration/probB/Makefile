@@ -1,7 +1,10 @@
-all: out.logB.txt
+all: out.logB.txt B.PiAccuracy.svg
 	cat out.logB.txt
 
-out.logB.txt: mainB.exe
+B.PiAccuracy.svg: plotB.gpi out.PIAccuracy.txt
+	gnuplot $<
+
+out.logB.txt out.PIAccuracy.txt: mainB.exe
 	mono $< 1> out.logB.txt
 
 mainB.exe: mainB.cs math.dll
@@ -9,9 +12,13 @@ mainB.exe: mainB.cs math.dll
 
 MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/vector.cs
+SRC += $(MATLIB)/integration/quado8.cs
 LOCAL_LIB = ../lib
 SRC += $(LOCAL_LIB)/integrator.cs
 
 math.dll: $(SRC)
 	mcs -target:library -out:$@ $^
 
+.PHONY:clean
+clean:
+	rm -f *.dll out.*.txt *.exe *.svg

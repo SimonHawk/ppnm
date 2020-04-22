@@ -15,3 +15,6 @@ SRC += $(LOCAL_LIB)/integrator.cs
 math.dll: $(SRC)
 	mcs -target:library -out:$@ $^
 
+.PHONY:clean
+clean:
+	rm -f *.dll *.exe out.*.txt

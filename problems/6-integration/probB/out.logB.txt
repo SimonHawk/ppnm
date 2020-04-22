@@ -1,13 +1,44 @@
 
 Problem B:
 
-Integrating 1/Sqrt(x), with delta = 1E-05, eps = 0
-Without transformation: 1.99999996301717, deviation from 2: -3.69828296875596E-08, required evaluations of the integrand: 51336
-With Clenshaw Curtis Transformation: 1.99999999749884, deviation from 2: -2.50116105604548E-09, required evaluations of the integrand: 120
+Integrating 1/Sqrt(x), with delta = 0.001, eps = 0
+Without any transformation:
+Result:                            1.9995161175042
+Analytical result:                 2
+Deviation:                         -0.000483882495796895
+Tolerance (delta + eps*|Q|):       0.001
+Evalutaions of the function:       4304
 
-Integrating Log(x)/Sqrt(x), with delta = 1.000e-004, eps = 0.000e+000
-Without transformation: -4.000e+000, deviation from -4: 7.483e-007, required evaluations of the integrand: 209100
-With Clenshaw Curtis Transformation: -4.000e+000, deviation from -4: 6.258e-007, required evaluations of the integrand: 336
+With the Clenshaw Curtis transformation:
+Result:                            1.99999201046432
+Analytical result:                 2
+Deviation:                         -7.98953567748839E-06
+Tolerance (delta + eps*|Q|):       0.001
+Evalutaions of the function:       16
+
+In comparison, the matlib o8av rutine:
+Deviation:                         2.49554111619865E-05
+Evaluations of the function:       8
+--------------------------------------------------------------
+Integrating Log(x)/Sqrt(x), with delta = 0.0001, eps = 0
+Without any transformation:
+Result:                            -3.99999810432799
+Analytical result:                 -4
+Deviation:                         1.89567201003271E-06
+Tolerance (delta + eps*|Q|):       0.0001
+Evalutaions of the function:       158560
+
+With the Clenshaw Curtis transformation:
+Result:                            -3.99999825966124
+Analytical result:                 -4
+Deviation:                         1.74033875532942E-06
+Tolerance (delta + eps*|Q|):       0.0001
+Evalutaions of the function:       252
+
 The intergral did not work for lower delta and eps, due to the Clenshaw-Curtis transformed integrand evaluating to -infinity in some nodes of the open-rule quadrature.
+
+In comparison, the matlib o8av rutine:
+Deviation:                         5.93321920163703E-05
+Evaluations of the function:       104
 
 Conclusion: The Clenshaw-Curtis Transformation reduces the required amount of function evaluations immensly

@@ -1,10 +1,14 @@
 Problem A:
-Integrating Sqrt(x) from 0 to 1 gives: 0.666666970048681
-Thereby, the deviation from the result 2/3 is: 3.03382014621434E-07
-Which is within the tolerance of (delta + acc*|Q|) = 1.66666697004868E-05
-This integration was done by 108 evaluations of the function
+Integrating Sqrt(x) from 0 to 1:
+Result:                                 0.666667503796937
+Analytical result:                      0.666666666666667
+Deviation from analytical result:       8.37130270658903E-07
+Specified tolerance (delta + acc*|Q|):  3.33332496203063E-06
+Number of function evaluations:         80
 
-Integrating 4*Sqrt(1-x^2) from 0 to 1 gives: 3.14159283639132
-Thereby, the deviation from the result PI is: 1.82801529469145E-07
-Which is within the tolerance of (delta + acc*|Q|) = 4.14159283639132E-05
-This integration was done by 228 evaluations of the function
+Integrating 4*Sqrt(1-x^2) from 0 to 1 
+Result:                                 3.14159318227391
+Analytical result:                      3.14159265358979
+Deviation from analytical result:       5.28684117373501E-07
+Specified tolerance (delta + acc*|Q|):  -2.14159318227391E-05
+Number of function evaluations:         160

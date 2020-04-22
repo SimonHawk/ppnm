@@ -40,15 +40,14 @@ public class integrator {
 		double Q = wri[0]*fs[0] + wri[1]*fs[1] + wri[2]*fs[2] + wri[3]*fs[3];
 		double q = vri[0]*fs[0] + vri[1]*fs[1] + vri[2]*fs[2] + vri[3]*fs[3];
 		// Write($"Q-q = {Q-q}\n");		
-
 		double QAlt = (2*fs[0] + fs[1] + fs[2] + 2*fs[3])/6 * (b-a);
 		double qAlt = (fs[0] + fs[1] + fs[2] + fs[3])/4 * (b-a);
 		
 		Q = QAlt;
 		q = qAlt;
-		
+	
 		// If error estimate is acceptable, return Q:
-		if(Abs(Q-q) < delta + eps*Abs(Q)) {
+		if((Abs(Q-q)/2) < delta + eps*Abs(Q)) {
 			//Error.Write($"Abs(Q-q): {Abs(Q-q)} < delta + eps*Abs(Q): {delta + eps*Abs(Q)}\n");
 			return Q;
 		}
