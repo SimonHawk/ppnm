@@ -1,0 +1,44 @@
+
+Problem B:
+
+Integrating 1/Sqrt(x), with delta = 0.001, eps = 0
+Without any transformation:
+Result:                            1.9995161175042
+Analytical result:                 2
+Deviation:                         -0.000483882495796895
+Tolerance (delta + eps*|Q|):       0.001
+Evalutaions of the function:       4304
+
+With the Clenshaw Curtis transformation:
+Result:                            1.99999201046432
+Analytical result:                 2
+Deviation:                         -7.98953567748839E-06
+Tolerance (delta + eps*|Q|):       0.001
+Evalutaions of the function:       16
+
+In comparison, the matlib o8av rutine:
+Deviation:                         2.49554111619865E-05
+Evaluations of the function:       8
+--------------------------------------------------------------
+Integrating Log(x)/Sqrt(x), with delta = 0.0001, eps = 0
+Without any transformation:
+Result:                            -3.99999810432799
+Analytical result:                 -4
+Deviation:                         1.89567201003271E-06
+Tolerance (delta + eps*|Q|):       0.0001
+Evalutaions of the function:       158560
+
+With the Clenshaw Curtis transformation:
+Result:                            -3.99999825966124
+Analytical result:                 -4
+Deviation:                         1.74033875532942E-06
+Tolerance (delta + eps*|Q|):       0.0001
+Evalutaions of the function:       252
+
+The intergral did not work for lower delta and eps, due to the Clenshaw-Curtis transformed integrand evaluating to -infinity in some nodes of the open-rule quadrature.
+
+In comparison, the matlib o8av rutine:
+Deviation:                         5.93321920163703E-05
+Evaluations of the function:       104
+
+Conclusion: The Clenshaw-Curtis Transformation reduces the required amount of function evaluations immensly

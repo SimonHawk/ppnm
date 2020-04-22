@@ -62,9 +62,6 @@ public class integrator {
 		}
 	}
 	
-	// I am told to make it adaptive. Hereby, it makes sense to chose points
-	// than can be reused?
-	// I am told to make it open quadrature. How should i choose the nodes?
 	public static double CC_O4AT(Func<double, double> f, double a, double b, double delta, double eps, ref int evals) {
 		// First rescale the problem to be from -1 to 1:
 		// u(-1) = -a, u(1) = b, u(x) = alpha*x+b =>
@@ -74,24 +71,11 @@ public class integrator {
 		
 		// Now make the Clenshaw-Curtis transformation:
 		Func<double, double> fcc = (theta) => fu(Cos(theta))*Sin(theta); 
-		/*
-		Write($"fu(cos(PI)) = fu({Cos(PI)}) = f({u(Cos(PI))}) = {fu(Cos(PI))}\n");
-		
-		Write("Got through the function transformation definition!\n");
-		for(double x = -1; x < 1; x+=0.1) {
-			Write($"fu({x}) = f({u(x)}) = {fu(x)}\n");
-		}
-		*/
 	
 		// Now integrate this with the regular old quadrature
-		// using the right limits? 
 		// Here using the open 4 point apaptive trapeziodal quadrature:
-		// return 0.0;
-		// return O4AT(fu, -1, 1, delta, eps, ref evals);
-
 		return O4AT(fcc, 0, PI, delta, eps, ref evals);
 	}
-
 
 
 }

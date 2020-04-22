@@ -1,0 +1,14 @@
+Problem A:
+Integrating Sqrt(x) from 0 to 1:
+Result:                                 0.666667503796937
+Analytical result:                      0.666666666666667
+Deviation from analytical result:       8.37130270658903E-07
+Specified tolerance (delta + acc*|Q|):  3.33332496203063E-06
+Number of function evaluations:         80
+
+Integrating 4*Sqrt(1-x^2) from 0 to 1 
+Result:                                 3.14159318227391
+Analytical result:                      3.14159265358979
+Deviation from analytical result:       5.28684117373501E-07
+Specified tolerance (delta + acc*|Q|):  -2.14159318227391E-05
+Number of function evaluations:         160
