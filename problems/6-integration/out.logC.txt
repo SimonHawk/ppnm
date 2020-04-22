@@ -1,0 +1,33 @@
+Problem c:
+Integrating Exp(-x^2) from -inf to inf:
+Result:                                 1.77245307921838
+Analytical result):                     1.77245385090552
+Deviation from analytical result:       -7.71687133527266E-07
+Allowed tolerance (delta + acc*|Q|):    -7.72453079218382E-06
+Number of function evaluations:         328
+Comparing with o8av:
+o8av deviation:                         -1.63382738349593E-05
+o8av function evaluations:              80
+
+Integrating 1/(x^2+2^2) from 0 to inf:
+Result:                                 0.785400642328221
+Analytical result):                     0.785398163397448
+Deviation from analytical result:       2.47893077309769E-06
+Allowed tolerance (delta + acc*|Q|):    2.14599357671779E-06
+Number of function evaluations:         92
+Comparing with o8av:
+o8av deviation:                         8.62741251794752E-06
+o8av function evaluations:              24
+
+Integrating sinc(x) = sin(x)^2/x^2 from -inf to 0:
+Expected result PI/2
+Result:                                 1.57087060505075
+Analytical result):                     1.5707963267949
+Deviation from analytical result:       7.42782558518229E-05
+Allowed tolerance (delta + acc*|Q|):    -5.70870605050748E-06
+Number of function evaluations:         9700
+Comparing with o8av:
+o8av deviation:                         -0.000154498488208699
+o8av function evaluations:              5128
+
+Wow, o8av is actually a bit above the accuracy goal for this one
