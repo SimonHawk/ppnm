@@ -1,4 +1,10 @@
-all: out.logB.txt B.PiAccuracy.svg out.logA.txt 
+all: out.logB.txt B.PiAccuracy.svg out.logA.txt out.logC.txt
+
+out.logC.txt: probC/out.logC.txt
+	cp $< $@
+
+probC/out.logC.txt: probC/Makefile
+	cd probC/ && make
 
 B.PiAccuracy.svg: probB/B.PiAccuracy.svg
 	cp $< $@
@@ -19,4 +25,5 @@ probA/out.logA.txt: probA/Makefile
 clean:
 	cd probA/ && make clean
 	cd probB/ && make clean
+	cd probC/ && make clean
 	rm -f out.*.txt *.svg

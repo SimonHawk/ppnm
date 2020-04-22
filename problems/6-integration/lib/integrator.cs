@@ -1,6 +1,7 @@
 using System;
 using static System.Console;
 using static System.Math;
+using static System.Double;
 
 public class integrator {
 	
@@ -77,5 +78,21 @@ public class integrator {
 		return O4AT(fcc, 0, PI, delta, eps, ref evals);
 	}
 
+	// O4: Open 4 point quandrature
+	// A:  Adaptive
+	// T:  Trapezoid rule
+	// V:  Variable transformation to treat infinite limits
+	public static double O4ATV(Func<double, double> f, double a, double b, double delta, double eps, ref int evals) {
+		if(a>b) return -O4ATV(f, b, a, delta, eps, ref evals);
+		if(IsNegativeInfinity(a) && !IsInfinity(b))
+			return O4AT((t)=>f(b-(1-t)/t)/(t*t), 0, 1, delta, eps, ref evals);
+		if(!IsNegativeInfinity(a) && IsInfinity(b))
+			return O4AT((t)=>f(a+(1-t)/t)/(t*t), 0, 1, delta, eps, ref evals);
+		// For now I have chosen formula 57 from the lecture notes, so that I can keep
+		// my current method of keeping track of the number of evaluations of the function
+		if(IsNegativeInfinity(a) && IsInfinity(b))
+			return O4AT((t)=>f(t/(1-t*t))*(1+t*t)/((1-t*t)*(1-t*t)), -1, 1, delta, eps, ref evals);
+		return O4AT(f, a, b, delta, eps, ref evals);
+	}
 
 }
