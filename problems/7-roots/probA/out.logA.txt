@@ -1,0 +1,6 @@
+Problem A:
+Looking for root of Sin(x)^2 close to {x0[0]}:
+Analytical root:                  3.14159265358979
+Found root:                       3.14131862223375
+Deviation from analytical result: -0.000274031356044979
+Value of function in found root:  7.50931822162552E-08
