@@ -31,6 +31,12 @@ public void print(string s=""){
 	System.Console.Write("\n");
 }
 
+public string toString(int digits=3) {
+	string resString = "";
+	for(int i = 0; i < size; i++) resString += $"{this[i]:f9} ";
+	return resString;
+}
+
 public static vector operator+(vector v, vector u){
 	vector r=new vector(v.size);
 	for(int i=0;i<r.size;i++)r[i]=v[i]+u[i];
@@ -70,6 +76,11 @@ public double dot(vector o){
 	return sum;
 	}
 
+// Not finished!
+public matrix outer(vector o){
+	return new matrix(size, o.size);
+}
+
 public double norm(){
 	double meanabs=0;
 	for(int i=0;i<size;i++)meanabs+=Abs(this[i]);
@@ -84,6 +95,7 @@ public vector copy(){
 	for(int i=0;i<this.size;i++)b[i]=this[i];
 	return b;
 }
+
 
 // Quick and dirty minimum method for the vector class.
 public double min() {

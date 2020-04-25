@@ -11,6 +11,7 @@ public class rootFinder {
 		double epsilon=1e-3, // The accuracy goal
 		double dx=1e-7 // finite difference to be used for jacobian
 	) {
+		//Write("One call to newton()\n");
 		vector root;
 		
 		vector f_x = f(x);		
@@ -38,8 +39,9 @@ public class rootFinder {
 		while((lambda >= 1.0/64) && (f(x+lambda*delta_x).norm() > (1-lambda/2)*f_x.norm() )) {
 			lambda /= 2;
 		}
-
 		x = x + lambda*delta_x;
+		// Write($"f(x).norm = {f(x).norm()}\n");
+
 		// 4: Check if we are under tolerance
 		//	  a: If under tolerance: Return value
 		//    b: If not under tolerance: Recursive call with new x		

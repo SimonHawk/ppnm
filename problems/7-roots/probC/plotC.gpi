@@ -1,0 +1,12 @@
+set term svg background rgb "white" font ",16" size 400,700
+set out "C.rMaxDependence.svg"
+
+set multiplot layout 2,1
+set xlabel "rMax [a_0]"
+set title "Deviation from analytical epsilon"
+
+#set yrange [-0.7:0.5]
+plot "out.probC.txt" index 0 using 1:($2+0.5) with lines title "Simple boundry"
+
+unset title
+plot "out.probC.txt" index 1 using 1:($2+0.5) with lines title "Improved boundry"

@@ -1,0 +1,7 @@
+set term svg background rgb "white" font ",16"
+set out "B.foundWavefunction.svg"
+
+
+plot "out.probB.txt" index 0 using 1:2 with lines title "Found wavefunction" \
+	, "out.probB.txt" index 1 using 1:2 with lines title "Analytical result"
+

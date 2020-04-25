@@ -1,0 +1,7 @@
+Problem B:
+Looking for the root of M(epsilon) close to -0.434782608695652:
+Accuracy goal:                    1E-06
+Analytical root:                  -0.5
+Found root:                       -0.499975031061598
+Deviation from analytical result: 2.49689384023144E-05
+Value of function in found root:  4.94552311868358E-07
