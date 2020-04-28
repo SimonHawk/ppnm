@@ -31,10 +31,14 @@ public void print(string s=""){
 	System.Console.Write("\n");
 }
 
-public string toString(int digits=3) {
+public string toString() {
 	string resString = "";
 	for(int i = 0; i < size; i++) resString += $"{this[i]:f9} ";
 	return resString;
+}
+
+public override string ToString() {
+	return toString();
 }
 
 public static vector operator+(vector v, vector u){
@@ -76,10 +80,22 @@ public double dot(vector o){
 	return sum;
 	}
 
-// Not finished!
+// Calculates the outer product of two vectors.
 public matrix outer(vector o){
-	return new matrix(size, o.size);
+	matrix m = new matrix(size, o.size);
+	for(int i = 0; i < size; i++) {
+		for(int j = 0; j < size; j++) {
+			m[i,j] = this[i]*o[j];
+		}
+	}
+	return m;
 }
+
+public double simpleNorm(){
+	double sum=0;
+	for(int i=0;i<size;i++)sum+=(this[i])*(this[i]);
+	return Sqrt(sum);
+	}
 
 public double norm(){
 	double meanabs=0;
