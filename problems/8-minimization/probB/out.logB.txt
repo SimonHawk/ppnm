@@ -1,0 +1,4 @@
+Fitting the Briet-Wigner function to the Higgs boson data::Found parameters:
+m:       125.972187655597
+Gammma:  2.08632900933181
+A:       9.87620755110066

@@ -1,0 +1,11 @@
+set term svg background rgb "white" font ",16"
+set out "B.higgsFit.svg"
+
+set title "Higgs boson data ressonance fit"
+set xlabel "Energy [GeV]"
+set ylabel "Cross section [arb. unit]"
+
+set grid
+
+plot "higgsData.txt" u 1:2:3 with errorbars title "Higgs data" \
+	, "out.probB.txt" u 1:2 with lines title "Optimized fit"
