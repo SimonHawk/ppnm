@@ -1,0 +1,16 @@
+Problem A:
+Integrating Sin(x)^2 (From 0 to 2Pi):
+Lower limit:                      0.000000000 
+Upper limit:                      6.283185307 
+Number of samples:                10000
+Integration result:               3.16713826492476
+Integration error:                0.0222838200080577
+Deviation from analytical result: 0.0255456113349655
+
+Integrating the tripple integral: (Pi^3(1-Cos(x)Cos(y)Cos(z)))^-1 over x, y and z:
+Lower limit:                      0.000000000 0.000000000 0.000000000 
+Upper limit:                      3.141592654 3.141592654 3.141592654 
+Number of samples:                10000
+Integration result:               1.3651550602858
+Integration error:                0.0336496864414543
+Deviation from analytical result: -0.0280488693998748

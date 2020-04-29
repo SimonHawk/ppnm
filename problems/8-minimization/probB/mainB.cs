@@ -24,11 +24,16 @@ class mainB {
 		// Fit to the data:
 		vector fitResult = dataFitter.fitToFunction(higgsData, fitFunc, xstart, eps);
 		
-		Write("Fitting the Briet-Wigner function to the Higgs boson data::");
+		Write("Fitting the Briet-Wigner function to the Higgs boson data:\n");
+		Write($"Accuracy goal of minimazation: {eps}\n");
+		Write($"Guessed starting parameters:\n");
+		Write($"Guessed m:       {xstart[0]}\n");
+		Write($"Guessed Gammma:  {xstart[1]}\n");
+		Write($"Guessed A:       {xstart[2]}\n");
 		Write($"Found parameters:\n");
-		Write($"m:       {fitResult[0]}\n");
-		Write($"Gammma:  {fitResult[1]}\n");
-		Write($"A:       {fitResult[2]}\n");
+		Write($"m:               {fitResult[0]}\n");
+		Write($"Gammma:          {fitResult[1]}\n");
+		Write($"A:               {fitResult[2]}\n");
 		
 		// Export fit curve:
 		var outfile = new System.IO.StreamWriter("out.probB.txt");

@@ -1,0 +1,14 @@
+Problem checklist/todo:
+
+---- PROBLEM 1: Interpolation ----
+A: 
+B: 
+C: 
+
+
+---- PROBLEM 2 ----
+A: 
+B: 
+C: 
+
+
