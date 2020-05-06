@@ -1,0 +1,22 @@
+Problem C:
+Completed!
+Integrating f(x,y) = y by stratified monte carlo:
+a0:                0.000000000 
+b0:                1.000000000 
+Q0:                0.506919508279213
+error:            0.000977511446988215
+Deviation:        0.00691950827921328
+
+Integrating Sin(x)^2 by stratified monte carlo:
+a2:                0.000000000 
+b2:                6.283185307 
+Q:                 3.18228697162481
+Error:             0.0280812905838168
+Deviation:         0.0406943180350146
+
+Integrating 1/(1-cos(x)cos(y)cos(z))*1/(Pi*Pi*Pi) by stratified monte carlo:
+a3:                0.000000000 0.000000000 0.000000000 
+b3:                3.141592654 3.141592654 3.141592654 
+Q:                 NaN
+Error:             NaN
+Deviation:         NaN

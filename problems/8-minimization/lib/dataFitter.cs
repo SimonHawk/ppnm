@@ -63,7 +63,7 @@ public class data {
 		reader = new System.IO.StreamReader(filename);
 		for(int i = 0; i < xs.size; i++) {
 			string line = reader.ReadLine();
-			Error.Write($"Read line: \"{line}\"\n");
+			// Error.Write($"Read line: \"{line}\"\n");
 			string[] words = line.Split(' ');
 			xs[i] = double.Parse(words[0]);
 			ys[i] = double.Parse(words[1]);

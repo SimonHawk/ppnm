@@ -16,7 +16,7 @@ class mainB {
 		};
 
 		// Starting parameters:
-		vector xstart = new vector(126.0, 7.0, 60);
+		vector xstart = new vector(126.0, 5, 15);
 		
 		// The accuracy goal of the fitting function:
 		double eps = 1e-6;

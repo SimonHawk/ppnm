@@ -7,24 +7,33 @@ class mainA {
 	static void Main() {
 		Write("Problem B:\n");
 		// Now for Dimitris function:
+		/*
 		Func<vector, double> f = (v) =>
 			1/(1-Cos(v[0])*Cos(v[1])*Cos(v[2]))*1/(PI*PI*PI);
 		vector a = new vector(0.0, 0.0, 0.0);
 		vector b = new vector(PI, PI, PI);
 		double expectedRes = 1.3932039296856768591842462603255;
+		*/
+		Func<vector, double> f = (v) => Sin(v[0])*Sin(v[0]);
+		vector a = new vector(0.0);
+		vector b = new vector(2*PI);
+		double expectedRes = PI;
 		
 		// Make data file:
 		var outfile = new System.IO.StreamWriter("out.dataB.txt");
 		
-		int Nmin = 10;
-		int Nmax = 10000;
-		int Nstep = 100;
+		int Nmin = 1000;
+		int Nmax = 50000;
+		int Nstep = (Nmax - Nmin)/100;
 		
 		for(int N = Nmin; N <= Nmax; N += Nstep) {
 			vector fitResult = mcIntegrator.plainmc(f, a, b, N);
 			outfile.Write("{0} {1} {2}\n", N, fitResult[1], Abs(fitResult[0]-expectedRes));
 		}
-		outfile.Close();
+		
+		outfile.Close();	
+		
+	
 
 	}
 	

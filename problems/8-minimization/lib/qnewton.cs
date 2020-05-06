@@ -24,7 +24,7 @@ public class minimization {
 				}
 			}
 		}
-
+		
 		// 1: calculate grad_f:
 		vector grad_f = new vector(n);
 		for(int i = 0; i < n; i++) {

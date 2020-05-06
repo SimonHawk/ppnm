@@ -27,7 +27,7 @@ class mainA {
 			1/(1-Cos(v[0])*Cos(v[1])*Cos(v[2]))*1/(PI*PI*PI);
 		vector a2 = new vector(0.0, 0.0, 0.0);
 		vector b2 = new vector(PI, PI, PI);
-		int N2 = 10000;
+		int N2 = 100000;
 		double expectedRes2 = 1.3932039296856768591842462603255;
 		Write("\nIntegrating the tripple integral: (Pi^3(1-Cos(x)Cos(y)Cos(z)))^-1 over x, y and z:\n");
 		testFunction(f2, a2, b2, N2, expectedRes2);

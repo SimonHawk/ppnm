@@ -11,7 +11,7 @@ SRC += $(MATLIB)/matrix/vector.cs
 SRC += $(MATLIB)/complex/complex.cs
 SRC += $(MATLIB)/complex/cmath.cs
 LOCAL_LIB = ../lib
-SRC += $(LOCAL_LIB)/qnewton.cs
+SRC += $(LOCAL_LIB)/qnewton2.cs
 
 math.dll: $(SRC)
 	mcs -target:library -out:$@ $^

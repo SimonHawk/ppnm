@@ -15,8 +15,8 @@ class mainA {
 		vector xstart0 = new vector(3.0);	
 		double eps0 = 1e-10;
 		// Do the minimization
-		vector xres0 = minimization.qnewton(cos, xstart0, eps0);
-		
+		var xres0 = minimization.qnewton(cos, xstart0, eps0);
+
 		Write($"\nMinimizing the cos function:\n");
 		Write($"Starting point:           {xstart0}\n");
 		Write($"Accuracy goal:            {eps0}\n");
@@ -25,10 +25,10 @@ class mainA {
 		
 		// Define the Rosenbrock valley function:
 		Func<vector, double> rosenbrock = 
-			(v) => ((1-v[0])*(1-v[0]) + 100*(v[1] - v[0]*v[0])*(v[1] - v[0]*v[0]))/500;
+			(v) => ((1-v[0])*(1-v[0]) + 100*(v[1] - v[0]*v[0])*(v[1] - v[0]*v[0]));
 		
 		// Define the criteria for the minimization:
-		vector xstart1 = new vector(1.1, 1.1);	
+		vector xstart1 = new vector(3.0, 3.0);	
 		double eps1 = 1e-8;
 		// Do the minimization
 		vector xres1 = minimization.qnewton(rosenbrock, xstart1, eps1);
@@ -44,7 +44,7 @@ class mainA {
 
 		// Define the Rosenbrock valley function:
 		Func<vector, double> himmelblau = 
-			(v) => ((v[0]*v[0]+v[1]-11)*(v[0]*v[0]+v[1]-11)+(v[0]+v[1]*v[1]-7)*(v[0]+v[1]*v[1]-7))/500;
+			(v) => ((v[0]*v[0]+v[1]-11)*(v[0]*v[0]+v[1]-11)+(v[0]+v[1]*v[1]-7)*(v[0]+v[1]*v[1]-7));
 
 		// Define the criteria for the minimization:
 		vector xstart2 = new vector(3.5, 2.5);	

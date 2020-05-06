@@ -1,0 +1,13 @@
+set term pngcairo background rgb "white" font ",16" size 600,700
+set out "C.sampledPoints.png"
+
+set title "Sampled points using stratisfied MC on:\n(x^2 + y^2 < 1) => f(x,y) = 1, else f(x,y) = 0\nfor N = 1000000"
+set xlabel "x"
+set ylabel "y"
+
+set size square
+
+set style fill transparent solid 0.15 noborder
+set style circle radius 0.005
+plot "out.dataC.txt" index 1 u 1:2 w circles lc rgb "blue" notitle
+

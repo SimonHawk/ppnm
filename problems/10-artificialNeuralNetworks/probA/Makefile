@@ -1,13 +1,11 @@
-all: B.higgsFit.svg out.logB.txt
+all: out.logA.txt
+	cat out.logA.txt
 
-B.higgsFit.svg: plotB.gpi higgsData.txt
-	gnuplot $<
-
-out.logB.txt: mainB.exe
+out.logA.txt: mainA.exe
 	mono $< 1> $@
 
-mainB.exe: mainB.cs math.dll
-	mcs -reference:math.dll -out:$@ $<
+mainA.exe: mainA.cs math.dll
+	mcs -out:$@ -reference:math.dll $<
 
 LIB = ../../../lib
 MATLIB = $(LIB)/matlib
@@ -15,14 +13,12 @@ SRC := $(MATLIB)/matrix/matrix.cs
 SRC += $(MATLIB)/matrix/vector.cs
 SRC += $(MATLIB)/complex/complex.cs
 SRC += $(MATLIB)/complex/cmath.cs
+SRC += $(LIB)/minimization/qnewton.cs
 LOCAL_LIB = ../lib
-SRC += $(LOCAL_LIB)/qnewton2.cs
-SRC += $(LOCAL_LIB)/dataFitter.cs
-
+SRC += $(LOCAL_LIB)/ann.cs
 math.dll: $(SRC)
 	mcs -target:library -out:$@ $^
 
 .PHONY:clean
 clean:
-	rm -f *.dll *.exe out.*.txt *.svg 
-
+	rm -f out.*.txt *.dll
