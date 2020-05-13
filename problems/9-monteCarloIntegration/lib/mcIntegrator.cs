@@ -72,13 +72,13 @@ public class mcIntegrator {
 		// calculate the mean value and variance of the function:
 		double[] result = stratisfiedmc_step(f, a, b, N);
 		double mean = result[0];
-		double var = result[1];		
+		double error2 = result[1];		
 		
 		// The integrated value is the mean of the function times the integration volume:
 		double Q = volume*mean;
 		
 		// Error comes from the central limit theorem as: volume*sqrt(var)/sqrt(N):
-		double error = volume*Sqrt(var)/Sqrt(N);
+		double error = volume*Sqrt(error2)/Sqrt(N);
 
 		// Return the integration value and the standard devaition:
 		return new double[] {Q, error};
@@ -122,6 +122,7 @@ public class mcIntegrator {
 		for(int i = 0; i < subN; i++) {
 			vector x = randomx();
 			double fx = f(x);
+			if(double.IsNaN(fx)) Error.Write($"fx is NaN in x = {x}\n");
 			//Error.Write($"x = {x}, fx = {fx}\n");
 			// Calculate the sum of all the "upper" and "lower" points
 			// for each dimmension. And the sum of squares:
@@ -141,16 +142,18 @@ public class mcIntegrator {
 		// Calculate the mean and variance of this sample:
 		double subMean = (upperSum[0] + lowerSum[0])/subN;
 		double subVar = ((upperSum2[0]+lowerSum2[0])/subN - subMean*subMean);	
+		// Calculate the square of the error.
+		double subError2 = subVar/subN;
 	
-		// If N < minN, remember subN = N, and return the mean and var of
+		// If N < minN, remember subN = N, and return the mean and error2 of
 		// the entire sample:
 		if(N < minN) {
 			// Error.Write($"Returning simple sample, subMean = {subMean}, subVar = {subVar}\n");
-			return new double[] {subMean, subVar};
+			return new double[] {subMean, subError2};
 		}
 
 		// Now to find the best splitting dimmension:
-		double highestVar = 0;
+		double highestVarRatio = 0;
 		int highestVarIdx = 0;
 		double highestUpperVar = 0;
 		double highestLowerVar = 0;
@@ -158,9 +161,9 @@ public class mcIntegrator {
 			double upperVar = upperSum2[i]/subN - (upperSum[i]/subN)*(upperSum[i]/subN);
 			double lowerVar = lowerSum2[i]/subN - (lowerSum[i]/subN)*(lowerSum[i]/subN);
 			// What is the highest variance:
-			double higherVar = (upperVar > lowerVar)?upperVar:lowerVar;
-			if(higherVar > highestVar) {
-				highestVar = higherVar;
+			double higherVarRatio = (upperVar > lowerVar)?upperVar/lowerVar:lowerVar/upperVar;
+			if(higherVarRatio > highestVarRatio) {
+				highestVarRatio = higherVarRatio;
 				highestVarIdx = i;
 				highestUpperVar = upperVar;
 				highestLowerVar = lowerVar;
@@ -175,8 +178,11 @@ public class mcIntegrator {
 		int leftN = N - subN;
 		// Distribute the points left:
 		int upperN = (int)(leftN*highestUpperVar/(highestUpperVar+highestLowerVar));
-		
 		int lowerN = leftN-upperN;
+
+		// Correct for the case where we would sample too few points:
+		if(upperN == 0) {upperN = minN/20; lowerN -= minN/20;};
+		if(lowerN == 0) {lowerN = minN/20; upperN -= minN/20;};
 		// Error.Write($"leftN: {leftN},    upperN: {upperN},  lowerN: {lowerN}\n");
 		
 		// Calculate the new a and b vectors:
@@ -189,11 +195,11 @@ public class mcIntegrator {
 		// two split regions:
 		double[] upperResult = stratisfiedmc_step(f, uppera, b, upperN);
 		double upperMeanRes = upperResult[0];
-		double upperVarRes = upperResult[1];
+		double upperError2Res = upperResult[1];
 
 		double[] lowerResult = stratisfiedmc_step(f, a, lowerb, lowerN);
 		double lowerMeanRes = lowerResult[0];
-		double lowerVarRes = lowerResult[1];
+		double lowerError2Res = lowerResult[1];
 		
 		// Error.Write($"subMean = {subMean}, subN = {subN}, upperMeanRes = {upperMeanRes}, upperN = {upperN},  lowerMeanRes = {lowerMeanRes}, lowerN = {lowerN}\n");
 		// calculate the total mean by a weighted sum:
@@ -203,17 +209,11 @@ public class mcIntegrator {
 		// Calculate the total variance by a weighted sum?
 		// E(x) = sum(w_i*u_i) => var(x) = sum(w_i^2*var_i)
 		// double totalVar = ((subVar*subN*subN) + (upperVarRes*upperN*upperN) + (lowerVarRes*lowerN*lowerN))/(N*N);
-		// Not weighted sum though:
-		double totalVar = (subVar + upperVarRes + lowerVarRes)/(3*3);
-
-		// Error.Write("\n------------------------------\n");
-		// Error.Write($"N = {N}, a = {a}, b = {b}\n"); 
-		// Error.Write($"totalMean = {totalMean}, totalVar = {totalVar}\n");
-		// Okay? totalSigma = sqrt(totalVar)
-		// deviation = totalSigma*volume?
+		// Dimitris solution: Average of errors: 
+		double totalError2 = (subError2 + upperError2Res + lowerError2Res)/(3);
 
 		// return the values:
-		return new double[] {totalMean, totalVar};
+		return new double[] {totalMean, totalError2};
 
 	}
 }

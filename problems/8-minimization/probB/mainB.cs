@@ -20,9 +20,10 @@ class mainB {
 		
 		// The accuracy goal of the fitting function:
 		double eps = 1e-6;
+		int steps = 0;
 
 		// Fit to the data:
-		vector fitResult = dataFitter.fitToFunction(higgsData, fitFunc, xstart, eps);
+		vector fitResult = dataFitter.fitToFunction(higgsData, fitFunc, xstart, ref steps, eps);
 		
 		Write("Fitting the Briet-Wigner function to the Higgs boson data:\n");
 		Write($"Accuracy goal of minimazation: {eps}\n");
@@ -34,6 +35,7 @@ class mainB {
 		Write($"m:               {fitResult[0]}\n");
 		Write($"Gammma:          {fitResult[1]}\n");
 		Write($"A:               {fitResult[2]}\n");
+		Write($"Steps used:      {steps}\n");
 		
 		// Export fit curve:
 		var outfile = new System.IO.StreamWriter("out.probB.txt");

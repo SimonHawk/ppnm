@@ -7,12 +7,18 @@ using System;
 // neurons and a summation output neuron:
 // Its purpose is to interpolate a tabulated function:
 public class ann {
-	int n; // The number of hidden nodes
+	protected int n; // The number of hidden nodes
 	Func<double,double> f; // The activation function
-	vector param; // The parameters for the network, a_i, b_i and w_i
+	protected vector param; // The parameters for the network, a_i, b_i and w_i
 				  // for each hidden layer neuron
 			      // Ordered so that a_i = param[3*i+0], b_i = param[3*i+1]
 				  // and w_i = param[3*i+2]
+	int _minimizationSteps; // The steps in the minimization.
+	public int minimizationSteps {get{return _minimizationSteps;}}
+	
+	double _minimizationEps;
+	public double minimizationEps {get{return _minimizationEps;} set{_minimizationEps = value;}}
+
 
 	// constructor for the class:
 	public ann(int hiddenNodes, Func<double, double> activationFunc) {
@@ -20,6 +26,8 @@ public class ann {
 		f = activationFunc;
 		// param will be all zeros for now
 		param = new vector(3*n);
+		_minimizationSteps = 0;
+		_minimizationEps = 1e-6;
 
 	}
 
@@ -42,6 +50,7 @@ public class ann {
 	
 	// Method to train the network to find the best interpolation of the table:
 	public void train(vector xs, vector ys) {
+		Error.Write("Starting training!\n");
 		Func<vector, double> deviation = (paramVec) => {
 			double sum = 0;
 			for(int k = 0; k < xs.size; k++) {
@@ -53,18 +62,25 @@ public class ann {
 		
 		// Initiate the starting vector... Kind of hard to guess...
 		vector xstart = new vector(3*n);
+		// Dimitri suggested something like this:
+		double xmin = xs[0];
+		double xmax = xs[xs.size-1];
+		double xstep = (xmax - xmin)/(n-1);
 		for(int i = 0; i < n; i++) {
-			xstart[i+0] = i;
-			xstart[i+1] = i;
-			xstart[i+2] = i;
+			xstart[3*i+0] = xmin + i*xstep;
+			xstart[3*i+1] = xstep;
+			xstart[3*i+2] = 0;
 		}
 		
-		// The accuracy goal of the minimization:
-		double eps = 1e-8;		
+		// Error.Write($"xstart = {xstart}\n");
+		
 
-		vector xopt = minimization.qnewton(deviation, xstart, eps);
+		Error.Write("Starting minimization!\n");
+		vector xopt = minimization.qnewton(deviation, xstart, _minimizationEps, ref _minimizationSteps);
 		
 		param = xopt;		
+		// param = xstart;
+		Error.Write("Training finised!\n");
 
 	}
 

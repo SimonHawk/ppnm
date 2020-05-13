@@ -1,0 +1,6 @@
+set term svg background rgb "white" font ",16"
+set out "A.interpolation.svg"
+
+plot "out.dataA.txt" index 0 u 1:2 with lines title "Interpolated function" \
+   , "out.dataA.txt" index 0 u 1:3 with lines title "Sin(x)" \
+   , "out.dataA.txt" index 1 u 1:2 title "Tabulated points"

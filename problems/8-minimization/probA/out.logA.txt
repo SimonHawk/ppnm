@@ -5,15 +5,18 @@ Starting point:           3.000000000
 Accuracy goal:            1E-10
 Found minimum:            3.141592644 
 Deviation from expected:  -9.51070466825854E-09
+Minimization steps:       3
 
 Minimizing the Rosenbrock function:
 Starting point:           3.000000000 3.000000000 
 Accuracy goal:            1E-08
 Found minimum:            0.999997002 0.999993998 
 Deviation from expected:  -0.000002998 -0.000006002 
+Minimization steps:       151
 
 Minimizing the Himmelblau function:
 Starting point:           3.500000000 2.500000000 
 Accuracy goal:            1E-05
 Found minimum:            2.999999926 1.999999868 
 Deviation from expected:  -0.000000074 -0.000000132 
+Minimization steps:       91

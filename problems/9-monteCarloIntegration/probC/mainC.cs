@@ -59,8 +59,8 @@ class mainC {
 
 		// Make plot to compare with plain monte carlo:
 		var outfile = new System.IO.StreamWriter("out.dataC.txt");
-		int minN = 100;
-		int maxN = 10000;
+		int minN = 1000;
+		int maxN = 50000;
 		int points = 100;
 		for(int N4 = minN; N4 <= maxN; N4 += (maxN-minN)/points) {
 			double[] strat_result4 = mcIntegrator.stratisfiedmc(f2, a2, b2, N4);
@@ -81,8 +81,8 @@ class mainC {
 			else return 0;
 		};
 		int N5 = 100000;
-		vector a5 = new vector(-1.5, -1.5);
-		vector b5 = new vector(1.5, 1.5);
+		vector a5 = new vector(-1.4, -1.4);
+		vector b5 = new vector(1.4, 1.4);
 		mcIntegrator.stratisfiedmc(f5, a5, b5, N5);
 		
 	     

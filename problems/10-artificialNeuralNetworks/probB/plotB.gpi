@@ -1,0 +1,16 @@
+set term svg background rgb "white" font ",16" size 400,800 
+set out "B.interpolation.svg"
+
+set title "Interpolation of sampled Sine function"
+
+set multiplot layout 3,1
+
+plot "out.dataB.txt" index 0 u 1:2 with lines title "Interpolated function" \
+   , "out.dataB.txt" index 0 u 1:3 with lines title "Sin(x)" \
+   , "out.dataB.txt" index 3 u 1:2 title "Tabulated points"
+
+plot "out.dataB.txt" index 1 u 1:2 with lines title "Estimated integral"\
+   , "out.dataB.txt" index 1 u 1:3 with lines title "-Cos(x)+Cos(0)"
+
+plot "out.dataB.txt" index 2 u 1:2 with lines title "Estimated Derivative"\
+   , "out.dataB.txt" index 2 u 1:3 with lines title "-Cos(x)"

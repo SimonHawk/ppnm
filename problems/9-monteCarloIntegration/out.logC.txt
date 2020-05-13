@@ -3,20 +3,20 @@ Completed!
 Integrating f(x,y) = y by stratified monte carlo:
 a0:                0.000000000 
 b0:                1.000000000 
-Q0:                0.506919508279213
-error:            0.000977511446988215
-Deviation:        0.00691950827921328
+Q0:                0.502284195446726
+error:            0.000109803447748945
+Deviation:        0.00228419544672598
 
 Integrating Sin(x)^2 by stratified monte carlo:
 a2:                0.000000000 
 b2:                6.283185307 
-Q:                 3.18228697162481
-Error:             0.0280812905838168
-Deviation:         0.0406943180350146
+Q:                 2.99743565735022
+Error:             0.0119395854925783
+Deviation:         -0.144156996239571
 
 Integrating 1/(1-cos(x)cos(y)cos(z))*1/(Pi*Pi*Pi) by stratified monte carlo:
 a3:                0.000000000 0.000000000 0.000000000 
 b3:                3.141592654 3.141592654 3.141592654 
-Q:                 NaN
-Error:             NaN
-Deviation:         NaN
+Q:                 1.396697337596
+Error:             0.00199078371747486
+Deviation:         0.00349340791031949

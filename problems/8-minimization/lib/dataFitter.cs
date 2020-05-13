@@ -8,6 +8,7 @@ public static class dataFitter {
 		data dat, // The data to fit to
 		Func<double, vector, double> fitFunction, // The fitting function
 		vector xstart, // The starting parameters
+		ref int steps,
 		double eps=1e-6 // The accuracy goal of the minimization
 	) {
 		
@@ -15,7 +16,7 @@ public static class dataFitter {
 		Func<vector, double> objFunc = makeObjectiveFunction(fitFunction, dat);
 		
 		// Do the optimization:
-		vector fitResult = minimization.qnewton(objFunc, xstart, eps);
+		vector fitResult = minimization.qnewton(objFunc, xstart, eps, ref steps);
 		
 		// Return the fitresult:
 		return fitResult;

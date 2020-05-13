@@ -8,3 +8,4 @@ Found parameters:
 m:               125.97218766797
 Gammma:          2.08632949459438
 A:               9.87620947646467
+Steps used:      18

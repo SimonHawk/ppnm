@@ -1,13 +1,13 @@
-all: out.logA.txt A.interpolation.svg
-	cat out.logA.txt
+all: out.logB.txt B.interpolation.svg
+	cat out.logB.txt
 
-A.interpolation.svg: plotA.gpi out.dataA.txt
+B.interpolation.svg: plotB.gpi out.dataB.txt
 	gnuplot $<
 
-out.logA.txt out.dataA.txt: mainA.exe
+out.logB.txt out.dataB.txt: mainB.exe
 	mono $< 1> $@
 
-mainA.exe: mainA.cs math.dll
+mainB.exe: mainB.cs math.dll
 	mcs -out:$@ -reference:math.dll $<
 
 LIB = ../../../lib
@@ -17,8 +17,10 @@ SRC += $(MATLIB)/matrix/vector.cs
 SRC += $(MATLIB)/complex/complex.cs
 SRC += $(MATLIB)/complex/cmath.cs
 SRC += $(LIB)/minimization/qnewton.cs
+SRC += $(LIB)/math/math.cs
 LOCAL_LIB = ../lib
 SRC += $(LOCAL_LIB)/ann.cs
+SRC += $(LOCAL_LIB)/annGaussian.cs
 math.dll: $(SRC)
 	mcs -target:library -out:$@ $^
 
