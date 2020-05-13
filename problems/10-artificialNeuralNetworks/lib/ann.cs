@@ -19,6 +19,8 @@ public class ann {
 	double _minimizationEps;
 	public double minimizationEps {get{return _minimizationEps;} set{_minimizationEps = value;}}
 
+	protected double leftx;
+
 
 	// constructor for the class:
 	public ann(int hiddenNodes, Func<double, double> activationFunc) {
@@ -28,6 +30,7 @@ public class ann {
 		param = new vector(3*n);
 		_minimizationSteps = 0;
 		_minimizationEps = 1e-6;
+		leftx = 0;
 
 	}
 
@@ -78,6 +81,7 @@ public class ann {
 		Error.Write("Starting minimization!\n");
 		vector xopt = minimization.qnewton(deviation, xstart, _minimizationEps, ref _minimizationSteps);
 		
+		leftx = xs[0];
 		param = xopt;		
 		// param = xstart;
 		Error.Write("Training finised!\n");

@@ -9,7 +9,7 @@ public class annGaussian : ann {
 	// The (indefinite) integral of the activation function:
 	// Uses the stirlings approximation based gamma function, from the
 	// week 4 exercise:
-	static Func<double, double> gaussian_int = (x) => math.erf(x);
+	static Func<double, double> gaussian_int = (x) => Sqrt(PI)/2*math.erf(x);
 	// The derivative of the activation function:
 	// Uses the Abramowitz and Stegun gamma function from the week 4
 	// exercise:
@@ -31,8 +31,10 @@ public class annGaussian : ann {
 	public double feedforward_int(double x) {
 		double res = 0;
 		for(int i = 0; i < n; i++) {
-			// res += gaussian_int((x-param[3*i+0])/param[3*i+1])*param[3*i+1]*param[3*i+2];
+			// Add integral from 0 to x:
 			res += gaussian_int((x-param[3*i+0])/param[3*i+1])*param[3*i+2]*param[3*i+1];
+			// Subtract integral from to leftmost point:
+			res -=  gaussian_int((leftx-param[3*i+0])/param[3*i+1])*param[3*i+2]*param[3*i+1];
 		}
 		return res;
 	}
