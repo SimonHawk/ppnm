@@ -1,0 +1,14 @@
+set term svg background rgb "white" font ",16"
+set out "C.ODE.svg"
+
+#plot "out.dataC.txt" u 1:2 with lines title "y" \
+#   , "out.dataC.txt" u 1:3 with lines title "y'" 
+set xrange [0:2*pi]
+plot sin(x) with lines title "sin(x)" \
+	, "out.dataC.txt" u 1:2 with lines title "y" \
+	, cos(x) with lines title "cos(x)" \
+	, "out.dataC.txt" u 1:3 with lines title "y'"
+
+
+
+

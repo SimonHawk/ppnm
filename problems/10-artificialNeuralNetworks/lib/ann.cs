@@ -13,10 +13,10 @@ public class ann {
 				  // for each hidden layer neuron
 			      // Ordered so that a_i = param[3*i+0], b_i = param[3*i+1]
 				  // and w_i = param[3*i+2]
-	int _minimizationSteps; // The steps in the minimization.
+	protected int _minimizationSteps; // The steps in the minimization.
 	public int minimizationSteps {get{return _minimizationSteps;}}
 	
-	double _minimizationEps;
+	protected double _minimizationEps;
 	public double minimizationEps {get{return _minimizationEps;} set{_minimizationEps = value;}}
 
 	protected double leftx;
@@ -40,7 +40,7 @@ public class ann {
 		return feedforward(x, param);
 	}
 	
-	double feedforward(double x, vector paramVec) {
+	protected double feedforward(double x, vector paramVec) {
 		// Initiate the sum:
 		double y = 0;
 		// Calculate the sum:
@@ -72,11 +72,10 @@ public class ann {
 		for(int i = 0; i < n; i++) {
 			xstart[3*i+0] = xmin + i*xstep;
 			xstart[3*i+1] = xstep;
-			xstart[3*i+2] = 0;
+			xstart[3*i+2] = 1;
 		}
 		
 		// Error.Write($"xstart = {xstart}\n");
-		
 
 		Error.Write("Starting minimization!\n");
 		vector xopt = minimization.qnewton(deviation, xstart, _minimizationEps, ref _minimizationSteps);
