@@ -28,7 +28,11 @@ public class annODE : ann {
 	public double feedforward_prime(double x, vector paramVec) {
 		double res = 0;
 		for(int i = 0; i < n; i++) {
-			res += gaussian_prime((x - paramVec[3*i+0])/paramVec[3*i+1])*paramVec[3*i    +2]/paramVec[3*i+1];
+			double a = paramVec[3*i+0];
+			double b = paramVec[3*i+1];
+			double w = paramVec[3*i+2];
+			res += gaussian_prime((x - a)/b)*w/b;
+			// res += gaussian_prime((x - paramVec[3*i+0])/paramVec[3*i+1])*paramVec[3*i    +2]/paramVec[3*i+1];
 		}
 		return res;
 	}
@@ -40,7 +44,11 @@ public class annODE : ann {
 	public double feedforward_2prime(double x, vector paramVec) {
 		double res = 0;
 		for(int i = 0; i < n; i++) {
-			res += gaussian_2prime((x - paramVec[3*i+0])/paramVec[3*i+1])*paramVec[3*i+2]/(paramVec[3*i+1]*paramVec[3*i+1]);
+			double a = paramVec[3*i+0];
+			double b = paramVec[3*i+1];
+			double w = paramVec[3*i+2];
+			// res += gaussian_2prime((x - paramVec[3*i+0])/paramVec[3*i+1])*paramVec[3*i+2]/(paramVec[3*i+1]*paramVec[3*i+1]);
+			res += gaussian_2prime((x - a)/b)*w/b/b;
 		}
 		return res;
 	}
@@ -59,15 +67,17 @@ public class annODE : ann {
 			double delta = 0;
 			// Calculate and add the integral part:
 			Func<double, double> integrand = (x) => 
-				Abs(Phi(feedforward_2prime(x, paramVec), feedforward_prime(x, paramVec), feedforward(x, paramVec), x)); 
+				Pow(Phi(feedforward_2prime(x, paramVec), feedforward_prime(x, paramVec), feedforward(x, paramVec), x), 2); 
 			int evals = 0;
-			delta += integrator.O4AT(integrand, a, b, Sqrt(eps), eps, ref evals);
-			
+			delta += integrator.O4AT(integrand, a, b, eps, eps, ref evals);
+			Error.Write($"Integral part of delta = {delta}\n");	
 			// Calculate the deviation of the value and add it:
-			delta += Abs(feedforward(c, paramVec) - yc)*(b-a);
+			delta += Pow(Abs(feedforward(c, paramVec) - yc), 2)*(b-a);
 			
 			// Calculate the deviation of the derivative and add it:
-			delta += Abs(feedforward_prime(c, paramVec) - yc_prime)*(b-a);
+			delta += Pow(Abs(feedforward_prime(c, paramVec) - yc_prime), 2)*(b-a);
+			// Print the deviation for debugging:
+			Error.Write($"delta = {delta}\n");
 			return delta;
 		};
 		
@@ -77,12 +87,12 @@ public class annODE : ann {
 		double xstep = (b - a)/(n-1); 
 		for(int i = 0; i < n; i++) { 
 			xstart[3*i+0] = a + i*xstep; 
-			xstart[3*i+1] = xstep; 
+			xstart[3*i+1] = 1; 
 			xstart[3*i+2] = 1; 
 		} 
 
 		vector xopt = minimization.qnewton(deviation, xstart, eps, ref _minimizationSteps);
-		
+		Error.Write($"Minimization steps = {_minimizationSteps}\n");	
 		param = xopt;		
 
 	}

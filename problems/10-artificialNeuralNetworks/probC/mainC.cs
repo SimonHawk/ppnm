@@ -33,7 +33,7 @@ class mainC {
 		var outfile = new System.IO.StreamWriter("out.dataC.txt");
 		int NPoints = 100;
 		for(double x = a; x <= b; x += (b-a)/NPoints) {
-			outfile.Write("{0} {1} {2}\n", x, network.feedforward(x), network.feedforward_prime(x));
+			outfile.Write("{0} {1} {2} {3}\n", x, network.feedforward(x), network.feedforward_prime(x), network.feedforward_2prime(x));
 		}
 		outfile.Close();
 
