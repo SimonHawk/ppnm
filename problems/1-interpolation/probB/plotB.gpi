@@ -1,8 +1,9 @@
-set term svg background rgb "white"
+set term svg background rgb "white" font ",16" size 600,600
 set out "PlotB.svg"
-set size 1,1
+#set size 1,1
+
 set origin 0,0
-set multiplot layout 2,2
+set multiplot layout 2,2 title "Qubic spline, with approximate derivative and integral, of sin(x)"
 plot "out.B.txt" u 1:2 with lines title "qspline" \
 	, "out.testData.txt" u 1:2 with points title "Sampled Sin"
 plot "out.B.txt" u 1:3 with lines title "Derivative" \

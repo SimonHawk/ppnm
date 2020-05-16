@@ -17,7 +17,8 @@ dataMaker.exe: $(LOCAL_LIB)/dataMaker.cs math.dll
 	mcs -out:$@ -reference:math.dll $<
 
 MATLIB = ../../../lib/matlib
-SRC := $(MATLIB)/matrix/vector.cs
+SRC := $(MATLIB)/matrix/matrix.cs
+SRC += $(MATLIB)/matrix/vector.cs
 SRC += $(LOCAL_LIB)/search.cs
 SRC += $(LOCAL_LIB)/linterp.cs
 SRC += $(LOCAL_LIB)/dataMaker.cs

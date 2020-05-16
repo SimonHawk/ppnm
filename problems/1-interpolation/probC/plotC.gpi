@@ -1,14 +1,16 @@
-set term svg background rgb "white"
+set term svg background rgb "white" font ",14" size 600,600
 set out "PlotC.svg"
 set size 1,1
 set origin 0,0
-set multiplot layout 2,2
+set multiplot layout 2,2 title "Cubic spline, with approximated derivative and integral, of sin(x)\nand comparison with plotutils spline"
 plot "out.C.txt" u 1:2 with lines title "cspline" \
 	, "out.testData.txt" u 1:2 with points title "Sampled Sin"
 plot "out.C.txt" u 1:3 with lines title "Derivative" \
 	, cos(x) with lines title "cos(x)"
 plot "out.C.txt" u 1:4 with lines title "Integral" \
 	, 1-cos(x) with lines title "1-cos(x)"
+plot "out.C.txt" u 1:2 with lines title "My cspline" \
+	, "out.plotutilsSpline.txt" u 1:2 with lines title "Plotutils spline"
 unset multiplot
 #	, sin(x) with lines title "Sin(x)" \
 #	, (1-cos(x)) with lines title "1-Cos(x)"

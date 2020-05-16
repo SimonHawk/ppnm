@@ -21,6 +21,7 @@ testQSpline.exe: testQSpline.cs math.dll
 
 MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/vector.cs
+SRC += $(MATLIB)/matrix/matrix.cs
 SRC += $(LOCAL_LIB)/search.cs
 SRC += $(LOCAL_LIB)/qspline.cs
 SRC += $(LOCAL_LIB)/dataMaker.cs
