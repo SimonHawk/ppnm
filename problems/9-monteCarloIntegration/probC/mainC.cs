@@ -19,8 +19,8 @@ class mainC {
 		Write($"a0:                {a0}\n");
 		Write($"b0:                {b0}\n");
 		Write($"Q0:                {result0[0]}\n");
-		Write($"error:            {result0[1]}\n");
-		Write($"Deviation:        {result0[0]-expRes0}\n");
+		Write($"Error estimate:    {result0[1]}\n");
+		Write($"Deviation:         {result0[0]-expRes0}\n");
 
 		
 		Func<vector, double> f2 = (v) => Sin(v[0])*Sin(v[0]);
@@ -36,7 +36,7 @@ class mainC {
 		Write($"a2:                {a2}\n");
 		Write($"b2:                {b2}\n");
 		Write($"Q:                 {result2[0]}\n");
-		Write($"Error:             {result2[1]}\n");
+		Write($"Error estimate:    {result2[1]}\n");
 		Write($"Deviation:         {result2[0]-expRes2}\n");
 		
 
@@ -53,7 +53,7 @@ class mainC {
 		Write($"a3:                {a3}\n");
 		Write($"b3:                {b3}\n");
 		Write($"Q:                 {result3[0]}\n");
-		Write($"Error:             {result3[1]}\n");
+		Write($"Error estimate:    {result3[1]}\n");
 		Write($"Deviation:         {result3[0]-expRes3}\n");
 		
 

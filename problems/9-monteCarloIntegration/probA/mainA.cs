@@ -42,7 +42,7 @@ class mainA {
 		Write($"Upper limit:                      {b}\n");
 		Write($"Number of samples:                {N}\n");
 		Write($"Integration result:               {intResult[0]}\n");
-		Write($"Integration error:                {intResult[1]}\n");
+		Write($"Error estimate:                   {intResult[1]}\n");
 		Write($"Deviation from analytical result: {intResult[0]-res}\n");
 	} 
 }

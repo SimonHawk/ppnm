@@ -7,7 +7,10 @@ set ylabel "y"
 
 set size square
 
+set parametric
+set trange [0:2*pi]
+
 set style fill transparent solid 0.1 noborder
 set style circle radius 0.004
-plot "out.dataC.txt" index 1 u 1:2 w circles lc rgb "blue" notitle
-
+plot "out.dataC.txt" index 1 u 1:2 w circles lc rgb "blue" notitle \
+	, cos(t),sin(t) with lines lc rgb "black" title "circle"

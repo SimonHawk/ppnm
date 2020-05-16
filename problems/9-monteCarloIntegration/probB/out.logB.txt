@@ -1,1 +1,2 @@
 Problem B:
+See B.sigmaNDependence.svg

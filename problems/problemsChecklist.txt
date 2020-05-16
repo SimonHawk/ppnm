@@ -49,13 +49,16 @@ C: Not started.
 
 
 ---- PROBLEM 9: Monte Carlo Integration  ----
-A: 
-B: 
-C: 
+A: DONE, but only one simple integral other than the one Dimitri gave... 
+   Maybe try one of the ones from the original integration exercise?
+B: DONE
+C: Done, but C.comparison.svg shows that the stratified MC doesn't actually
+   improve the deviation. Compare to some of the other students solutions.
 
----- PROBLEM X:  ----
+
+---- PROBLEM 10: Atificial Neural Networks ----
 A: 
 B: 
-C: 
+C: DONE. Works very well. Dimitry suggests trying out some harder problem.
 
 

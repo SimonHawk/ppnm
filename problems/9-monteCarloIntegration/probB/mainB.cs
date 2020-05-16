@@ -6,6 +6,7 @@ class mainA {
 
 	static void Main() {
 		Write("Problem B:\n");
+		Write("See B.sigmaNDependence.svg\n");
 		// Now for Dimitris function:
 		/*
 		Func<vector, double> f = (v) =>
@@ -26,9 +27,12 @@ class mainA {
 		int Nmax = 50000;
 		int Nstep = (Nmax - Nmin)/100;
 		
+		vector intResult0 = mcIntegrator.plainmc(f, a, b, Nmax);
+		Func<double, double> simpleFit = (N) => intResult0[1]*Sqrt(Nmax)/Sqrt(N);
+
 		for(int N = Nmin; N <= Nmax; N += Nstep) {
-			vector fitResult = mcIntegrator.plainmc(f, a, b, N);
-			outfile.Write("{0} {1} {2}\n", N, fitResult[1], Abs(fitResult[0]-expectedRes));
+			vector intResult = mcIntegrator.plainmc(f, a, b, N);
+			outfile.Write("{0} {1} {2} {3}\n", N, intResult[1], Abs(intResult[0]-expectedRes), simpleFit(N));
 		}
 		
 		outfile.Close();	

@@ -3,14 +3,14 @@ Integrating Sin(x)^2 (From 0 to 2Pi):
 Lower limit:                      0.000000000 
 Upper limit:                      6.283185307 
 Number of samples:                10000
-Integration result:               3.14927359981341
-Integration error:                0.0222426886816629
-Deviation from analytical result: 0.00768094622361515
+Integration result:               3.11683934748356
+Error estimate:                   0.0220323436445251
+Deviation from analytical result: -0.0247533061062306
 
 Integrating the tripple integral: (Pi^3(1-Cos(x)Cos(y)Cos(z)))^-1 over x, y and z:
 Lower limit:                      0.000000000 0.000000000 0.000000000 
 Upper limit:                      3.141592654 3.141592654 3.141592654 
 Number of samples:                100000
-Integration result:               1.44611794417913
-Integration error:                0.0604061215702838
-Deviation from analytical result: 0.0529140144934499
+Integration result:               1.41756598815928
+Error estimate:                   0.0354012580668244
+Deviation from analytical result: 0.0243620584736051
