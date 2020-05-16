@@ -1,6 +1,10 @@
 set term svg background rgb "white" font ",16"
 set out "B.foundWavefunction.svg"
 
+set title "Wavefunction found by the shooting method,\ncorresponding to the eigenvalue -1/2"
+
+set ylabel "psi"
+set xlabel "r [a_0]"
 
 plot "out.probB.txt" index 0 using 1:2 with lines title "Found wavefunction" \
 	, "out.probB.txt" index 1 using 1:2 with lines title "Analytical result"

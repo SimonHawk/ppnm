@@ -19,6 +19,7 @@ class mainA {
 		Write($"Deviation from analytical result: {epsilon-res}\n");
 		Write($"Value of function in found root:  {M(epsilon)}\n");
 
+		Write("\nSee also B.foundWavefunction.svg for the corresponding wavefunction\n");
 
 		// Export the solution to the schrodinger equation:
 		List<double> ts = new List<double>();

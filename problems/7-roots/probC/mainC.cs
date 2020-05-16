@@ -7,7 +7,7 @@ class mainA {
 
 	static void Main() {
 		Write("Problem C:\n");
-				
+		Write("As shown in figure C.rMaxDepdence.svg, the improved boundry condition makes the solution converge much faster as a function of r_max.\n");				
 
 		var outfile = new System.IO.StreamWriter("out.probC.txt");
 

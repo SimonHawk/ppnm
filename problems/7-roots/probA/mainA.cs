@@ -16,7 +16,7 @@ class mainA {
 		vector root1 = rootFinder.newton(sin2, x0, epsilon:epsilon);
 		double res1 = PI;
 
-		Write($"Looking for root of Sin(x)^2 close to {x0[0]:f3}:\n");
+		Write($"\nLooking for root of Sin(x)^2 close to {x0[0]:f3}:\n");
 		Write($"Accuracy goal:                    {epsilon}\n");
 		Write($"Analytical root:                  {res1}\n");
 		Write($"Found root:                       {root1[0]}\n");
@@ -38,8 +38,10 @@ class mainA {
 		Write($"Analytical extremum:                     {res2.toString()}\n");
 		Write($"Found extremum:                          {root2.toString()}\n");
 		Write($"Deviation from analytical result:        {(root2-res2).toString()}\n");
-		Write($"Norm of derivative at root:              {f2(root2).norm()}\n");
-		Write($"Even though the method seems to overshoot the accuracy goal, debugging shows that the second-to-last newton step did not fulfill accuracy goal. The newton method simply gets very accurate when approaching the minimum.\n");
+		Write($"Norm of derivative of Rosenbrock function at root:\n");
+		Write($"                                         {f2(root2).norm()}\n");
+
+		Write($"\nEven though the method seems to overshoot the accuracy goal, debugging shows that the second-to-last newton step did not fulfill accuracy goal. The newton method simply gets very accurate when approaching the minimum.\n");
 
 	}
 

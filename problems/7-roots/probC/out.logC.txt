@@ -1,1 +1,2 @@
 Problem C:
+As shown in figure C.rMaxDepdence.svg, the improved boundry condition makes the solution converge much faster as a function of r_max.

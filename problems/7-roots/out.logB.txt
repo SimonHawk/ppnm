@@ -5,3 +5,5 @@ Analytical root:                  -0.5
 Found root:                       -0.499975031061598
 Deviation from analytical result: 2.49689384023144E-05
 Value of function in found root:  4.94552311868358E-07
+
+See also B.foundWavefunction.svg for the corresponding wavefunction
