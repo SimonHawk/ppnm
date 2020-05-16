@@ -1,0 +1,11 @@
+Fitting the Briet-Wigner function to the Higgs boson data:
+Accuracy goal of minimazation: 1E-06
+Guessed starting parameters:
+Guessed m:       126
+Guessed Gammma:  5
+Guessed A:       15
+Found parameters:
+m:               125.97218766797
+Gammma:          2.08632949459438
+A:               9.87620947646467
+Steps used:      18

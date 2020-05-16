@@ -35,7 +35,27 @@ A: DONE
 B: DONE
 C: DONE
 
+
+---- PROBLEM 7: Root finding ----
+A: DONE
+B: DONE
+C: DONE
+
+
+---- PROBLEM 8: Minimization ----
+A: DONE
+B: DONE
+C: Not started.
+
+
+---- PROBLEM 9: Monte Carlo Integration  ----
+A: 
+B: 
+C: 
+
 ---- PROBLEM X:  ----
 A: 
 B: 
 C: 
+
+

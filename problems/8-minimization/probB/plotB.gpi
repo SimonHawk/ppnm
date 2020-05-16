@@ -9,3 +9,4 @@ set grid
 
 plot "higgsData.txt" u 1:2:3 with errorbars title "Higgs data" \
 	, "out.probB.txt" u 1:2 with lines title "Optimized fit"
+

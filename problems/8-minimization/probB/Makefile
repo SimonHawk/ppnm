@@ -1,10 +1,10 @@
 all: B.higgsFit.svg out.logB.txt
 
-B.higgsFit.svg: plotB.gpi higgsData.txt
+B.higgsFit.svg: plotB.gpi higgsData.txt out.probB.txt
 	gnuplot $<
 
-out.logB.txt: mainB.exe
-	mono $< 1> $@
+out.logB.txt out.probB.txt: mainB.exe
+	mono $< 1> out.logB.txt
 
 mainB.exe: mainB.cs math.dll
 	mcs -reference:math.dll -out:$@ $<
