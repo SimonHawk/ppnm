@@ -1,5 +1,4 @@
 all: out.logA.txt
-	cat out.logA.txt
 
 out.logA.txt: mainA.exe
 	mono $< 1> out.logA.txt
@@ -9,6 +8,7 @@ mainA.exe: mainA.cs math.dll
 
 MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/vector.cs
+SRC += $(MATLIB)/matrix/matrix.cs
 LOCAL_LIB = ../lib
 SRC += $(LOCAL_LIB)/integrator.cs
 

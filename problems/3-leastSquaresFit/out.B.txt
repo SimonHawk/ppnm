@@ -1,7 +1,16 @@
-Covariance Matrix: 
+Problem B:
+Fitting the same data to the same function as in problem A, but now finding uncertainties:
+Found covariance matrix:
     0.001     0.000 
     0.000     0.000 
-ln(a) = 4.958669 +/- 0.029838, lambda = 0.171379 +/- 0.003536
-From a = exp(ln(a)) => da = Sqrt(exp(ln(a)))^2*dln(a)^2) = 4.248985
-From t_(1/2) = ln(2)/lambda => dt_1/2 = ln(2)/lambda^2  * dlambda = 0.083438
-a = 142.404081 +/- 4.248985, t_1/2 = 4.044518 +/- 0.083438
+
+The found fitting parameters with uncertainties:
+ln(a)    = 4.958669 +/- 0.029838
+lambda   = 0.171379 +/- 0.003536
+
+Calculating the uncertainties of a and t_1/2 from the fitting parameters:
+a = exp(ln(a)) => sigma_a = Sqrt(exp(ln(a)))^2*dln(a)^2)
+t_(1/2) = ln(2)/lambda => sigma_t_1/2 = ln(2)/lambda^2  * dlambda
+
+a       = 142.404081 +/- 4.248985
+t_1/2   = 4.044518 +/- 0.083438

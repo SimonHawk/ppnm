@@ -1,3 +1,10 @@
-From Least Square fit I get:
-ln(a) = 4.95866865452411, lambda = 0.171379430616684
-a = 142.404080608249, t_1/2 = log(2)/lambda = 4.04451793348687
+Least squares fit to the given data table
+to the fitting function ln(y) = ln(a)*lambda*t
+ln(a)                   = 4.95866865452411
+lambda                  = 0.171379430616684
+
+From this I calculate:
+a                       = 142.404080608249
+t_1/2 = log(2)/lambda   = 4.04451793348687
+
+See also the plot of the fit in PlotA.svg

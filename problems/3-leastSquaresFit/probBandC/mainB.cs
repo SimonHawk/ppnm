@@ -4,6 +4,7 @@ using static System.Math;
 
 class mainB {
 	static void Main() {
+		Write("Problem B:\n");
 		// Define the function that transforms the y parameters to the
 		// uncertainties in the y parameters. In this case, dy = y/20:
 		Func<double, double> errorFunc = (x) => x / 20;
@@ -34,20 +35,30 @@ class mainB {
 		// cs[1] = -lambda
 		vector cs = leastSquares.calculateC(logDat, fs);
 		matrix Sigma = leastSquares.calculateSigma(logDat, fs);
-		Sigma.print("Covariance Matrix: ");
+		Write("Fitting the same data to the same function as in problem A, but now finding uncertainties:\n");
+		Sigma.print("Found covariance matrix:");
 		vector dc = calculate_dc(Sigma);
 		
-		// Write out the result:	
-		Write($"ln(a) = {cs[0]:f6} +/- {dc[0]:f6}, lambda = {-cs[1]:f6} +/- {dc[1]:f6}\n");
+		// Write out the result:
+		Write("\nThe found fitting parameters with uncertainties:\n");
+		Write($"ln(a)    = {cs[0]:f6} +/- {dc[0]:f6}\n");
+		Write($"lambda   = {-cs[1]:f6} +/- {dc[1]:f6}\n");
 		
 		// Calculate uncertainties of a and t_1/2. Note: Simple error 
 		// propagation is sufficient, as the covariances do not contribute
 		// to the uncertainties in this case.
 		double da = Exp(cs[0])*dc[0];
 		double dt12 = Log(2)/((-cs[1])*(-cs[1]))*dc[1];
-		Write($"From a = exp(ln(a)) => da = Sqrt(exp(ln(a)))^2*dln(a)^2) = {da:f6}\n");
-		Write($"From t_(1/2) = ln(2)/lambda => dt_1/2 = ln(2)/lambda^2  * dlambda = {dt12:f6}\n");
-		Write($"a = {Exp(cs[0]):f6} +/- {da:f6}, t_1/2 = {Log(2)/(-cs[1]):f6} +/- {dt12:f6}\n");
+		Write("\nCalculating the uncertainties of a and t_1/2 from the fitting parameters:\n");
+		Write($"a = exp(ln(a)) => sigma_a = Sqrt(exp(ln(a)))^2*dln(a)^2)\n");
+	//	Write($"sigma_a = {da:f6}\n");
+
+		Write($"t_(1/2) = ln(2)/lambda => sigma_t_1/2 = ln(2)/lambda^2  * dlambda\n");
+	//	Write($"sigma_t_1/2 = {dt12:f6}\n");
+		
+		Write($"\na       = {Exp(cs[0]):f6} +/- {da:f6}\n");
+		Write($"t_1/2   = {Log(2)/(-cs[1]):f6} +/- {dt12:f6}\n");
+		
 		
 		// Write out the functional valus in a new file, out.bestFitB.txt
 		var writer = new System.IO.StreamWriter("out.bestFitB.txt");

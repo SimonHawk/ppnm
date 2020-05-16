@@ -30,9 +30,14 @@ class mainA {
 		// cs[0] = ln(a)
 		// cs[1] = -lambda
 		vector cs = leastSquares.calculateC(logDat, fs);
-		Write($"From Least Square fit I get:\n");
-		Write($"ln(a) = {cs[0]}, lambda = {-cs[1]}\n");
-		Write($"a = {Exp(cs[0])}, t_1/2 = log(2)/lambda = {Log(2)/(-cs[1])}\n");
+		Write($"Least squares fit to the given data table\n");
+		Write($"to the fitting function ln(y) = ln(a)*lambda*t\n");
+		Write($"ln(a)                   = {cs[0]}\n");
+		Write($"lambda                  = {-cs[1]}\n");
+		Write($"\nFrom this I calculate:\n");
+		Write($"a                       = {Exp(cs[0])}\n");
+		Write($"t_1/2 = log(2)/lambda   = {Log(2)/(-cs[1])}\n");
+		Write("\nSee also the plot of the fit in PlotA.svg\n");
 		var writer = new System.IO.StreamWriter("out.bestFit.txt");
 		
 		Func<double, double> fitFun = x => {

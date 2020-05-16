@@ -1,52 +1,53 @@
 Problem A:
 First, testing the Jacobi sweeping on a random matrix A:Random matrix A: 
-    0.144     0.683     0.482     0.229     0.249 
-    0.683     0.161     0.938     0.476     0.939 
-    0.482     0.938     0.034     0.218     0.204 
-    0.229     0.476     0.218     0.984     0.303 
-    0.249     0.939     0.204     0.303     0.774 
-Sweeps = 6
+    0.250     0.148     0.707     0.179     0.244 
+    0.148     0.626     0.988     0.511     0.086 
+    0.707     0.988     0.035     0.400     0.807 
+    0.179     0.511     0.400     0.918     0.568 
+    0.244     0.086     0.807     0.568     0.844 
+Sweeps = 50
 Reduced matrix A: 
-   -1.037     0.000     0.000     0.000     0.000 
-    0.683    -0.342     0.000     0.000     0.000 
-    0.482     0.938     0.374     0.000     0.000 
-    0.229     0.476     0.218     0.705     0.000 
-    0.249     0.939     0.204     0.303     2.398 
-Eigenvalues: -1.037 -0.342 0.374 0.705 2.398 
+   -1.070     0.000     0.000     0.000     0.000 
+    0.148     0.076     0.000     0.000     0.000 
+    0.707     0.988     0.519     0.000     0.000 
+    0.179     0.511     0.400     0.672     0.000 
+    0.244     0.086     0.807     0.568     2.475 
+Eigenvalues: -1.070 0.076 0.519 0.672 2.475 
 Eigenvectors V: 
-    0.150     0.793     0.454    -0.146     0.348 
-   -0.770    -0.202     0.113    -0.195     0.562 
-    0.536    -0.567     0.470    -0.172     0.375 
-    0.060     0.007    -0.056     0.908     0.412 
-    0.308     0.095    -0.746    -0.295     0.503 
+    0.327    -0.758     0.486     0.053     0.281 
+    0.434     0.363    -0.060     0.690     0.448 
+   -0.785     0.063     0.318     0.163     0.502 
+   -0.066    -0.359    -0.780    -0.151     0.485 
+    0.290     0.400     0.224    -0.687     0.483 
 A in the eigenbasis: 
-   -1.037     0.000     0.000     0.000     0.000 
-    0.000    -0.342     0.000     0.000     0.000 
-    0.000     0.000     0.374     0.000     0.000 
-    0.000     0.000     0.000     0.705     0.000 
-    0.000     0.000     0.000     0.000     2.398 
+   -1.070     0.000     0.000     0.000     0.000 
+    0.000     0.076     0.000     0.000     0.000 
+    0.000     0.000     0.519     0.000     0.000 
+    0.000     0.000     0.000     0.672     0.000 
+    0.000     0.000     0.000     0.000     2.475 
 
 Now for solving the paticle in a box problem.
-Construct a 64x64 HamiltonComparing some of the eigenvalues with the analytical ones:
-k: 0, analytical: 9.870, calculated: 9.868, difference: -0.002
-k: 1, analytical: 39.478, calculated: 39.448, difference: -0.031
-k: 2, analytical: 88.826, calculated: 88.671, difference: -0.156
-k: 3, analytical: 157.914, calculated: 157.422, difference: -0.491
-k: 4, analytical: 246.740, calculated: 245.542, difference: -1.198
-k: 5, analytical: 355.306, calculated: 352.823, difference: -2.483
-k: 6, analytical: 483.611, calculated: 479.015, difference: -4.595
-k: 7, analytical: 631.655, calculated: 623.824, difference: -7.830
-k: 8, analytical: 799.438, calculated: 786.912, difference: -12.526
-k: 12, analytical: 1667.963, calculated: 1613.806, difference: -54.157
-k: 16, analytical: 2852.316, calculated: 2695.416, difference: -156.900
-k: 20, analytical: 4352.496, calculated: 3991.440, difference: -361.056
-k: 24, analytical: 6168.503, calculated: 5453.589, difference: -714.914
-k: 28, analytical: 8300.337, calculated: 7027.383, difference: -1272.954
-k: 32, analytical: 10747.999, calculated: 8654.184, difference: -2093.816
-k: 36, analytical: 13511.488, calculated: 10273.376, difference: -3238.112
-k: 40, analytical: 16590.805, calculated: 11824.631, difference: -4766.174
-k: 44, analytical: 19985.949, calculated: 13250.147, difference: -6735.802
-k: 48, analytical: 23696.920, calculated: 14496.811, difference: -9200.109
-k: 52, analytical: 27723.719, calculated: 15518.173, difference: -12205.546
-k: 56, analytical: 32066.345, calculated: 16276.176, difference: -15790.169
-k: 60, analytical: 36724.798, calculated: 16742.578, difference: -19982.220
+Construct a 64x64 Hamilton, and the Jacobi method to find the eigenvalues:
+Comparing some of the eigenvalues with the analytical ones:
+k:  0.0, analytical:       9.87, calculated:       9.87, difference:   -0.002
+k:  1.0, analytical:      39.48, calculated:      39.45, difference:   -0.031
+k:  2.0, analytical:      88.83, calculated:      88.67, difference:   -0.156
+k:  3.0, analytical:     157.91, calculated:     157.42, difference:   -0.491
+k:  4.0, analytical:     246.74, calculated:     245.54, difference:   -1.198
+k:  5.0, analytical:     355.31, calculated:     352.82, difference:   -2.483
+k:  6.0, analytical:     483.61, calculated:     479.02, difference:   -4.595
+k:  7.0, analytical:     631.65, calculated:     623.82, difference:   -7.830
+k:  8.0, analytical:     799.44, calculated:    786.912, difference:  -12.526
+k: 12.0, analytical:    1667.96, calculated:   1613.806, difference:  -54.157
+k: 16.0, analytical:    2852.32, calculated:   2695.416, difference: -156.900
+k: 20.0, analytical:    4352.50, calculated:   3991.440, difference: -361.056
+k: 24.0, analytical:    6168.50, calculated:   5453.589, difference: -714.914
+k: 28.0, analytical:    8300.34, calculated:   7027.383, difference: -1272.954
+k: 32.0, analytical:   10748.00, calculated:   8654.184, difference: -2093.816
+k: 36.0, analytical:   13511.49, calculated:  10273.376, difference: -3238.112
+k: 40.0, analytical:   16590.80, calculated:  11824.631, difference: -4766.174
+k: 44.0, analytical:   19985.95, calculated:  13250.147, difference: -6735.802
+k: 48.0, analytical:   23696.92, calculated:  14496.811, difference: -9200.109
+k: 52.0, analytical:   27723.72, calculated:  15518.173, difference: -12205.546
+k: 56.0, analytical:   32066.34, calculated:  16276.176, difference: -15790.169
+k: 60.0, analytical:   36724.80, calculated:  16742.578, difference: -19982.220

@@ -33,6 +33,8 @@ class mainA {
 		Write($"Deviation from analytical result:       {Q2-res2}\n");
 		Write($"Specified tolerance (delta + acc*|Q|):  {delta-eps*Abs(Q2)}\n");
 		Write($"Number of function evaluations:         {evals2}\n");
+		
+		Write($"\nConclusion: The adaptive integrator calculated integrals to a better accuracy than required.\n");
 
 	}
 }

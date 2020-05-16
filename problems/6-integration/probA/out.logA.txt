@@ -12,3 +12,5 @@ Analytical result:                      3.14159265358979
 Deviation from analytical result:       5.28684117373501E-07
 Specified tolerance (delta + acc*|Q|):  -2.14159318227391E-05
 Number of function evaluations:         160
+
+Conclusion: The adaptive integrator calculated integrals to a better accuracy than required.

@@ -19,6 +19,8 @@ Evalutaions of the function:       16
 In comparison, the matlib o8av rutine:
 Deviation:                         2.49554111619865E-05
 Evaluations of the function:       8
+
+
 --------------------------------------------------------------
 Integrating Log(x)/Sqrt(x), with delta = 0.0001, eps = 0
 Without any transformation:
@@ -42,3 +44,5 @@ Deviation:                         5.93321920163703E-05
 Evaluations of the function:       104
 
 Conclusion: The Clenshaw-Curtis Transformation reduces the required amount of function evaluations immensly
+
+See also B.PiAccuracy.svg for the accuracy of the different methods in finding the value of Pi.

@@ -1,5 +1,6 @@
 set term svg background rgb "white" font ",16"
 set out "PlotA.svg"
+set title "Least squares fit to the ThX data"
 set xlabel "Time in Days"
 set ylabel "Activity"
 plot "../data.A.txt" u 1:2:($2/20) with yerrorbars title "Data" \

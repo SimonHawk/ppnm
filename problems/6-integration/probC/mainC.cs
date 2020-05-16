@@ -7,7 +7,8 @@ class mainA {
 		double pInf = double.PositiveInfinity;
 		double nInf = double.NegativeInfinity;	
 
-		Write("Problem c:\n");
+		Write("Problem C:\n");
+		Write("\nComparing my infinite limit transformation with the matlib o8av one.\n");
 		Func<double, double> f1 = (x) => Exp(-x*x);
 		double delta = 1e-5;
 		double eps = 1e-5;
@@ -80,7 +81,7 @@ class mainA {
 		// First integral: Unit gaussian:
 		int evals = 0;
 		double Q = integrator.O4ATV(f, a, b, delta, eps, ref evals);		
-				
+		Write("Using my infinite limit transformation\n");	
 		Write($"Result:                                 {Q}\n");
 		Write($"Analytical result):                     {res}\n");
 		Write($"Deviation from analytical result:       {Q-res}\n");
@@ -90,8 +91,8 @@ class mainA {
 		int evals_o8av = 0;
 		Func<double, double> f_o8av = (x) => {evals_o8av++; return f(x);};		
 		double Q_o8av = quad.o8av(f_o8av, a, b, delta, eps);
-		Write("Comparing with o8av:\n");
-		Write($"o8av deviation:                         {Q_o8av-res}\n");
+		Write("Comparing to matlib o8av:\n");
+		Write($"o8av deviation from analytical:         {Q_o8av-res}\n");
 		Write($"o8av function evaluations:              {evals_o8av}\n");
 	}
 }

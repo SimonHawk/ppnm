@@ -112,7 +112,7 @@ public class rkode {
 		int steps = 0;
 		while(t < b - h) {
 			steps++;
-			Write($"\nStep nr. {steps}, h = {h}\n");
+			// Write($"\nStep nr. {steps}, h = {h}\n");
 			// Do the step:	
 			res = stepper(f, t, y, h);
 			yt = res[0];

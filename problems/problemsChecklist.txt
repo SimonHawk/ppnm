@@ -12,14 +12,30 @@ B: DONE
 C: DONE
 
 
----- PROBLEM 3:  ----
-A: 
-B: 
-C: 
+---- PROBLEM 3: Least Squares ----
+A: DONE
+B: Needs to compare with modern value... But what is ThX???
+C: DONE
 
+
+---- PROBLEM 4: Eigenvalues  ----
+A: DONE
+B: Needs major rework in presentation of results, but methods seem to work.
+C: Not started.
+
+
+---- PROBLEM 5: ODE  ----
+A: DONE
+B: DONE
+C: Done, but figure could be more illustrative... Maybe make a gif?
+
+
+---- PROBLEM 6: Integration ----
+A: DONE
+B: DONE
+C: DONE
 
 ---- PROBLEM X:  ----
 A: 
 B: 
 C: 
-

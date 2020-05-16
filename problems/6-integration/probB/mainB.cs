@@ -58,7 +58,7 @@ class mainB {
 		double Q2_o8av = quad.o8av(f2_o8av, 0, 1,  delta, eps);	
 
 		double res2 = -4.0;
-		Write("--------------------------------------------------------------\n");
+		Write("\n\n--------------------------------------------------------------\n");
 		Write($"Integrating Log(x)/Sqrt(x), with delta = {delta}, eps = {eps}\n");
 		Write("Without any transformation:\n");
 		Write($"Result:                            {Q2_O4AT}\n");
@@ -77,7 +77,9 @@ class mainB {
 		Write("\nIn comparison, the matlib o8av rutine:\n");
 		Write($"Deviation:                         {Q2_o8av - res2}\n");
 		Write($"Evaluations of the function:       {evals2_o8av}\n");
+		
 		Write("\nConclusion: The Clenshaw-Curtis Transformation reduces the required amount of function evaluations immensly\n");
+		Write("\nSee also B.PiAccuracy.svg for the accuracy of the different methods in finding the value of Pi.\n");
 
 		// Now for calculating PI as accurately as possible:
 		var outfile = new System.IO.StreamWriter("out.PIAccuracy.txt");

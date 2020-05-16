@@ -1,5 +1,4 @@
 all: out.logB.txt B.PiAccuracy.svg
-	cat out.logB.txt
 
 B.PiAccuracy.svg: plotB.gpi out.PIAccuracy.txt
 	gnuplot $<
@@ -12,6 +11,7 @@ mainB.exe: mainB.cs math.dll
 
 MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/vector.cs
+SRC += $(MATLIB)/matrix/matrix.cs
 SRC += $(MATLIB)/integration/quado8.cs
 LOCAL_LIB = ../lib
 SRC += $(LOCAL_LIB)/integrator.cs

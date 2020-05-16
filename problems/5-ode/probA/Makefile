@@ -12,6 +12,7 @@ mainA.exe: mainA.cs math.dll
 
 MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/vector.cs
+SRC += $(MATLIB)/matrix/matrix.cs
 LOCAL_LIB = ../lib
 SRC += $(LOCAL_LIB)/rkode.cs
 math.dll: $(SRC)

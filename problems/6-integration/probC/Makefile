@@ -1,5 +1,4 @@
 all: out.logC.txt
-	cat out.logC.txt
 
 out.logC.txt: mainC.exe
 	mono $< 1> out.logC.txt
@@ -9,6 +8,7 @@ mainC.exe: mainC.cs math.dll
 
 MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/vector.cs
+SRC += $(MATLIB)/matrix/matrix.cs
 SRC += $(MATLIB)/integration/quado8.cs
 LOCAL_LIB = ../lib
 SRC += $(LOCAL_LIB)/integrator.cs

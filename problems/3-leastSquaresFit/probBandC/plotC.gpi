@@ -1,5 +1,6 @@
 set term svg background rgb "white" font ",16"
 set out "PlotC.svg"
+set title "Best fit to ThX data, and estimated confidence interval"
 set xlabel "Time in Days"
 set ylabel "Activity"
 plot "../data.A.txt" u 1:2:($2/20) with yerrorbars title "Data" \

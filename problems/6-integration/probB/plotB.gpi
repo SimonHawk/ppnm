@@ -18,7 +18,7 @@ plot "out.PIAccuracy.txt" u 1:2 with lines title "O4AT" \
 set xlabel "Delta"
 set key top left
 set ylabel "# Evals"
-set title "Number of evaluations"
+set title "Number of function evaluations"
 plot "out.PIAccuracy.txt" u 1:5 with lines title "O4AT" \
 	, "out.PIAccuracy.txt" u 1:6 with lines title "CC" \
 	, "out.PIAccuracy.txt" u 1:7 with lines title "o8av"

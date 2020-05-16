@@ -19,3 +19,7 @@ SRC += $(LOCAL_LIB)/matrixHelp.cs
 SRC += $(LOCAL_LIB)/hamilton.cs
 math.dll: $(SRC)
 	mcs -target:library -out:$@ $^
+
+.PHONY:clean
+clean:
+	rm -f out.*.txt *.exe *.svg

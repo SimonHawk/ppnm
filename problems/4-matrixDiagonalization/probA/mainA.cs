@@ -24,7 +24,7 @@ class mainA {
 		Write("\nNow for solving the paticle in a box problem.\n");
 		// Test solving hamilton:
 		int N = 64;
-		Write($"Construct a {N}x{N} Hamilton");
+		Write($"Construct a {N}x{N} Hamilton, and the Jacobi method to find the eigenvalues:\n");
 		matrix Hbox = hamilton.boxHamilton(N);
 		matrix Hcopy = Hbox.copy();
 		// Hbox.print("Hamilton matrix: ");
@@ -40,13 +40,14 @@ class mainA {
 		for(int k = 0; k < N/8; k++) {
 			double analytical = PI*PI*(k+1)*(k+1);
 			double calculated = ebox[k];
-			Write($"k: {k}, analytical: {analytical:f3}, calculated: {calculated:f3}, difference: {calculated - analytical:f3}\n");
+			Write($"k: {k,4:N1}, analytical: {analytical,10:f2}, calculated: {calculated,10:f2}, difference: {calculated - analytical,8:f3}\n");
 		}		
 		for(int k = N/8; k < N; k += 4) {
 			double analytical = PI*PI*(k+1)*(k+1);
 			double calculated = ebox[k];
-			Write($"k: {k}, analytical: {analytical:f3}, calculated: {calculated:f3}, difference: {calculated - analytical:f3}\n");
+			Write($"k: {k,4:N1}, analytical: {analytical,10:f2}, calculated: {calculated,10:f3}, difference: {calculated - analytical,8:f3}\n");
 		}		
+		Write("\nThese results are mostly limited by the discreet approximation of the Hamiltonian.\n");
 		
 		// Write eigenvectors out so they can be plotted:
 		var outfile = new System.IO.StreamWriter("out.dataA.txt");
