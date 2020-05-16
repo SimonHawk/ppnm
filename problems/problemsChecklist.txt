@@ -1,14 +1,25 @@
 Problem checklist/todo:
 
 ---- PROBLEM 1: Interpolation ----
+A: DONE 
+B: DONE
+C: DONE
+
+
+---- PROBLEM 2: Linear Equations ----
+A: DONE 
+B: DONE
+C: DONE
+
+
+---- PROBLEM 3:  ----
 A: 
 B: 
 C: 
 
 
----- PROBLEM 2 ----
+---- PROBLEM X:  ----
 A: 
 B: 
 C: 
-
 
