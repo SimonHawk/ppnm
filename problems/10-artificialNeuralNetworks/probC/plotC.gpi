@@ -1,18 +1,32 @@
-set term svg background rgb "white" font ",16" size 600,800
+set term svg background rgb "white" font ",16" size 800,1000
 set out "C.ODE.svg"
 
 set grid
 
-set multiplot layout 3,2 columnsfirst
+set multiplot layout 4,2 columnsfirst
 
 set xrange [0:2*pi]
+set title "u'' = -u, sin function"
 plot sin(x) with lines title "sin(x)" \
-	, "out.dataC.txt" u 1:2 with lines title "y"
+	, "out.dataC.txt" index 0 u 1:2 with lines title "y"
+unset title
 
 plot cos(x) with lines title "cos(x)" \
-	, "out.dataC.txt" u 1:3 with lines title "y'"
+	, "out.dataC.txt" index 0  u 1:3 with lines title "y'"
 
 plot -sin(x) with lines title "-sin(x)" \
-	, "out.dataC.txt" u 1:4 with lines title "y''"
+	, "out.dataC.txt" index 0 u 1:4 with lines title "y''"
 
-plot "out.dataC.txt" u 1:($2+$4)**2 with lines title "(y + y'')^2"
+plot "out.dataC.txt" index 0 u 1:($2+$4)**2 with lines title "(y + y'')^2"
+
+#----------- Bessel functions ---------------------
+set xrange [0:4]
+set title "0'th order bessel function of the first kind"
+plot "out.dataC.txt" index 1 u 1:2 with lines title "y" \
+	, besj0(x) with lines title "J_0(x)"
+unset title 
+
+plot "out.dataC.txt" index 1 u 1:3 with lines title "y'"
+
+plot "out.dataC.txt" index 1 u 1:4 with lines title "y''"
+

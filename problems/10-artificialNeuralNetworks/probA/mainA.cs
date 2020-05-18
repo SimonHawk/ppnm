@@ -5,6 +5,7 @@ using System;
 class mainA {
 	
 	static void Main() {
+		Write("Problem A\n");
 		// Define the activation function as a gaussian:
 		Func<double, double> gaussian = (x) => Exp(-x*x);
 		// Make a 10 node network:

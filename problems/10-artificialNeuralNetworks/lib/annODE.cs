@@ -70,14 +70,14 @@ public class annODE : ann {
 				Pow(Phi(feedforward_2prime(x, paramVec), feedforward_prime(x, paramVec), feedforward(x, paramVec), x), 2); 
 			int evals = 0;
 			delta += integrator.O4AT(integrand, a, b, eps, eps, ref evals);
-			Error.Write($"Integral part of delta = {delta}\n");	
+			// Error.Write($"Integral part of delta = {delta}\n");	
 			// Calculate the deviation of the value and add it:
 			delta += Pow(Abs(feedforward(c, paramVec) - yc), 2)*(b-a);
 			
 			// Calculate the deviation of the derivative and add it:
 			delta += Pow(Abs(feedforward_prime(c, paramVec) - yc_prime), 2)*(b-a);
 			// Print the deviation for debugging:
-			Error.Write($"delta = {delta}\n");
+			// Error.Write($"delta = {delta}\n");
 			return delta;
 		};
 		

@@ -1,10 +1,16 @@
 all: probA probB probC
 
-probC:
+probC: out.logC.txt
 	
 probB: out.logB.txt	B.higgsFit.svg
 
 probA: out.logA.txt
+
+out.logC.txt: probC/out.logC.txt
+	cp $< $@
+
+probC/out.logC.txt: probC/Makefile
+	cd probC/ && make
 
 B.higgsFit.svg: probB/B.higgsFit.svg
 	cp $< $@
@@ -25,4 +31,5 @@ probA/out.logA.txt: probA/Makefile
 clean:
 	cd probA/ && make clean
 	cd probB/ && make clean
+	cd probC/ && make clean
 	rm -f *.svg out.*.txt

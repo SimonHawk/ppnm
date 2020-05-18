@@ -57,8 +57,9 @@ C: Done, but C.comparison.svg shows that the stratified MC doesn't actually
 
 
 ---- PROBLEM 10: Atificial Neural Networks ----
-A: 
-B: 
-C: DONE. Works very well. Dimitry suggests trying out some harder problem.
+A: DONE
+B: DONE.
+C: DONE. Works, but very slow... And not great for bessel function...
+
 
 

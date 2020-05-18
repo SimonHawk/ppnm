@@ -5,6 +5,7 @@ using System;
 class mainA {
 	
 	static void Main() {
+		Write("\nProblem B:\n");
 		// Make a 10 node network:
 		int n = 10;
 		annGaussian gaussian10 = new annGaussian(n);

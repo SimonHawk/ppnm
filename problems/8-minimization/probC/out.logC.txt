@@ -1,0 +1,19 @@
+Problem C:
+
+Minimizing the Rosenbrock function using Downhill Simplex:
+Starting point:           3.000000000 3.000000000 
+Accuracy goal:            1E-08
+Found minimum:            1.000000001 1.000000002 
+Deviation from expected:  0.000000001 0.000000002 
+Minimization steps:       213
+Function calls:           369
+
+Minimizing the Himmelblau function using Downhill Simplex:
+Starting point:           3.500000000 2.500000000 
+Accuracy goal:            1E-05
+Found minimum:            3.000000000 2.000000000 
+Deviation from expected:  0.000000000 0.000000000 
+Minimization steps:       87
+Function calls:           144
+
+Comparing with the qnewton method from Problem A, Downhill Simplex seems to use less function calls and achieve better precision.

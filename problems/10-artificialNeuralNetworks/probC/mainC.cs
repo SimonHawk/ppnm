@@ -27,6 +27,7 @@ class mainC {
 		annODE network = new annODE(n);
 		
 		// Train the network on the function:
+		Error.Write("OBS! Starting training for u'' = -u. This takes around 20 seconds on my computer!\n");
 		network.train(a, b, c, yc, ypc, diff_eq);
 	
 		// Export data to make figure:
@@ -45,7 +46,7 @@ class mainC {
 		
 		// Define the limits:
 		double a2 = 0.0;
-		double b2 = 20.0;
+		double b2 = 4.0;
 		
 		// Define the known position:
 		double c2 = 0;
@@ -57,7 +58,8 @@ class mainC {
 		// Make the neutral network, 10 nodes:
 		int n2 = 10;
 		annODE network2 = new annODE(n);
-
+	
+		Error.Write("OBS! Starting training for bessel equations, this takes around 100 seconds on my computer!\n");
 		network2.train(a2, b2, c2, yc2, ypc2, diff_eq2);
 		
 		// Write it out:
