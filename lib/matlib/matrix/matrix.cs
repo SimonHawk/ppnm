@@ -184,6 +184,17 @@ public void print(string s){
 		}
 	}
 
+public override string ToString() {
+	string resString = "";
+	for(int ir = 0; ir < this.size1; ir++){
+		for(int ic = 0; ic < this.size2; ic++){
+			resString += $"{this[ir, ic],9:F3} ";
+		}
+		resString += "\n";
+	}
+	return resString;
+}
+
 public static bool double_equal(double a, double b, double eps=1e-6){
 	if(System.Math.Abs(a-b)<eps)return true;
 	if(Math.Abs(a-b)/(Math.Abs(a)+Math.Abs(b)) < eps/2)return true;

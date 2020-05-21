@@ -20,8 +20,8 @@ C: DONE
 
 ---- PROBLEM 4: Eigenvalues  ----
 A: DONE
-B: Needs major rework in presentation of results, but methods seem to work.
-C: Not started.
+B: Seems done, but is everyting except cyclic is very unstable
+C: Done, but seems unstable.
 
 
 ---- PROBLEM 5: ODE  ----

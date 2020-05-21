@@ -1,3 +1,11 @@
+all: probA probB probC
+
+probC: C.comparison.svg
+
+probB: B1.nDependence.svg B3.comparison.svg
+
+probA: out.A.txt
+
 
 out.A.txt PlotA.svg: probA/out.A.txt probA/PlotA.svg
 	cd probA/ && cp out.A.txt ../ && cp PlotA.svg ../

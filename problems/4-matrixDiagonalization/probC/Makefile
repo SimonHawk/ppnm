@@ -1,16 +1,13 @@
-all: out.B.txt B1.nDependence.svg B3.comparison.svg 
-	cat out.B.txt
+all: out.C.txt C.comparison.svg
+	cat out.C.txt
 
-B3.comparison.svg: plotB3.gpi out.dataB3.txt
+C.comparison.svg: plotC.gpi out.dataC.txt
 	gnuplot $<
 
-B1.nDependence.svg: plotB1.gpi out.dataB1.txt
-	gnuplot $<
+out.C.txt out.dataC.txt: mainC.exe
+	mono $< 1> out.C.txt
 
-out.B.txt out.dataB1.txt out.dataB3.txt: mainB.exe
-	mono $< 1> out.B.txt
-
-mainB.exe: mainB.cs math.dll
+mainC.exe: mainC.cs math.dll
 	mcs -reference:math.dll -out:$@ $<
 
 EXT_LIB = ../../../lib
@@ -25,6 +22,7 @@ SRC += $(EXT_LIB)/qrDecomp/qr_gs.cs
 LOCAL_LIB = ../lib
 SRC += $(LOCAL_LIB)/jacobiCyclic.cs
 SRC += $(LOCAL_LIB)/jacobiValues.cs
+SRC += $(LOCAL_LIB)/jacobiClassic.cs
 SRC += $(LOCAL_LIB)/matrixHelp.cs
 SRC += $(LOCAL_LIB)/hamilton.cs
 math.dll: $(SRC)

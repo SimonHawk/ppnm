@@ -1,0 +1,12 @@
+set term svg background rgb "white" font ",16"
+set out "B1.nDependence.svg"
+
+set title  "n dependence of diagonalization time for cyclic jacobi"
+
+set log xy
+
+set xlabel "n"
+set ylabel "Diagonalization time [ms]"
+
+plot "out.dataB1.txt" index 0 using (exp($1)):(exp($2)) with lines title "Full cyclic" \
+    ,"out.dataB1.txt" index 1 using (exp($1)):(exp($2)) with lines title "Fit"

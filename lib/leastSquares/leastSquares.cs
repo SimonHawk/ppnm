@@ -81,6 +81,7 @@ public class data {
 			ys[i] = double.Parse(words[1]);
 			dys[i] = errorFunc(ys[i]);
 		}
+		reader.Close();
 	}
 	
 }

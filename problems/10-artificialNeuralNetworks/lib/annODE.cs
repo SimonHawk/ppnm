@@ -61,7 +61,7 @@ public class annODE : ann {
 		double yc_prime, 
 		Func<double, double, double, double, double> Phi
 	) {
-		double eps = 1e-6;
+		double eps = 1e-5;
 		// Define the deviation function:
 		Func<vector, double> deviation = (paramVec) => {
 			double delta = 0;
@@ -83,17 +83,29 @@ public class annODE : ann {
 		
 		// Define the starting vector:
 		vector xstart = new vector(3*n); 
+		vector xstartStep = new vector(3*n);
 		// Dimitri suggested something like this: 
 		double xstep = (b - a)/(n-1); 
 		for(int i = 0; i < n; i++) { 
 			xstart[3*i+0] = a + i*xstep; 
 			xstart[3*i+1] = 1; 
 			xstart[3*i+2] = 1; 
-		} 
 
-		vector xopt = minimization.qnewton(deviation, xstart, eps, ref _minimizationSteps);
+			double factor = 0.5;
+
+			xstartStep[3*i+0] = factor*xstep;
+			xstartStep[3*i+1] = factor;
+			xstartStep[3*i+2] = factor;
+		} 
+		
+		simplex minimizer = new simplex(deviation, 3*n);
+		Error.Write("Initialized the minimizer!\n");		
+		double stepsize = 1;	
+	
+		_minimizationSteps = minimizer.search(xstart, xstartStep, eps);
+
 		Error.Write($"Minimization steps = {_minimizationSteps}\n");	
-		param = xopt;		
+		param = minimizer.minimum;		
 
 	}
 

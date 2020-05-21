@@ -17,6 +17,7 @@ SRC += $(MATLIB)/matrix/vector.cs
 SRC += $(MATLIB)/complex/complex.cs
 SRC += $(MATLIB)/complex/cmath.cs
 SRC += $(LIB)/minimization/qnewton.cs
+SRC += $(LIB)/minimization/simplex.cs
 SRC += $(LIB)/math/math.cs
 SRC += $(LIB)/integration/integrator.cs
 LOCAL_LIB = ../lib

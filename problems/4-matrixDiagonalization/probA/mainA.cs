@@ -12,7 +12,7 @@ class mainA {
 		A.print("Random matrix A: ");
 		matrix V = new matrix(n, n);
 		vector e = new vector(n);
-		int sweeps = jacobi.jacobi_cyclic(A, e, V);
+		int sweeps = jacobi.cyclic(A, e, V);
 		Write($"Sweeps = {sweeps}\n");
 		A.print("Reduced matrix A: ");
 		e.print("Eigenvalues: ");
@@ -30,7 +30,7 @@ class mainA {
 		// Hbox.print("Hamilton matrix: ");
 		matrix Vbox = new matrix(N, N);
 		vector ebox = new vector(N);
-		sweeps = jacobi.jacobi_cyclic(Hbox, ebox, Vbox);
+		sweeps = jacobi.cyclic(Hbox, ebox, Vbox);
 		// Write("Jacobi diagonalization done after {0} sweeps\n", sweeps);
 		// Vbox.print($"Box potential eigenvectors: ");
 		// (Vbox.transpose()*Hcopy*Vbox).print("HBox in the eigenbasis: ");
@@ -60,7 +60,6 @@ class mainA {
 			outfile.Write("\n");
 		}
 		outfile.Close();
-
 
 	}	
 }

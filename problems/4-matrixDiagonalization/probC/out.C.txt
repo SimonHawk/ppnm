@@ -1,0 +1,30 @@
+
+
+Problem C:
+Diagonalizing matrix A1 by classical jacobi:
+A1 = 
+    0.800     0.489     0.832     0.770     0.519 
+    0.489     0.608     0.670     0.857     0.200 
+    0.832     0.670     0.844     0.114     0.559 
+    0.770     0.857     0.114     0.224     0.732 
+    0.519     0.200     0.559     0.732     0.722 
+Done in 52 rotations
+A after diagonalization:
+A1 = 
+    0.800     0.000     0.000     0.000     0.000 
+    0.489     0.608     0.000     0.000     0.000 
+    0.832     0.670     0.844     0.000     0.000 
+    0.770     0.857     0.114     0.224     0.000 
+    0.519     0.200     0.559     0.732     0.722 
+Found eigenvalues: -0.871745451 0.100085206 0.467735751 0.540200437 2.961838513 
+A1 in the eigenbasis:
+V1^T * A1 * V1 = 
+   -0.872     0.000     0.000     0.000     0.000 
+    0.000     0.100     0.000     0.000     0.000 
+    0.000     0.000     0.468     0.000     0.000 
+    0.000     0.000     0.000     0.540     0.000 
+    0.000     0.000     0.000     0.000     2.962 
+
+
+See C.comparison.svg for a comparison of rotations and time to diagonalizes matricies with the cyclic and classic jacobi method.
+ It seems that the classic approach uses less rotations, but the two are about equal in computation time, due to the overhead of having to update the array of highest indexes.

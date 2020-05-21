@@ -14,7 +14,8 @@ MATLIB = ../../../lib/matlib
 SRC := $(MATLIB)/matrix/matrix.cs
 SRC += $(MATLIB)/matrix/vector.cs
 LOCAL_LIB = ../lib
-SRC += $(LOCAL_LIB)/jacobi.cs
+SRC += $(LOCAL_LIB)/jacobiCyclic.cs
+SRC += $(LOCAL_LIB)/jacobiValues.cs
 SRC += $(LOCAL_LIB)/matrixHelp.cs
 SRC += $(LOCAL_LIB)/hamilton.cs
 math.dll: $(SRC)

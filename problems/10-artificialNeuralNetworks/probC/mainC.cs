@@ -23,7 +23,7 @@ class mainC {
 		double ypc = -1.0;
 		
 		// Make the neutral network, 10 nodes:
-		int n = 10;
+		int n = 20;
 		annODE network = new annODE(n);
 		
 		// Train the network on the function:
