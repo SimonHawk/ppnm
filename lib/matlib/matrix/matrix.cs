@@ -175,11 +175,13 @@ public matrix transpose(){
 	}
 
 public void print(){print("");}
-public void print(string s){
+
+public void print(string s, string fmt=":F3"){
 	System.Console.WriteLine(s);
 	for(int ir=0;ir<this.size1;ir++){
 	for(int ic=0;ic<this.size2;ic++)
-		System.Console.Write("{0,9:F3} ",this[ir,ic]);
+		// System.Console.Error.Write("{0,9"+fmt+"} ");
+		System.Console.Write("{0,9"+fmt+"} ", this[ir,ic]);
 		System.Console.WriteLine();
 		}
 	}

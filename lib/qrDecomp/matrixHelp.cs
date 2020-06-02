@@ -1,4 +1,4 @@
-public static class matrixHelp {
+static class matrixHelp {
 	public static matrix makeRandomMatrix(int n, int m) {
         var rand = new System.Random();
 

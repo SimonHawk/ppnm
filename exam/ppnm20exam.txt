@@ -1,0 +1,11 @@
+Practical Programming and Numerical Methods 2020
+================================================
+
+The examination problems and examination instructions can be found at
+the homepage of the course at the folllowing address:
+
+http://62.107.14.89/~fedorov/prog/
+
+The backup is at the following address,
+
+https://phys.au.dk/~fedorov/backup/prog/
