@@ -85,6 +85,47 @@ public class lanczos {
 
 		}
 	}
+
+
+	// Find m eigenvalues of the matrix A, by calculating the T and V
+	// matricies, finding the eigenvalues of the T matrix by jacobi
+	// rotations, and transforming these to the eigenvalues of the A matrix
+	public static void eigenvalues(
+		matrix A, // Matrix to find eigenvalues for, size n x n
+		matrix E, // The n x m matrix to contain the m found eigenvalues
+		vector e  // The m entry vector to contain the found eigenvalues
+	) {
+		int n = A.size1;
+		int m = e.size;
+
+		// Initialize the V and T matricies:
+		matrix V = new matrix(n, m);
+		matrix T = new matrix(m,m);
+		
+		// Do the Lanczos algorithm:
+		iterations(A, V, T);
+		
+		// Now for the eigenvalues and eigenvector of T:
+		// Initialize storage:
+		vector e_T = new vector(m);
+		matrix E_T = new matrix(m,m);
+				
+		jacobi.cyclic(T, e_T, E_T);
+		
+		// Now transform the result based on:
+		// The eigenvalues of T are also eigenvalues of A:
+		//		e_A[i] = e_T[i] 
+		// The corresponding eigenvectors can be found as: 
+		//      E_A[i] = V*E_T[i]:
+		for(int i = 0; i < m; i++) {
+			e[i] = e_T[i];
+			E[i] = V*E_T[i];
+		}
+
+		// Done!
+
+	}
+
 }
 
 

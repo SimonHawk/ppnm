@@ -28,8 +28,8 @@ public class demo {
 
 		Write("\nAs n = m here, so V*T*V^T should give A:\n");
 		(V*T*V.T-A).print("V*T*V^T - A = ", fmt);
+
 	
 	}
-
 
 }

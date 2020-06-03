@@ -1,0 +1,76 @@
+Demonstration of finding eigenvalues
+For a random symmetric matrix of size 6x6
+The Lanczos algorithm will attempt to produce all 6 eigenvalues.
+The following eigenvalues were found:
+-0.983551013 -0.772485290 0.041698098 0.328094278 0.742613279 3.453965716 
+
+With the corresponding eigenvectors:
+
+   -0.647     0.115    -0.170     0.556    -0.324     0.353 
+    0.426     0.646    -0.224    -0.189    -0.398     0.396 
+   -0.464    -0.159    -0.019    -0.760     0.039     0.425 
+    0.304    -0.507     0.528     0.107    -0.449     0.398 
+   -0.061     0.432     0.633     0.139     0.535     0.323 
+    0.296    -0.317    -0.491     0.217     0.498     0.525 
+
+
+In comparison, the cyclic jacobi method find the following:
+Eigenvectors: 
+-0.983551013 -0.772485290 0.041698098 0.328094278 0.742613279 3.453965716 
+
+And corresponding eigenvalues:
+
+    0.647     0.115    -0.170     0.556    -0.324     0.353 
+   -0.426     0.646    -0.224    -0.189    -0.398     0.396 
+    0.464    -0.159    -0.019    -0.760     0.039     0.425 
+   -0.304    -0.507     0.528     0.107    -0.449     0.398 
+    0.061     0.432     0.633     0.139     0.535     0.323 
+   -0.296    -0.317    -0.491     0.217     0.498     0.525 
+
+It is seen for n = m, that the Lanczos and Jacobi methods produce the same eigenvalues and eigenvector (abeit sometimes with a difference of a sign on the vectors).
+
+
+
+Setting m < n enables Makes the behavoir different:
+For a random symmetric matrix of size 8x8
+The Lanczos algorithm will attempt to produce m = 6 eigenvalues.
+The following eigenvalues were found:
+-1.293804031 -0.424490997 0.045252053 0.764168853 1.259397436 4.228023460 
+
+With the corresponding eigenvectors:
+
+    0.051     0.319     0.431    -0.007    -0.620     0.299 
+    0.332    -0.057     0.468     0.404     0.064     0.399 
+   -0.543     0.506     0.196    -0.153     0.378     0.290 
+   -0.336     0.174    -0.293    -0.064    -0.081     0.312 
+   -0.339    -0.320    -0.417     0.478    -0.312     0.385 
+   -0.189    -0.647     0.334    -0.217     0.343     0.337 
+    0.276    -0.116    -0.218    -0.713    -0.250     0.378 
+    0.503     0.274    -0.372     0.158     0.430     0.406 
+
+
+In comparison, the cyclic jacobi method find the following:
+Eigenvectors: 
+-1.293815968 -0.469286746 -0.088754542 -0.076294448 0.333784918 0.781893521 1.259502305 4.228023461 
+
+And corresponding eigenvalues:
+
+   -0.050    -0.233    -0.516    -0.437     0.107     0.004     0.621     0.299 
+   -0.332     0.094     0.552    -0.401     0.336    -0.373    -0.064     0.399 
+    0.542    -0.568     0.058    -0.095     0.308     0.218    -0.382     0.290 
+    0.338     0.008     0.263    -0.212    -0.811    -0.093     0.089     0.312 
+    0.338     0.155    -0.008     0.636     0.203    -0.415     0.309     0.385 
+    0.190     0.713    -0.359    -0.210     0.093     0.208    -0.343     0.337 
+   -0.277     0.029     0.295     0.282    -0.006     0.743     0.246     0.378 
+   -0.503    -0.287    -0.376     0.256    -0.271    -0.192    -0.428     0.406 
+
+The largest and lowest eigenvectors and corresponding eigenvalues are well approximated by the Lanczos method, but they deviate more than the correct Jacobi method found ones as we get closer to the 'middle' eigenvalues.
+
+However, this can be useful in compressing large matricies into smalller matricies, conserving the extreme eigenvalues.
+
+
+Many eigenvalues:
+Lanczos
+-2.569086037 -2.227305521 -1.815188453 -1.172018852 0.205777804 0.521732567 1.431625442 2.088386862 2.724902512 15.569243083 
+Jacobi
+-2.651960266 -2.503699011 -2.311708469 -2.045610525 -1.732652919 -1.649340044 -1.415020034 -1.315365705 -1.117744759 -0.974612348 -0.894113946 -0.572421142 -0.420524262 -0.136063967 0.166314308 0.180586742 0.295029086 0.385567022 0.546775113 0.973967250 1.087858582 1.272444524 1.423033026 1.663443697 1.714646802 1.946520216 2.039743681 2.536155740 2.726846258 15.569243083 
