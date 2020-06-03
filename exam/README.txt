@@ -9,23 +9,31 @@ Number 0: Lanczos tridiagonalization algorithm.
 
 
 --- STRUCTURE: ---
-In this folder (/exam/) you will find code output txt files that 
+In this folder (/exam/) you will find output .txt and .svg files that 
 demonstrate that my solution works as intended:
 
 	out.demo.txt:   Shows that my implemented Lanczos algorithm produces
-				    the intended V and T matricies for a random symmetric
-				    matrix.
+	                the intended V and T matricies for a random symmetric
+	                matrix.
 
 	out.eigen.txt:  Demonstrates how the Lanczos algorithm can be used to
-					find correct eigenvalues and eigenvectors of a random 
-					symmetric matrix.
+	                find correct eigenvalues and eigenvectors of a random 
+	                symmetric matrix.
+
+	out.convergence.txt:  Intruduces the test of convergence of the eigen-
+	                      values and vectors with the number of itterations
+                          which is shown in convergence.svg
+	
+	convergence.svg:      Shows how the eigen-values and -vectors converge
+	                      for a number of itterations going to the size of
+	                      the matrix. Both for the highest and lowest eigen
+	                      values.
 
 The implementation of the numerical method can be found in the /exam/lib/ 
 folder.
 
 The demonstration code that outputs the demonstration files can be found in 
 the /exam/demo/ folder.
-
 
 
 --- FORMATTING ---
