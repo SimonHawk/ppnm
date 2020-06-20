@@ -10,6 +10,8 @@ set datafile missing "NaN"
 set log y
 set format y "%g"
 
+set key font ",14"
+
 set title "Deviation of highest eigenvalues"
 set ylabel "e_m_i - e_i"
 plot "data.convergence.txt" index 1 u 1:2 with lines title "Highest" \
@@ -25,7 +27,7 @@ plot "data.convergence.txt" index 3 u 1:2 with lines title "Highest" \
 	,"data.convergence.txt" index 3 u 1:4 with lines title "3rd highest" \
 	,"data.convergence.txt" index 3 u 1:5 with lines title "4th highest"
 
-set title "Deviation of lowest eigenvectors"
+set title "Deviation of lowest eigenvalues"
 set ylabel "e_m_i - e_i"
 plot "data.convergence.txt" index 0 u 1:2 with lines title "Lowest" \
 	,"data.convergence.txt" index 0 u 1:3 with lines title "2nd lowest" \

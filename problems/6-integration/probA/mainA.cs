@@ -18,7 +18,7 @@ class mainA {
 		Write($"Result:                                 {Q1}\n");
 		Write($"Analytical result:                      {res1}\n");
 		Write($"Deviation from analytical result:       {Q1-res1}\n");
-		Write($"Specified tolerance (delta + acc*|Q|):  {delta-eps*Abs(Q1)}\n");
+		Write($"Specified tolerance (delta + acc*|Q|):  {delta+eps*Abs(Q1)}\n");
 		Write($"Number of function evaluations:         {evals1}\n");
 
 		// Integrating 4*Sqrt(1-x^2):
@@ -31,7 +31,7 @@ class mainA {
 		Write($"Result:                                 {Q2}\n");
 		Write($"Analytical result:                      {res2}\n");
 		Write($"Deviation from analytical result:       {Q2-res2}\n");
-		Write($"Specified tolerance (delta + acc*|Q|):  {delta-eps*Abs(Q2)}\n");
+		Write($"Specified tolerance (delta + acc*|Q|):  {delta+eps*Abs(Q2)}\n");
 		Write($"Number of function evaluations:         {evals2}\n");
 		
 		Write($"\nConclusion: The adaptive integrator calculated integrals to a better accuracy than required.\n");
