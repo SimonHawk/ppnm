@@ -20,10 +20,11 @@ public class ann {
 	public double minimizationEps {get{return _minimizationEps;} set{_minimizationEps = value;}}
 
 	protected double leftx;
-
+	
+	int _maxMinimizationSteps;
 
 	// constructor for the class:
-	public ann(int hiddenNodes, Func<double, double> activationFunc) {
+	public ann(int hiddenNodes, Func<double, double> activationFunc, int maxMinimizationSteps=1000) {
 		n = hiddenNodes;
 		f = activationFunc;
 		// param will be all zeros for now
@@ -31,6 +32,7 @@ public class ann {
 		_minimizationSteps = 0;
 		_minimizationEps = 1e-6;
 		leftx = 0;
+		_maxMinimizationSteps = maxMinimizationSteps;
 
 	}
 
@@ -53,7 +55,7 @@ public class ann {
 	
 	// Method to train the network to find the best interpolation of the table:
 	public void train(vector xs, vector ys) {
-		Error.Write("Starting training!\n");
+		//Error.Write("Starting training!\n");
 		Func<vector, double> deviation = (paramVec) => {
 			double sum = 0;
 			for(int k = 0; k < xs.size; k++) {
@@ -77,13 +79,13 @@ public class ann {
 		
 		// Error.Write($"xstart = {xstart}\n");
 
-		Error.Write("Starting minimization!\n");
-		vector xopt = minimization.qnewton(deviation, xstart, _minimizationEps, ref _minimizationSteps);
+		//Error.Write($"Starting minimization! (maxSteps = {_maxMinimizationSteps})\n");
+		vector xopt = minimization.qnewton(deviation, xstart, _minimizationEps, ref _minimizationSteps, maxSteps:_maxMinimizationSteps);
 		
 		leftx = xs[0];
 		param = xopt;		
 		// param = xstart;
-		Error.Write("Training finised!\n");
+		//Error.Write("Training finised!\n");
 
 	}
 

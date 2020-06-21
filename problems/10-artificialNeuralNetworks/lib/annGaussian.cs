@@ -17,7 +17,7 @@ public class annGaussian : ann {
 	
 	// Make the constructor of the subclass call the constructor of the
 	// parent class:
-	public annGaussian(int hiddenNodes) : base(hiddenNodes, gaussian_f) { }
+	public annGaussian(int hiddenNodes, int maxMinimizationSteps=1000) : base(hiddenNodes, gaussian_f, maxMinimizationSteps:maxMinimizationSteps) { }
 
 	public double feedforward_prime(double x) {
 		double res = 0;

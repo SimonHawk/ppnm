@@ -1,9 +1,11 @@
-set term svg background rgb "white" font ",16" size 400,800 
+set term svg background rgb "white" font ",16" size 700,700 
 set out "B.interpolation.svg"
 
-set multiplot layout 3,1 title "Interpolation of sampled Sine function"
+set multiplot layout 2,2 title "Interpolation of sampled Sine function"
 
+set key font ",12"
 
+set title "Interpolation"
 plot "out.dataB.txt" index 0 u 1:2 with lines title "Interpolated function" \
    , "out.dataB.txt" index 0 u 1:3 with lines title "Sin(x)" \
    , "out.dataB.txt" index 3 u 1:2 title "Tabulated points"

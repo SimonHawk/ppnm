@@ -7,8 +7,9 @@ class mainA {
 	static void Main() {
 		Write("\nProblem B:\n");
 		// Make a 10 node network:
-		int n = 10;
-		annGaussian gaussian10 = new annGaussian(n);
+		int n = 11;
+		int maxSteps = 1000;
+		annGaussian gaussian10 = new annGaussian(n, maxMinimizationSteps:maxSteps);
 		
 		// Quick and dity test on sine funtion:
 		double xmin = 3;
@@ -20,17 +21,20 @@ class mainA {
 				
 		for(int i = 0; i < NPoints; i++) {
 			double x = (xmax-xmin)/(NPoints-1) * i + xmin;
-			Error.Write($"x = {x}\n");
+			//Error.Write($"x = {x}\n");
 			xs[i] = x;
 			ys[i] = Sin(x);	
 		}
 	
 		gaussian10.train(xs, ys);
-		Write("Completed training the sin function:\n");
+		Write("Training the neutral network to interpolate the Sine function:\n");
 		Write($"Sampled sine points:         {NPoints}\n");
+		Write($"Network nodes:               {n}\n");
 		Write($"Minimization accuracy goal:  {gaussian10.minimizationEps}\n");
 		Write($"Minimization steps:          {gaussian10.minimizationSteps}\n");
 		Write($"(OBS: Accuracy goal was not reached as maximum number of steps was reached)\n");
+
+		Write($"\nSee figure B.interpolation.svg for the result.\n");
 		
 		var outfile = new System.IO.StreamWriter("out.dataB.txt");
 		int plotPoints = 500;

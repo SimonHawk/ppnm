@@ -9,7 +9,8 @@ public class minimization {
 		vector xstart, 
 		double eps,
 		ref int steps,
-		matrix B=null // the inverse of the hesse matrix
+		matrix B=null, // the inverse of the hesse matrix
+		int maxSteps=999
 	) {	
 		steps += 1;
 		int n = xstart.size;
@@ -46,8 +47,8 @@ public class minimization {
 
 		double err = grad_f_s.simpleNorm();
 		
-		if(steps > 999) {
-			Error.Write($"qnewton: Maximum number of steps reached ({steps} steps), terminating minimization.\n");
+		if(steps > maxSteps) {
+			Error.Write($"qnewton: Maximum number of steps reached ({steps} steps, maxSteps = {maxSteps}), terminating minimization.\n");
 			return xstart + s;
 		} else if(err < eps) {
 			return xstart + s;
@@ -60,12 +61,12 @@ public class minimization {
 			vector u =  s - B*y;
 			
 			if(Abs(u.dot(y)) < 1e-6) {
-				return qnewton(f, xstart+s, eps, ref steps, B);
+				return qnewton(f, xstart+s, eps, ref steps, B, maxSteps:maxSteps);
 			} else {
 				// Calculate delta_B:
 				matrix delta_B = u.outer(u)/(u.dot(y));
 				// Do another step:
-			 	return qnewton(f, xstart+s, eps, ref steps, B+delta_B);	
+			 	return qnewton(f, xstart+s, eps, ref steps, B+delta_B, maxSteps:maxSteps);	
 			}
 		}
 	}

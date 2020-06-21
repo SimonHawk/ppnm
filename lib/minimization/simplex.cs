@@ -103,7 +103,7 @@ public class simplex {
 		updateHiLo();
 		int steps = 0;
 		while(steps < 10000 && size > eps) {
-			Error.Write($"Step nr: {steps}\n");
+			//Error.Write($"Step nr: {steps}\n");
 			steps++;
 			// Start by finding the reflection point:
 			vector p_re = reflection();
