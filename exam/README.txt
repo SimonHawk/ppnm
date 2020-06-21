@@ -70,6 +70,11 @@ demonstrate that my solution works as intended:
        Conclusion: Using the Lanczos algorithm first provides a massive
        speedup over the direct single value Jacobi method. However, my
        single value Jacobi never did work that well...
+       Furthermore, as shown with comparison_size.svg, the Lanczos approach
+       probably looses out on accuracy at the higher n. However, I have no
+       practical way of testing this, as calculating the highest eigenvalue
+       for n > 1000 using any other method I have access to would take a 
+       long time.
 
 
 

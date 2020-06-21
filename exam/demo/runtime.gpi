@@ -1,9 +1,7 @@
 set term svg background rgb "white" font ",16" size 600,500 
 set out "runtime.svg"
 
-
-
-set xlabel "m"
+set xlabel "n"
 
 set datafile missing "NaN"
 
@@ -12,8 +10,8 @@ set format y "%g"
 
 set key font ",14"
 
-set title "Runtime to calculate highest eigenvalue"
-set ylabel "e_m_i - e_i"
+set title "Runtime to calculate highest eigenvalue of a n x n matrix"
+set ylabel "Time [ms]"
 plot "data.runtime.txt" index 1 u 1:2 with lines title "Lanczos first" \
     ,"data.runtime.txt" index 0 u 1:2 with lines title "Pure single Jacobi" 
 
