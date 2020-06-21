@@ -61,5 +61,8 @@ class mainA {
 		}
 		outfile.Close();
 
+
+		Write("\nSee also the eigenfunctions in figure A.eigenfunctions.svg. I seem to have an off-by-one error in that plot.\n");
+
 	}	
 }

@@ -1,19 +1,30 @@
 all: probA probB probC
 
-probC: C.comparison.svg
+probC: C.comparison.svg out.C.txt
 
-probB: B1.nDependence.svg B3.comparison.svg
+probB: B1.nDependence.svg B3.comparison.svg out.B.txt
 
 probA: out.A.txt
 
+C.comparison.svg out.C.txt:
+	cd probC/ && make
+	cp probC/*.svg ./
+	cp probC/out.C.txt ./
 
-out.A.txt PlotA.svg: probA/out.A.txt probA/PlotA.svg
-	cd probA/ && cp out.A.txt ../ && cp PlotA.svg ../
+B1.nDependence.svg B3.comparison.svg out.B.txt:
+	cd probB/ && make
+	cp probB/*.svg ./
+	cp probB/out.B.txt ./
 
-probA/out.A.txt probA/PlotA.svg: probA/Makefile
+out.A.txt A.eigenfunctions.svg: probA/out.A.txt probA/A.eigenfunctions.svg
+	cd probA/ && cp out.A.txt ../ && cp A.eigenfunctions.svg ../
+
+probA/out.A.txt probA/A.eigenfunctions.svg: probA/Makefile
 	cd probA/ && make
 
 .PHONY:
 clean:
 	cd probA/ && make clean
-	rm -f out.*.txt Plot*.svg
+	cd probB/ && make clean
+	cd probC/ && make clean
+	rm -f out.*.txt *.svg

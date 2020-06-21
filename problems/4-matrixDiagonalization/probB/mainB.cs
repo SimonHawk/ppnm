@@ -47,6 +47,7 @@ class mainA {
 		vector c = leastSquares.calculateC(timingDat, fitFuns);		
 		Write($"Linear fit to (log(n), log(time)) suggests that the dependence is O(n^{c[1]:f4})\n");	
 		Write($"Total function: log(time) = {c[0]} + {c[1]}*log(n)\n");	
+		Write("Hereby I conclude that the function is indeed O(n^3)\n");
 		
 		fitDataFile = new System.IO.StreamWriter("out.dataB1.txt", true);
 		fitDataFile.Write("\n\n");
@@ -111,6 +112,9 @@ class mainA {
 			if(n != NMax3) outfile.Write("{0} {1} {2}\n", n, time, rot);
 		}
 		outfile.Close();
+		Write("\n\nProblem B.2:\nSee problem B.3.\n");
+		Write("\n\nProblem B.3 and problem B.4:\n");
+		Write("See B3.comparison.svg to see a comparison of the runtime and rotations needed to find the lowest eigenvalue by value-by-value method, full diagonalization by value-by-value method and full cyclic method.\nIt does seem like my single value-by-value method is unstable in runtime, although I have not been able to figure out why. As shown ealier it does calculate the correct eigenvalues though. For this unintended instability, I have subtracted a point from my score.\n");
 
 	}	
 
