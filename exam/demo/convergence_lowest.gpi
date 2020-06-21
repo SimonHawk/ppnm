@@ -1,0 +1,45 @@
+set term svg background rgb "white" font ",16" size 1100,900
+set out "convergence_lowest.svg"
+
+set multiplot layout 2,2 columnsfirst title "Convergence of the lowest eigen-values and -vectors as a function number of itterations m"
+
+set xlabel "m"
+
+set datafile missing "NaN"
+
+set log y
+set format y "%g"
+
+set key font ",14"
+
+set title "Deviation of highest eigenvalues"
+set ylabel "Abs(e_m_i - e_i)"
+plot "data.convergence_lowest.txt" index 1 u 1:2 with lines title "Highest" \
+	,"data.convergence_lowest.txt" index 1 u 1:3 with lines title "2nd highest" \
+	,"data.convergence_lowest.txt" index 1 u 1:4 with lines title "3rd highest" \
+	,"data.convergence_lowest.txt" index 1 u 1:5 with lines title "4th highest"
+
+
+set title "Deviation of highest eigenvectors"
+set ylabel "norm(E_m_i - E_i)"
+plot "data.convergence_lowest.txt" index 3 u 1:2 with lines title "Highest" \
+	,"data.convergence_lowest.txt" index 3 u 1:3 with lines title "2nd highest" \
+	,"data.convergence_lowest.txt" index 3 u 1:4 with lines title "3rd highest" \
+	,"data.convergence_lowest.txt" index 3 u 1:5 with lines title "4th highest"
+
+set title "Deviation of lowest eigenvalues"
+set ylabel "Abs(e_m_i - e_i)"
+plot "data.convergence_lowest.txt" index 0 u 1:2 with lines title "Lowest" \
+	,"data.convergence_lowest.txt" index 0 u 1:3 with lines title "2nd lowest" \
+	,"data.convergence_lowest.txt" index 0 u 1:4 with lines title "3rd lowest" \
+	,"data.convergence_lowest.txt" index 0 u 1:5 with lines title "4th lowest"
+
+set title "Deviation of lowest eigenvectors"
+set ylabel "norm(E_m_i - E_i)"
+
+plot "data.convergence_lowest.txt" index 2 u 1:2 with lines title "Lowest" \
+	,"data.convergence_lowest.txt" index 2 u 1:3 with lines title "2nd lowest" \
+	,"data.convergence_lowest.txt" index 2 u 1:4 with lines title "3rd lowest" \
+	,"data.convergence_lowest.txt" index 2 u 1:5 with lines title "4th lowest"
+
+

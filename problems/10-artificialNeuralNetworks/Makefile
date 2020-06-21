@@ -1,6 +1,7 @@
 all: probA probB probC
 
-probC: out.logC.txt C.ODE.svg
+# Commented out probC, as it doesn't work well, and is very slow.
+# probC: out.logC.txt C.ODE.svg
 
 probB: out.logB.txt B.interpolation.svg
 
@@ -38,7 +39,7 @@ probA/out.logA.txt probA/A.interpolation.svg: probA/Makefile
 clean:
 	cd probA/ && make clean
 	cd probB/ && make clean
-	cd probC/ && make clean
+	# cd probC/ && make clean
 	rm -f *.svg out.*.txt
 
 

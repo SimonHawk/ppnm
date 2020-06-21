@@ -6,11 +6,33 @@ public class lanczos {
 
 	// Wrapper method for giving the matrix A explicitly
 	public static void iterations(
-		matrix A, // The function v -> A*v
+		matrix A, // The input matrix
 		matrix V, // The n x m matrix to contain V
 		matrix T  // The m x m matrix to contain the tridiagonal T matrix
 	) {
 		Func<vector, vector> applyA = (v) => A*v;
+		iterations(applyA, V, T);
+	}
+
+	// Wrapper method to find the lowest eigenvalues faster than the
+	// highest, by going the other way in the application of A; that is
+	// by solving A*v2 = v1 instead of applying A*v1 = v2.
+	public static void iterations_lowest(
+		matrix A, // The input matrix 
+		matrix V, // The n x m matrix to contain V
+		matrix T  // The m x m matrix to contain the tridiagonal T matrix
+	) {
+		// We need to solve a number of equations like:
+		// A*x = b
+		// However, this can be simplified by first finding the QR
+		// decomposition of A:
+		qr_givens A_decomp = new qr_givens(A);
+		// Here the "A_decomp" object will be saved in the closure of the
+		// "applyA" anonymous function, and thereby the decomposition is
+		// only calculated once.
+		Func<vector, vector> applyA = (v) => {
+			return A_decomp.solve(v);
+		};
 		iterations(applyA, V, T);
 	}
 
@@ -91,9 +113,13 @@ public class lanczos {
 	// matricies, finding the eigenvalues of the T matrix by jacobi
 	// rotations, and transforming these to the eigenvalues of the A matrix
 	public static void eigenvalues(
-		matrix A, // Matrix to find eigenvalues for, size n x n
-		matrix E, // The n x m matrix to contain the m found eigenvalues
-		vector e  // The m entry vector to contain the found eigenvalues
+		matrix A,         // Matrix to find eigenvalues for, size n x n
+		matrix E,         // The n x m matrix to contain the m found 
+					      // eigenvalues
+		vector e,         // The m entry vector to contain the found 
+						  // eigenvalues
+		bool highest=true // Flag for if the highest or lowest eigenvalues 
+						  // should be found first
 	) {
 		int n = A.size1;
 		int m = e.size;
@@ -103,7 +129,8 @@ public class lanczos {
 		matrix T = new matrix(m,m);
 		
 		// Do the Lanczos algorithm:
-		iterations(A, V, T);
+		if(highest) iterations(A, V, T); 
+		else iterations_lowest(A, V, T);
 		
 		// Now for the eigenvalues and eigenvector of T:
 		// Initialize storage:

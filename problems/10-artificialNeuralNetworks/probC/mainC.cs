@@ -5,7 +5,7 @@ using System;
 class mainC {
 
 	static void Main() {
-		
+		Write("\nOBS: Note that I have given myself 0 points for this problem 10 C, as I do not think my solution works sufficiently well. I think my solution could work well with the right combination of parameters for the integration, starting parameters for the simplex minimization, number of nodes and allowed minimization steps, but this starting parameter space is too large for me to explore.\n");		
 		// Define the differential equation:
 		// d^2/dx^2 sin(x) = -sin(x)
 		// => f2p + f = 0:
@@ -23,12 +23,12 @@ class mainC {
 		double ypc = -1.0;
 		
 		// Make the neutral network, 10 nodes:
-		int n = 20;
+		int n = 5;
 		annODE network = new annODE(n);
 		
 		// Train the network on the function:
 		Error.Write("OBS! Starting training for u'' = -u. This takes around 20 seconds on my computer!\n");
-		network.train(a, b, c, yc, ypc, diff_eq);
+		network.train(a, b, c, yc, ypc, diff_eq, maxSteps:30000);
 	
 		// Export data to make figure:
 		var outfile = new System.IO.StreamWriter("out.dataC.txt");

@@ -1,6 +1,10 @@
 set term svg background rgb "white" font ",16"
 set out "A.interpolation.svg"
 
-plot "out.dataA.txt" index 0 u 1:2 with lines title "Interpolated function" \
-   , "out.dataA.txt" index 0 u 1:3 with lines title "Sin(x)" \
-   , "out.dataA.txt" index 1 u 1:2 title "Tabulated points"
+set title "Interpolation of sampled sine using gaussian activation functions, and a variable number of nodes"
+
+plot "out.dataA.txt" index 1 u 1:2 title "Tabulated points" \
+   , "out.dataA.txt" index 0 u 1:3 with lines title "AAN: 5 nodes" \
+   , "out.dataA.txt" index 0 u 1:4 with lines title "AAN: 11 nodes" \
+   , "out.dataA.txt" index 0 u 1:5 with lines title "AAN: 17 nodes" \
+   , "out.dataA.txt" index 0 u 1:2 with lines title "Sin(x)"

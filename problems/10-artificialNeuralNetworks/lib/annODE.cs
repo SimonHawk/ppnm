@@ -19,7 +19,7 @@ public class annODE : ann {
 	
 	// Make the constructor of the subclass call the constructor of the
 	// parent class:
-	public annODE(int hiddenNodes) : base(hiddenNodes, gaussian_f) { }
+	public annODE(int hiddenNodes, int maxMinimizationSteps=10000) : base(hiddenNodes, gaussian_f, maxMinimizationSteps:maxMinimizationSteps) { }
 
 	public double feedforward_prime(double x) {
 		return feedforward_prime(x, param);
@@ -59,9 +59,10 @@ public class annODE : ann {
 		double c, 
 		double yc, 
 		double yc_prime, 
-		Func<double, double, double, double, double> Phi
+		Func<double, double, double, double, double> Phi,
+		int maxSteps = 10000
 	) {
-		double eps = 1e-5;
+		double eps = 1e-7;
 		// Define the deviation function:
 		Func<vector, double> deviation = (paramVec) => {
 			double delta = 0;
@@ -102,7 +103,7 @@ public class annODE : ann {
 		Error.Write("Initialized the minimizer!\n");		
 		double stepsize = 1;	
 	
-		_minimizationSteps = minimizer.search(xstart, xstartStep, eps);
+		_minimizationSteps = minimizer.search(xstart, xstartStep, eps, maxSteps:maxSteps);
 
 		Error.Write($"Minimization steps = {_minimizationSteps}\n");	
 		param = minimizer.minimum;		

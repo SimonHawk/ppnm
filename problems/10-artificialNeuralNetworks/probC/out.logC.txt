@@ -1,0 +1,2 @@
+
+OBS: Note that I have given myself 0 points for this problem 10 C, as I do not think my solution works sufficiently well. I think my solution could work well with the right combination of parameters for the integration, starting parameters for the simplex minimization, number of nodes and allowed minimization steps, but this starting parameter space is too large for me to explore.

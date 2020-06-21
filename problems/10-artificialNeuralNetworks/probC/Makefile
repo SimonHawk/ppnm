@@ -5,7 +5,7 @@ C.ODE.svg: plotC.gpi out.dataC.txt
 	gnuplot $<
 
 out.logC.txt out.dataC.txt: mainC.exe
-	mono $< 1> $@
+	mono $< 1> out.logC.txt
 
 mainC.exe: mainC.cs math.dll
 	mcs -out:$@ -reference:math.dll $<

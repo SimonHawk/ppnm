@@ -12,10 +12,10 @@ public class convergence {
 		// Using m = n ensures that all the right eigenvalues are found
 		matrix E_full = new matrix(n, n);
 		vector e_full = new vector(n);
-		lanczos.eigenvalues(A, E_full, e_full);
+		lanczos.eigenvalues(A, E_full, e_full, highest:false);
 		
 		// Setup the output file:
-		var outfile = new System.IO.StreamWriter("data.convergence.txt");
+		var outfile = new System.IO.StreamWriter("data.convergence_lowest.txt");
 
 		int mMax = 50;
 		for(int m = 1; m < mMax; m++) {
@@ -23,7 +23,7 @@ public class convergence {
 			matrix E_m = new matrix(n, m);
 			vector e_m = new vector(m);
 			
-			lanczos.eigenvalues(A_m, E_m, e_m);
+			lanczos.eigenvalues(A_m, E_m, e_m, highest:false);
 		
 			Func<int, double> e = (i) => {
 				if(i < m) {return Abs(e_m[i]-e_full[i]);}
@@ -41,7 +41,7 @@ public class convergence {
 			matrix E_m = new matrix(n, m);
 			vector e_m = new vector(m);
 			
-			lanczos.eigenvalues(A_m, E_m, e_m);
+			lanczos.eigenvalues(A_m, E_m, e_m, highest:false);
 		
 			Func<int, double> e = (i) => {
 				if(i < m) {
@@ -62,7 +62,7 @@ public class convergence {
 			matrix E_m = new matrix(n, m);
 			vector e_m = new vector(m);
 			
-			lanczos.eigenvalues(A_m, E_m, e_m);
+			lanczos.eigenvalues(A_m, E_m, e_m, highest:false);
 			
 			// The divergence of the eigenvectors from the "exact" result.
 			// here, modelled as the norm of the difference of the two.		
@@ -83,7 +83,7 @@ public class convergence {
 			matrix E_m = new matrix(n, m);
 			vector e_m = new vector(m);
 			
-			lanczos.eigenvalues(A_m, E_m, e_m);
+			lanczos.eigenvalues(A_m, E_m, e_m, highest:false);
 			
 			// The divergence of the eigenvectors from the "exact" result.
 			// here, modelled as the norm of the difference of the two.		
@@ -98,15 +98,6 @@ public class convergence {
 
 		}
 		outfile.Close();
-		
-		Write("Testing the convergence of the eigenvalues and vectors.\n\n");
-		Write($"Using the Lanczos algorithm on the same {n}x{n} random symmetric matrix,\n");
-		Write($"to find eigenvalues and eigenvectors for m = {1} to {mMax} iterations.\n");
-		Write($"\nThese are compared to the ones found for m = n = {n}, which were\n");
-		Write($"previously shown to be the true values.\n");
-		Write("\nFor the eigenvectors, the sign is arbitrary, which was taken into account.\n");
-		Write("\nIt appears for m going to n, both the lowest and highest eigenvalues and\n eigenvectors go towards the correct ones.\n");
-		Write("However, in all cases, the best convergence seems to be for the single\nhighest eigenvalue.\n");
 
 	}
 

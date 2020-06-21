@@ -66,7 +66,8 @@ public class simplex {
 		vector startingPoint,  // A starting point:
 		vector startingLengths, // The length that the other points will be
 							   // moved in relation to the starting point.
-		double eps             // The accuracy goal
+		double eps,            // The accuracy goal
+		int maxSteps=10000
 	) {
 		vector[] startingShape = new vector[n+1];
 		for(int i = 0; i < n+1; i++) {
@@ -74,7 +75,7 @@ public class simplex {
 			if(i != 0) startingShape[i][i-1] += startingLengths[i-1];
 		}
 		
-		return search(startingShape, eps);
+		return search(startingShape, eps, maxSteps:maxSteps);
 	}
 
 
@@ -84,7 +85,8 @@ public class simplex {
 		vector startingPoint,  // A starting point:
 		double startingLength, // The length that the other points will be
 							   // moved in relation to the starting point.
-		double eps             // The accuracy goal
+		double eps,            // The accuracy goal
+		int maxSteps=10000     // The maximum number of minimization steps
 	) {
 		vector[] startingShape = new vector[n+1];
 		for(int i = 0; i < n+1; i++) {
@@ -92,17 +94,21 @@ public class simplex {
 			if(i != 0) startingShape[i][i-1] += startingLength;
 		}
 		
-		return search(startingShape, eps);
+		return search(startingShape, eps, maxSteps:maxSteps);
 	}
 		
 	
 	// The method that searches for a minimum until convergence:
-	public int search(vector[] startingShape, double eps) {
+	public int search(
+		vector[] startingShape, 
+		double eps, 
+		int maxSteps=10000
+	) {
 		verticies = startingShape;
 		calculateValues();
 		updateHiLo();
 		int steps = 0;
-		while(steps < 10000 && size > eps) {
+		while(steps < maxSteps && size > eps) {
 			//Error.Write($"Step nr: {steps}\n");
 			steps++;
 			// Start by finding the reflection point:

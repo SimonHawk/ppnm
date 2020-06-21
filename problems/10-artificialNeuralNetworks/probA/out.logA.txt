@@ -1,6 +1,8 @@
 Problem A
-Completed training the sin function:
+Completed training the sin function for 5, 11 and 17 nodes:
 Sampled sine points:         20
 Minimization accuracy goal:  1E-06
-Minimization steps:          1000
+Minimization steps:          1001
 (OBS: Accuracy goal was not reached as maximum number of steps was reached)
+
+Looking at figure A.interpolation.svg it seems that while the 11 node interpolation hits the points better than the 5 node one, it is more susceptible to wiggle. However, the 17 node interpolation does not exhibit this wiggle.

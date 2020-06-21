@@ -1,7 +1,10 @@
 
 Problem B:
-Completed training the sin function:
+Training the neutral network to interpolate the Sine function:
 Sampled sine points:         20
+Network nodes:               11
 Minimization accuracy goal:  1E-06
-Minimization steps:          1000
+Minimization steps:          1001
 (OBS: Accuracy goal was not reached as maximum number of steps was reached)
+
+See figure B.interpolation.svg for the result.
