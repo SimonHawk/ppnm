@@ -1,4 +1,22 @@
-all: out.demo.txt out.eigen.txt data.convergence.txt convergence.svg convergence_lowest.svg 
+all: out.demo.txt out.eigen.txt data.convergence.txt convergence.svg convergence_lowest.svg convergence_size.svg runtime.svg
+
+runtime.svg: runtime.gpi data.runtime.txt
+	gnuplot $<
+
+data.runtime.txt: runtime.exe
+	mono $< 
+
+runtime.exe: runtime.cs
+	mcs -reference:math.dll -out:$@ $<
+
+convergence_size.svg: convergence_size.gpi data.convergence_size.txt
+	gnuplot $<
+
+data.convergence_size.txt: convergence_size.exe
+	mono $< 
+
+convergence_size.exe: convergence_size.cs
+	mcs -reference:math.dll -out:$@ $<
 
 convergence_lowest.svg: convergence_lowest.gpi data.convergence_lowest.txt
 	gnuplot $<

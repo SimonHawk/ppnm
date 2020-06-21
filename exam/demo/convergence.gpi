@@ -1,7 +1,7 @@
 set term svg background rgb "white" font ",16" size 1100,900
 set out "convergence.svg"
 
-set multiplot layout 2,2 columnsfirst title "Convergence of the eigen-values and -vectors as a function number of itterations m"
+set multiplot layout 2,2 columnsfirst title "Convergence of the eigen-values and -vectors as a function number of itterations m\nFor a random symmetric 50x50 matrix"
 
 set xlabel "m"
 

@@ -1,0 +1,41 @@
+set term svg background rgb "white" font ",16" size 700,900
+set out "convergence_size.svg"
+
+set multiplot layout 2,1 columnsfirst title "Convergence of the highest eigenvalue in m for varying matrix sizes, n x n"
+
+set xlabel "m"
+
+set datafile missing "NaN"
+
+set log y
+set format y "%g"
+
+set key font ",14"
+
+set title "Deviation of highest eigenvalue"
+set ylabel "e_m_i - e_i"
+plot "data.convergence_size.txt" index 0 u 1:2 with lines title "n = 5" \
+	,"data.convergence_size.txt" index 1 u 1:2 with lines title "n = 10" \
+	,"data.convergence_size.txt" index 2 u 1:2 with lines title "n = 30" \
+	,"data.convergence_size.txt" index 3 u 1:2 with lines title "n = 50" \
+	,"data.convergence_size.txt" index 4 u 1:2 with lines title "n = 100" \
+	,"data.convergence_size.txt" index 5 u 1:2 with lines title "n = 150" \
+	,"data.convergence_size.txt" index 6 u 1:2 with lines title "n = 250" 
+#	,"data.convergence_size.txt" index 7 u 1:2 with lines title "n = 80" 
+#	,"data.convergence_size.txt" index 8 u 1:2 with lines title "n = 90" \
+#	,"data.convergence_size.txt" index 9 u 1:2 with lines title "n = 100"
+
+
+set title "Deviation of highest eigenvector"
+set ylabel "norm(E_m_i - E_i)"
+plot "data.convergence_size.txt" index 0 u 1:3 with lines title "n = 5" \
+	,"data.convergence_size.txt" index 1 u 1:3 with lines title "n = 10" \
+	,"data.convergence_size.txt" index 2 u 1:3 with lines title "n = 30" \
+	,"data.convergence_size.txt" index 3 u 1:3 with lines title "n = 50" \
+	,"data.convergence_size.txt" index 4 u 1:3 with lines title "n = 100" \
+	,"data.convergence_size.txt" index 5 u 1:3 with lines title "n = 150" \
+	,"data.convergence_size.txt" index 6 u 1:3 with lines title "n = 250"  
+# 	,"data.convergence_size.txt" index 7 u 1:3 with lines title "n = " 
+#	,"data.convergence_size.txt" index 8 u 1:3 with lines title "n = 90" \
+#	,"data.convergence_size.txt" index 9 u 1:3 with lines title "n = 100"
+
